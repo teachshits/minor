@@ -2,3 +2,6 @@
 <td><%= @employee %></td>
 <br>
 <td><%= @schedule %></td>
+<br>
+<td><%= link_to "Build New Schedule", new_schedule_url(:employee_id => @employee[0].id, :rate_this_week => @employee[0].payrate) %></td>
+      <td><%= link_to "Edit", edit_employee_url(@employee[0]) %></td>
