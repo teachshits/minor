@@ -1,0 +1,31 @@
+<%= @schedule %>
+<% @schedule.each do |sch| %>
+<% @employee = Employee.find([[sch.employee_id]]) %>    
+<tr>
+      <br>
+      <br>
+      <td>ID: <%= sch.id %></td>
+      <td>Worker: <%= sch.employee_id %>
+      
+      Name: <%= @employee.first.name %>
+      </td>
+      <br>
+      <br>
+      <div style="background: gray;">
+      <td><%= sch.MonStart %></td>
+      <td><%= sch.TueStart %></td>
+      <td><%= sch.WedStart %></td>
+      <td><%= sch.ThuStart %></td>
+      <td><%= sch.FriStart %></td>
+      <td><%= sch.SatStart %></td>
+      <td><%= sch.SunStart %></td>
+      <td><%= sch.MonEnd %></td>
+      <td><%= sch.TueEnd %></td>
+      <td><%= sch.WedEnd %></td>
+      <td><%= sch.ThuEnd %></td>
+      <td><%= sch.FriEnd %></td>
+      <td><%= sch.SatEnd %></td>
+      <td><%= sch.SunEnd %></td>
+      </div>
+    </tr>
+  <% end %>
