@@ -1,7 +1,9 @@
 class SchedulesController < ApplicationController
 
   before_filter :set_business
-  
+  def index
+    @schedule = Schedule.all
+  end
   def new
     @schedule = Schedule.new  
     @employee = Employee.find(params[:employee_id])
