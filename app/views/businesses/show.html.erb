@@ -1,5 +1,6 @@
-<h1>Businesses#show</h1>
-<p>Find me in app/views/businesses/show.html.erb</p>
+<% @b = session[:biz_id] %>
+<h1><%= @business.name %> <%= link_to "Edit", edit_business_url(@b) %></h1>
+
 
 <%= link_to "Add a new employee here", new_employee_url %>
 
@@ -16,5 +17,5 @@
   <% end %>
 </table>
 
-<%= link_to "Build New Weekly Schedule",  %>
+<%= link_to "Schedule Main", schedules_url %>
 
