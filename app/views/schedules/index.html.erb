@@ -9,17 +9,19 @@
       <td>Worker: <%= sch.employee_id %>
       
       Name: <%= @employee.first.name %>
+      
+      <%= link_to "Edit", :controller => "schedules", :action => "show", :id => sch.id %>
       </td>
       <br>
       <br>
       <div style="background: gray;">
-<td><%= sch.MonStart %></td> => <td><%= sch.MonEnd %></td><br>
-<td><%= sch.TueStart %></td> => <td><%= sch.TueEnd %></td><br>
-<td><%= sch.WedStart %></td> => <td><%= sch.WedEnd %></td><br>
-<td><%= sch.ThuStart %></td> => <td><%= sch.ThuEnd %></td><br>
-<td><%= sch.FriStart %></td> => <td><%= sch.FriEnd %></td><br>
-<td><%= sch.SatStart %></td> => <td><%= sch.SatEnd %></td><br>
-<td><%= sch.SunStart %></td> => <td><%= sch.SunEnd %></td><br>
+<td><b>Mon:</b><%= sch.MonStart %></td> => <td><%= sch.MonEnd %></td><br>
+<td><b>Tue:</b><%= sch.TueStart %></td> => <td><%= sch.TueEnd %></td><br>
+<td><b>Wed:</b><%= sch.WedStart %></td> => <td><%= sch.WedEnd %></td><br>
+<td><b>Thu:</b><%= sch.ThuStart %></td> => <td><%= sch.ThuEnd %></td><br>
+<td><b>Fri:</b><%= sch.FriStart %></td> => <td><%= sch.FriEnd %></td><br>
+<td><b>Sat:</b><%= sch.SatStart %></td> => <td><%= sch.SatEnd %></td><br>
+<td><b>Sun:</b><%= sch.SunStart %></td> => <td><%= sch.SunEnd %></td><br>
   
       
       

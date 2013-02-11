@@ -1,3 +1,9 @@
+======
+Minority
+
+Empire InCloud
+
+
 This is an app we are building for small businesses to use for scheduling their employees. It's an exercise in business logic and model association.
 
 We are pushing up our Sqlite database for testing purposes but the "weeks" are also in the seed file.
