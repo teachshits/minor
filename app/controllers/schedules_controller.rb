@@ -30,7 +30,13 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.update_attributes(params[:schedule])
     @schedule.save
-    redirect_to @business, :notice => "You just edited your schedule."
+    redirect_to @schedule, :notice => "You just edited your schedule."
+  end
+
+  def calculate 
+    #
+    # FRIDAY DEADLINE
+    #
   end
 
 end

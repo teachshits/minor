@@ -2,26 +2,26 @@
   <tr align="center">
     <td></td>
     <td></td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sunday</td>
+    <td>Понедельник</td>
+    <td>Вторник</td>
+    <td>Среда</td>
+    <td>Четверг</td>
+    <td>Пятница</td>
+    <td>Суббота</td>
+    <td>Воскресенье</td>
     <td></td>
   </tr>
   <tr id="select_time">
-    <td rowspan="2" class="employee_name"><span>Name:</span><%= @employee.name %> </td>
+    <td rowspan="2" class="employee_name"><span>Сотрудник:</span><%= @employee.name %> </td>
     <%= form_for(@schedule) do |f| %>
-    <td>Start</td>      
-    <td><%= f.time_select(:MonStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:TueStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:WedStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:ThuStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:FriStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:SatStart, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:SunStart, :include_blank => true, ampm:true, minute_step:15) %></td>
+    <td>Начало</td>      
+    <td><%= f.time_select(:MonStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:TueStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:WedStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:ThuStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:FriStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:SatStart, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:SunStart, :include_blank => true, minute_step:15) %></td>
     <td rowspan="2" class"schedule_save">      
       <%= f.hidden_field :rate_this_week %>
       <%= f.hidden_field :employee_id %>
@@ -29,14 +29,14 @@
     </td>
   </tr>  
   <tr>
-    <td>End</td>
-    <td><%= f.time_select(:MonEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:TueEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:WedEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:ThuEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:FriEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:SatEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
-    <td><%= f.time_select(:SunEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
+    <td>Конец</td>
+    <td><%= f.time_select(:MonEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:TueEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:WedEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:ThuEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:FriEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:SatEnd, :include_blank => true, minute_step:15) %></td>
+    <td><%= f.time_select(:SunEnd, :include_blank => true, minute_step:15) %></td>
     <% end %>
     
 
@@ -54,10 +54,10 @@
 
 
 <div style="background: gray;">
-<td><b>Mon:</b><%= @schedule.MonStart %></td> => <td><%= @schedule.MonEnd %></td><br>
-<td><b>Tue:</b><%= @schedule.TueStart %></td> => <td><%= @schedule.TueEnd %></td><br>
-<td><b>Wed:</b><%= @schedule.WedStart %></td> => <td><%= @schedule.WedEnd %></td><br>
-<td><b>Thu:</b><%= @schedule.ThuStart %></td> => <td><%= @schedule.ThuEnd %></td><br>
-<td><b>Fri:</b><%= @schedule.FriStart %></td> => <td><%= @schedule.FriEnd %></td><br>
-<td><b>Sat:</b><%= @schedule.SatStart %></td> => <td><%= @schedule.SatEnd %></td><br>
-<td><b>Sun:</b><%= @schedule.SunStart %></td> => <td><%= @schedule.SunEnd %></td><br>
+<td><b>ПН:</b><%= @schedule.MonStart %></td> => <td><%= @schedule.MonEnd %></td><br>
+<td><b>ВТ:</b><%= @schedule.TueStart %></td> => <td><%= @schedule.TueEnd %></td><br>
+<td><b>СР:</b><%= @schedule.WedStart %></td> => <td><%= @schedule.WedEnd %></td><br>
+<td><b>ЧТ:</b><%= @schedule.ThuStart %></td> => <td><%= @schedule.ThuEnd %></td><br>
+<td><b>ПТ:</b><%= @schedule.FriStart %></td> => <td><%= @schedule.FriEnd %></td><br>
+<td><b>СБ:</b><%= @schedule.SatStart %></td> => <td><%= @schedule.SatEnd %></td><br>
+<td><b>ВС:</b><%= @schedule.SunStart %></td> => <td><%= @schedule.SunEnd %></td><br>

@@ -2,26 +2,34 @@
 <h1><%= @business.name %> <%= link_to "Edit", edit_business_url(@b) %></h1>
 
 
-<%= link_to "Add a new employee here", new_employee_url %>
+<%= link_to "Добавить нового сотрудника", new_employee_url %>
 
 <table>
+<h4>Сотрудники: </h4>
   <% @business.employees.each do |employee| %>
     <tr>
       <td><%= employee.name %></td>
       <td><%= employee.payrate %></td>
-      <td><%= link_to "Build New Schedule", new_schedule_url(:employee_id => employee.id, :rate_this_week => employee.payrate) %></td>
-      <td><%= link_to "Edit", edit_employee_url(employee) %></td>
-      <td><%= link_to "Usercard", employee_url(employee) %> </td>
-      <td><%= link_to "Delete", employee_url(employee), :confirm => "Are you sure?" %></td>
+      <td><%= link_to "Построить граффик", new_schedule_url(:employee_id => employee.id, :rate_this_week => employee.payrate) %></td>
+      <td><%= link_to "Редактирование", edit_employee_url(employee) %></td>
+      <td><%= link_to "Профиль", employee_url(employee) %> </td>
+      <td><%= link_to "Удалить", employee_url(employee), :confirm => "Вы уверенны?" %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to "Schedule Main", schedules_url %>
 
 <br>
 <br>
+<%= link_to "Основной граффик", schedules_url %>
+
+<h4>Граффики сотрудников: </h4>
 <br>
+<% @schedule.sort.each do |sch| %>
+<% @employee = Employee.find_all_by_id(sch.employee_id) %>
+<%= link_to "Граффик #{sch.id} — #{@employee.first.name}", sch %>
+<br>
+<% end %>
 <br>
 <br>
       <br>

@@ -15,6 +15,7 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @schedule = Schedule.all
   end
   
   def update

@@ -2,19 +2,19 @@
   <tr align="center">
     <td></td>
     <td></td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sunday</td>
+    <td>Понедельник</td>
+    <td>Вторник</td>
+    <td>Среда</td>
+    <td>Четверг</td>
+    <td>Пятница</td>
+    <td>Суббота</td>
+    <td>Воскресенье</td>
     <td></td>
   </tr>
   <tr id="select_time">
     <td rowspan="2" class="employee_name"><%= @employee.name %> </td>
     <%= form_for(@schedule) do |f| %>
-    <td>Start</td>      
+    <td>Начало</td>      
     <td><%= f.time_select(:MonStart, :include_blank => true, ampm:true, minute_step:15) %></td>
     <td><%= f.time_select(:TueStart, :include_blank => true, ampm:true, minute_step:15) %></td>
     <td><%= f.time_select(:WedStart, :include_blank => true, ampm:true, minute_step:15) %></td>
@@ -29,7 +29,7 @@
     </td>
   </tr>  
   <tr>
-    <td>End</td>
+    <td>Конец</td>
     <td><%= f.time_select(:MonEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
     <td><%= f.time_select(:TueEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
     <td><%= f.time_select(:WedEnd, :include_blank => true, ampm:true, minute_step:15) %></td>
