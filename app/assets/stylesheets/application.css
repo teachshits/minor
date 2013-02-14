@@ -23,6 +23,8 @@ body {
 
 #sked td {
 	border-bottom: 1px solid;
+	border-left: 1px gray solid;
+
 }
 
 .employee_name {
