@@ -11,6 +11,10 @@ body {
 	font-family: Arial, Helvetica, Geneva, sans-serif;
 	width: 1080px;
 }
+::selection {
+color: skyblue;
+}
+
 #sked {
 	font-size: small;
 	border-bottom: 1px solid #333;
