@@ -1,5 +1,8 @@
 EasySked::Application.routes.draw do
   
+  resources :positions
+
+
   resources :schedules
 
   resources :employees

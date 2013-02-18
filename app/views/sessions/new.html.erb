@@ -1,11 +1,24 @@
-
+<div class="login box">
 Log In
-
-
 <%= form_tag sessions_url do %>
-<p>Username  <%= text_field_tag :username %></p>
-<p>Password <%= password_field_tag :password %></p>
-<p><%= submit_tag "log in" %></p>
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Username</label>
+    <div class="controls">
+      <%= text_field_tag :username %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      <%= password_field_tag :'inputPassword' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+	<%= submit_tag "log in", class: 'btn btn-primary' %>
+    </div>
+  </div>
+</form>
 <% end %>
 
-<a href="http://camronjs.herokuapp.com/channel/camronjs">Check_in</a>

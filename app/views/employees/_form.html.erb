@@ -1,5 +1,10 @@
 <%= form_for(@employee) do |f| %>
   <p>Имя сотрудница <%= f.text_field :name, :placeholder => "Имя и Фамилия" %></p>
+  <p>Почта <%= f.text_field :email, :placeholder => "Электропочта" %></p>
   <p>Оклад $<%= f.number_field :payrate, :placeholder => "Например $8.25 = 825" %></p>
-  <%= f.submit "Сохранить" %>
+  <p>Rank: <%= f.number_field :rank, :placeholder => "1,2,3" %></p>
+    <%   @pos = Position.all  %>
+<%= select_tag 'position_id', options_for_select(@pos.collect{ |u| [u.pos, u.id] }, @employee.position_id), {:include_blank => true} %>
+  <%= f.submit "Сохранить" %>  
 <% end %>
+

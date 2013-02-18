@@ -1,7 +1,12 @@
 <%= form_for @business do|f| %>
-<p>Название компании:  <%= f.text_field :name, :placeholder => "Apple INC" %></p>
+<p>Название компании:  <%= f.text_field :name, :placeholder => "Apple Computers" %></p>
 <p>Ваше имя:  <%= f.text_field :username, :placeholder => "В одно слово" %></p>
 <p>Ваш пароль:  <%= f.password_field :password, :placeholder => "сделайте его хорошим" %></p>
 <p>Потверждение пароля:  <%= f.password_field :password_confirmation, :placeholder => "опять" %></p>
+<p>Рабочий день:  <%= f.text_field :workhours, :placeholder => "8" %> часов</p>
+<p>Phone:  <%= f.text_field :phone, :placeholder => "89090860451" %></p>
+<p>adress:  <%= f.text_field :adress, :placeholder => "Улица Дом" %> часов</p>
 <p><%= f.submit "Сохранить" %></p>
+
+<p>:subscription_id </p>
 <% end %>

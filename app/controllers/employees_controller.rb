@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(params[:employee])
+    @employee = @business.employees.new(params[:employee])
     @employee.payrate = (@employee.payrate/100)
     @employee.save
     redirect_to business_url(session[:biz_id]), notice: "Employee successfully created."

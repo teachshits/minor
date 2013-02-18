@@ -1,83 +1,18 @@
 <% @b = session[:biz_id] %>
 <h1><%= link_to "/", business_url(@b) %></h1>
 
-
-<section class="dayweek">
-<div class="Mon dw">
-<% @schedule.sort.each do |sch| %>
-Mon
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.MonStart %></p>
-<p><%= sch.MonEnd %></p>
-<% end %>
-</div>
-
-
-
-<div class="Tue dw">
-<% @schedule.sort.each do |sch| %>
-Tue
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.TueStart %></p>
-<p><%= sch.TueEnd %></p>
-<% end %>
-</div>
-
-<div class="Wed dw">
-<% @schedule.sort.each do |sch| %>
-Wed
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.WedStart %></p>
-<p><%= sch.WedEnd %></p>
-<% end %>
-</div>
-
-
-<div class="Thu dw">
-<% @schedule.sort.each do |sch| %>
-Thu
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.ThuStart %></p>
-<p><%= sch.ThuEnd %></p>
-<% end %>
-</div>
-
-
-<div class="Fri dw">
-<% @schedule.sort.each do |sch| %>
-Fri
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.FriStart %></p>
-<p><%= sch.FriEnd %></p>
-<% end %>
-</div>
-
-
-<div class="Sat dw">
-<% @schedule.sort.each do |sch| %>
-Sat
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.SatStart %></p>
-<p><%= sch.SatEnd %></p>
-<% end %>
-</div>
-
-
-<div class="Sun dw">
-<% @schedule.sort.each do |sch| %>
-Sun
-<% @employee = Employee.find([[sch.employee_id]]) %>  
-<h6><%= if sch.MonStart != nil; @employee.first.name end %></h6>
-<p><%= sch.SunStart %></p>
-<p><%= sch.SunEnd %></p>
-<% end %>
-</div>
+<section class="dayweek clearfix">   
+      <% %w{Mon Tue Wed Thu Fri Sat Sun}.each do |wday| %>
+      <div class="<%= wday %> dw">
+          <% @schedule.sort.each do |week| %>
+          <% @employee = Employee.find([[week.employee_id]]) %>  
+          <h6><%= if week.send("#{wday}Start") != nil; @employee.first.name end %></h6>
+          <%= wday %>
+          <div class="start"><%= week.send("#{wday}Start") %></div>
+          <div class="end"><%= week.send("#{wday}End") %></div>
+      <% end %>
+      </div>
+    <% end %>
 
 </section>
 <div style: "clear:both;">

@@ -4,6 +4,8 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :name
       t.integer :payrate
       t.integer :business_id
+      t.integer :position_id
+      t.string :email
 
       t.timestamps
     end

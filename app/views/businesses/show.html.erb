@@ -3,13 +3,23 @@
 
 
 <%= link_to "Добавить нового сотрудника", new_employee_url %>
-
+<%= link_to "Добавить новую позицию", new_position_url %>
 <table>
 <h4>Сотрудники: </h4>
   <% @business.employees.each do |employee| %>
+    <th>Name</th>
+    <th>$</th>
+    <th>Rank</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
     <tr>
       <td><%= employee.name %></td>
       <td><%= employee.payrate %></td>
+      <td><%= employee.rank %></td>
+      <!-- refactor in method helper !-->
+      <% @posi = Position.find_all_by_id(employee.position_id)  %>
+      <td><%=if (!@posi.empty?) then @posi.first.pos end %></td>
       <td><%= link_to "Построить граффик", new_schedule_url(:employee_id => employee.id, :rate_this_week => employee.payrate) %></td>
       <td><%= link_to "Редактирование", edit_employee_url(employee) %></td>
       <td><%= link_to "Профиль", employee_url(employee) %> </td>
@@ -17,7 +27,23 @@
     </tr>
   <% end %>
 </table>
+<table>
 
+<h4>Важные сотрудники: </h4>
+  <% @business.employees.each do |employee| %>
+    <tr><% if employee.rank == 1 %>
+    <%= employee.name %>
+      <% end %>
+   <% end %>
+   <h4>Средней важности сотрудники: </h4>
+  <% @business.employees.each do |employee| %>
+    <tr><%= if employee.rank == 2 then employee.name end %>
+   <% end %>
+   <h4>Низкой важности сотрудники: </h4>
+  <% @business.employees.each do |employee| %>
+    <tr><%= if employee.rank == 3 then employee.name end %>
+   <% end %>
+</table>
 
 <br>
 <br>
