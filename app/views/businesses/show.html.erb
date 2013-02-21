@@ -33,15 +33,18 @@
   <% @business.employees.each do |employee| %>
     <tr><% if employee.rank == 1 %>
     <%= employee.name %>
+    <br>
       <% end %>
    <% end %>
    <h4>Средней важности сотрудники: </h4>
   <% @business.employees.each do |employee| %>
     <tr><%= if employee.rank == 2 then employee.name end %>
+    <br>
    <% end %>
    <h4>Низкой важности сотрудники: </h4>
   <% @business.employees.each do |employee| %>
     <tr><%= if employee.rank == 3 then employee.name end %>
+    <br>
    <% end %>
 </table>
 
@@ -58,6 +61,9 @@
 <% end %>
 <br>
 <br>
-      <br>
-      <br>
-      <strong> <a href="https://github.com/EmpireInc/Minority/">Этапы проекта</a></strong>
+<br>
+<h2><%= link_to "Calculation", calculations_url %></h2>
+
+<br>
+<br>
+<strong> <a href="https://github.com/EmpireInc/Minority/">Этапы проекта</a></strong>

@@ -1,0 +1,53 @@
+<%= form_for(@business_workday) do |f| %>
+  <% if @business_workday.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business_workday.errors.count, "error") %> prohibited this business_workday from being saved:</h2>
+
+      <ul>
+      <% @business_workday.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :business_id %><br />
+    <%= f.number_field :business_id %>
+  </div>
+  <div class="field">
+    <%= f.label :period_id %><br />
+    <%= f.number_field :period_id %>
+  </div>
+  <div class="field">
+    <%= f.label :Mon %><br />
+    <%= f.number_field :Mon %>
+  </div>
+  <div class="field">
+    <%= f.label :Tue %><br />
+    <%= f.number_field :Tue %>
+  </div>
+  <div class="field">
+    <%= f.label :Wed %><br />
+    <%= f.number_field :Wed %>
+  </div>
+  <div class="field">
+    <%= f.label :Thu %><br />
+    <%= f.number_field :Thu %>
+  </div>
+  <div class="field">
+    <%= f.label :Fri %><br />
+    <%= f.number_field :Fri %>
+  </div>
+  <div class="field">
+    <%= f.label :Sat %><br />
+    <%= f.number_field :Sat %>
+  </div>
+  <div class="field">
+    <%= f.label :Sun %><br />
+    <%= f.number_field :Sun %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Employee:</b>
+  <%= @avaliability.employee_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @avaliability.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @avaliability.description %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @avaliability.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @avaliability.end_date %>
+</p>
+
+<p>
+  <b>Ongoing:</b>
+  <%= @avaliability.ongoing %>
+</p>
+
+<p>
+  <b>Repeat:</b>
+  <%= @avaliability.repeat %>
+</p>
+
+
+<%= link_to 'Edit', edit_avaliability_path(@avaliability) %> |
+<%= link_to 'Back', avaliabilities_path %>

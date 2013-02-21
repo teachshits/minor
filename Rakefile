@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EasySked::Application.load_tasks
+Minority::Application.load_tasks

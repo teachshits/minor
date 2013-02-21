@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>P start:</b>
+  <%= @period.p_start %>
+</p>
+
+<p>
+  <b>P end:</b>
+  <%= @period.p_end %>
+</p>
+
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

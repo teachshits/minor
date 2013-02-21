@@ -1,0 +1,39 @@
+<h1>Listing business_workdays</h1>
+
+<table>
+  <tr>
+    <th>Business</th>
+    <th>Period</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+    <th>Sun</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @business_workdays.each do |business_workday| %>
+  <tr>
+    <td><%= business_workday.business_id %></td>
+    <td><%= business_workday.period_id %></td>
+    <td><%= business_workday.Mon %></td>
+    <td><%= business_workday.Tue %></td>
+    <td><%= business_workday.Wed %></td>
+    <td><%= business_workday.Thu %></td>
+    <td><%= business_workday.Fri %></td>
+    <td><%= business_workday.Sat %></td>
+    <td><%= business_workday.Sun %></td>
+    <td><%= link_to 'Show', business_workday %></td>
+    <td><%= link_to 'Edit', edit_business_workday_path(business_workday) %></td>
+    <td><%= link_to 'Destroy', business_workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Business workday', new_business_workday_path %>

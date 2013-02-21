@@ -1,0 +1,35 @@
+<h1>Listing avaliabilities</h1>
+
+<table>
+  <tr>
+    <th>Employee</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Ongoing</th>
+    <th>Repeat</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @avaliabilities.each do |avaliability| %>
+  <tr>
+    <td><%= avaliability.employee_id %></td>
+    <td><%= avaliability.name %></td>
+    <td><%= avaliability.description %></td>
+    <td><%= avaliability.start_date %></td>
+    <td><%= avaliability.end_date %></td>
+    <td><%= avaliability.ongoing %></td>
+    <td><%= avaliability.repeat %></td>
+    <td><%= link_to 'Show', avaliability %></td>
+    <td><%= link_to 'Edit', edit_avaliability_path(avaliability) %></td>
+    <td><%= link_to 'Destroy', avaliability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Avaliability', new_avaliability_path %>

@@ -1,0 +1,2 @@
+module AvaliabilityItemsHelper
+end

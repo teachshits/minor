@@ -16,7 +16,6 @@ describe "positions/edit" do
     assert_select "form", :action => positions_path(@position), :method => "post" do
       assert_select "input#position_pos", :name => "position[pos]"
       assert_select "input#position_pos_id", :name => "position[pos_id]"
-      assert_select "input#position_employee_id", :name => "position[employee_id]"
     end
   end
 end

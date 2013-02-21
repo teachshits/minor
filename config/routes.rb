@@ -1,10 +1,25 @@
-EasySked::Application.routes.draw do
+Minority::Application.routes.draw do
   
+  resources :avaliability_items
+
+
+  resources :avaliabilities
+
+
+  resources :business_workdays
+
+
+  resources :appr_positions
+
+
+  resources :periods
+
+
   resources :positions
 
 
   resources :schedules
-
+  resources :calculations
   resources :employees
   resources :businesses
   resource :sessions

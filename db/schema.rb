@@ -11,7 +11,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218214544) do
+ActiveRecord::Schema.define(:version => 20130221021935) do
+
+  create_table "appr_positions", :force => true do |t|
+    t.integer  "position_id"
+    t.integer  "Mon"
+    t.integer  "Tue"
+    t.integer  "Wed"
+    t.integer  "Thu"
+    t.integer  "Fri"
+    t.integer  "Sat"
+    t.integer  "Sun"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "period_id"
+  end
+
+  create_table "avaliabilities", :force => true do |t|
+    t.integer  "employee_id"
+    t.string   "name"
+    t.string   "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "ongoing"
+    t.integer  "repeat"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "avaliability_items", :force => true do |t|
+    t.integer  "avaliability_id"
+    t.integer  "day"
+    t.integer  "type"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "business_workdays", :force => true do |t|
+    t.integer  "business_id"
+    t.integer  "period_id"
+    t.integer  "Mon"
+    t.integer  "Tue"
+    t.integer  "Wed"
+    t.integer  "Thu"
+    t.integer  "Fri"
+    t.integer  "Sat"
+    t.integer  "Sun"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "businesses", :force => true do |t|
     t.string   "name"
@@ -19,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20130218214544) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "workhours"
+    t.integer  "work_sch_id"
     t.integer  "phone"
     t.string   "adress"
     t.integer  "subscription_id"
@@ -32,9 +82,16 @@ ActiveRecord::Schema.define(:version => 20130218214544) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rank",        :null => false
-    t.integer  "workday"
+    t.integer  "workhours"
     t.integer  "position_id"
     t.string   "email"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.datetime "p_start"
+    t.datetime "p_end"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "positions", :force => true do |t|
@@ -67,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130218214544) do
     t.time     "SunEnd"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "period_id"
   end
 
   create_table "weeks", :force => true do |t|

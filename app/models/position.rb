@@ -3,5 +3,6 @@ class Position < ActiveRecord::Base
   belongs_to :business
 
   has_many :employees, dependent: :destroy
+  has_many :appr_positions
   
 end

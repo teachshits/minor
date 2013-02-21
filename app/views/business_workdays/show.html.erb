@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Business:</b>
+  <%= @business_workday.business_id %>
+</p>
+
+<p>
+  <b>Period:</b>
+  <%= @business_workday.period_id %>
+</p>
+
+<p>
+  <b>Mon:</b>
+  <%= @business_workday.Mon %>
+</p>
+
+<p>
+  <b>Tue:</b>
+  <%= @business_workday.Tue %>
+</p>
+
+<p>
+  <b>Wed:</b>
+  <%= @business_workday.Wed %>
+</p>
+
+<p>
+  <b>Thu:</b>
+  <%= @business_workday.Thu %>
+</p>
+
+<p>
+  <b>Fri:</b>
+  <%= @business_workday.Fri %>
+</p>
+
+<p>
+  <b>Sat:</b>
+  <%= @business_workday.Sat %>
+</p>
+
+<p>
+  <b>Sun:</b>
+  <%= @business_workday.Sun %>
+</p>
+
+
+<%= link_to 'Edit', edit_business_workday_path(@business_workday) %> |
+<%= link_to 'Back', business_workdays_path %>

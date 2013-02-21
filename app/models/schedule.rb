@@ -8,4 +8,5 @@ class Schedule < ActiveRecord::Base
 # end
  
   belongs_to :employee
+  belongs_to :period
 end

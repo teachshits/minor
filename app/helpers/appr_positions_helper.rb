@@ -1,0 +1,2 @@
+module ApprPositionsHelper
+end

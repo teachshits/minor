@@ -1,0 +1,37 @@
+<h1>Listing appr_positions</h1>
+
+<table>
+  <tr>
+    <th>Position</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+    <th>Sun</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @appr_positions.each do |appr_position| %>
+  <tr>
+    <td><%= appr_position.position_id %></td>
+    <td><%= appr_position.Mon %></td>
+    <td><%= appr_position.Tue %></td>
+    <td><%= appr_position.Wed %></td>
+    <td><%= appr_position.Thu %></td>
+    <td><%= appr_position.Fri %></td>
+    <td><%= appr_position.Sat %></td>
+    <td><%= appr_position.Sun %></td>
+    <td><%= link_to 'Show', appr_position %></td>
+    <td><%= link_to 'Edit', edit_appr_position_path(appr_position) %></td>
+    <td><%= link_to 'Destroy', appr_position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Appr position', new_appr_position_path %>
