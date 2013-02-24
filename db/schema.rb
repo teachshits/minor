@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221021935) do
+ActiveRecord::Schema.define(:version => 20130222230056) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -52,13 +52,20 @@ ActiveRecord::Schema.define(:version => 20130221021935) do
   create_table "business_workdays", :force => true do |t|
     t.integer  "business_id"
     t.integer  "period_id"
-    t.integer  "Mon"
-    t.integer  "Tue"
-    t.integer  "Wed"
-    t.integer  "Thu"
-    t.integer  "Fri"
-    t.integer  "Sat"
-    t.integer  "Sun"
+    t.time     "MonStart"
+    t.time     "MonEnd"
+    t.time     "TueStart"
+    t.time     "TueEnd"
+    t.time     "WedStart"
+    t.time     "WedEnd"
+    t.time     "ThuStart"
+    t.time     "ThuEnd"
+    t.time     "FriStart"
+    t.time     "FriEnd"
+    t.time     "SatStart"
+    t.time     "SatEnd"
+    t.time     "SunStart"
+    t.time     "SunEnd"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -88,8 +95,8 @@ ActiveRecord::Schema.define(:version => 20130221021935) do
   end
 
   create_table "periods", :force => true do |t|
-    t.datetime "p_start"
-    t.datetime "p_end"
+    t.date     "p_start"
+    t.date     "p_end"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

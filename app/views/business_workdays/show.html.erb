@@ -12,37 +12,48 @@
 
 <p>
   <b>Mon:</b>
-  <%= @business_workday.Mon %>
+    <%= @business_workday.MonStart.to_s(:ru_datetime) %>
+    <%= @business_workday.MonEnd.to_s(:ru_datetime) %>
+    
 </p>
 
 <p>
   <b>Tue:</b>
-  <%= @business_workday.Tue %>
+  <%= @business_workday.TueStart.to_s(:ru_datetime) %>
+  <%= @business_workday.TueEnd.to_s(:ru_datetime) %>
+    
 </p>
 
 <p>
   <b>Wed:</b>
-  <%= @business_workday.Wed %>
+  <%= @business_workday.WedStart.to_s(:ru_datetime) %>
+  <%= @business_workday.WedEnd.to_s(:ru_datetime) %>
+   
 </p>
 
 <p>
   <b>Thu:</b>
-  <%= @business_workday.Thu %>
+   <%= @business_workday.ThuStart %>
+   <%= @business_workday.ThuEnd %>
 </p>
 
 <p>
   <b>Fri:</b>
-  <%= @business_workday.Fri %>
+  <%= @business_workday.FriStart.to_s(:ru_datetime) %>
+  <%= @business_workday.FriEnd.to_s(:ru_datetime) %>
 </p>
 
 <p>
   <b>Sat:</b>
-  <%= @business_workday.Sat %>
+  <%= @business_workday.SatStart.to_s(:ru_datetime) %>
+  <%= @business_workday.SatEnd.to_s(:ru_datetime) %>
+  
 </p>
 
 <p>
   <b>Sun:</b>
-  <%= @business_workday.Sun %>
+  <%= @business_workday.SunStart.to_s(:ru_datetime) %>
+  <%= @business_workday.SunEnd.to_s(:ru_datetime) %>
 </p>
 
 

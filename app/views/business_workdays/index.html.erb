@@ -4,29 +4,42 @@
   <tr>
     <th>Business</th>
     <th>Period</th>
-    <th>Mon</th>
-    <th>Tue</th>
-    <th>Wed</th>
-    <th>Thu</th>
-    <th>Fri</th>
-    <th>Sat</th>
-    <th>Sun</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>MonStart</th>
+    <th>MonEnd</th>
+    <th>TueStart</th>
+    <th>TueEnd</th>
+    <th>WedStart</th>
+    <th>WedEnd</th>
+    <th>ThuStart</th>
+    <th>ThuEnd</th>
+    <th>FriStart</th>
+    <th>FriEnd</th>
+    <th>SatStart</th>
+    <th>SatEnd</th>
+    <th>SunStart</th>
+    <th>SunEnd</th>
   </tr>
 
 <% @business_workdays.each do |business_workday| %>
   <tr>
     <td><%= business_workday.business_id %></td>
     <td><%= business_workday.period_id %></td>
-    <td><%= business_workday.Mon %></td>
-    <td><%= business_workday.Tue %></td>
-    <td><%= business_workday.Wed %></td>
-    <td><%= business_workday.Thu %></td>
-    <td><%= business_workday.Fri %></td>
-    <td><%= business_workday.Sat %></td>
-    <td><%= business_workday.Sun %></td>
+    <br>
+    <td><%= business_workday.MonStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.MonEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.TueStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.TueEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.WedStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.WedEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.ThuStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.ThuEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.FriStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.FriEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.SatStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.SatEnd.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.SunStart.to_s(:ru_datetime) %></td>
+    <td><%= business_workday.SunEnd.to_s(:ru_datetime) %></td>
+    
     <td><%= link_to 'Show', business_workday %></td>
     <td><%= link_to 'Edit', edit_business_workday_path(business_workday) %></td>
     <td><%= link_to 'Destroy', business_workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>

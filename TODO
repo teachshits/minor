@@ -1,12 +1,24 @@
 TODO:  
+*** @quantity
+*** Clean params tag and make it through assotiation
+*** Icloud priority tasks
 
+green 
+blank
+red
+@workhour(company)-@user(selected users).hour=RESULT
 
-
-Make a nice git version history
 7. Validation on model
- 8 user login model
- 9. adding many user
+8. user login model
+9. adding many user
 
 ** Calculation page 
 
- 10. Clean up and take caltulation on
+* Fix bug with select_tag
+* Add tags, other stuff to new pages(periods etc)
+* change <%= week.send("#{wday}Start") %>
+* Date asigment to time fields(sch, av)
+* Clean up and take calculation on
+* Clean find_all_by***
+
+* Partial engadge

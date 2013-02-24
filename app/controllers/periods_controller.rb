@@ -2,6 +2,7 @@ class PeriodsController < ApplicationController
   # GET /periods
   # GET /periods.json
   def index
+    Time::DATE_FORMATS[:ru_datetime] = "%Y.%m.%d"
     @periods = Period.all
 
     respond_to do |format|

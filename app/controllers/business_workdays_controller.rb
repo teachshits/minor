@@ -2,8 +2,9 @@ class BusinessWorkdaysController < ApplicationController
   # GET /business_workdays
   # GET /business_workdays.json
   def index
+    Time::DATE_FORMATS[:ru_datetime] = "%k:%M:%S"
     @business_workdays = BusinessWorkday.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @business_workdays }

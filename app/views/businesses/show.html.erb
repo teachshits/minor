@@ -1,9 +1,15 @@
 <% @b = session[:biz_id] %>
-<h1><%= @business.name %> <%= link_to "Edit", edit_business_url(@b) %></h1>
-
+<% @wd = BusinessWorkday.find_by_business_id(3).FriEnd - BusinessWorkday.find_by_business_id(3).FriStart %>
+<% @wd = @wd/60/60 %>
+<h1><%= @business.name %> <%= link_to "Edit", edit_business_url(@b) %> TODAY WORKDAY IS: <%= @wd %> Hours</h1>
+<%= link_to "BusinessWorkday", business_workdays_url %>
 
 <%= link_to "Добавить нового сотрудника", new_employee_url %>
 <%= link_to "Добавить новую позицию", new_position_url %>
+<br>
+<%= link_to "Positions", positions_url %>
+<%= link_to "[Pediods]", periods_url %>
+<%= link_to "Appr positions", appr_positions_url %>
 <table>
 <h4>Сотрудники: </h4>
   <% @business.employees.each do |employee| %>
@@ -27,27 +33,31 @@
     </tr>
   <% end %>
 </table>
-<table>
 
+<div class="ranks">
 <h4>Важные сотрудники: </h4>
   <% @business.employees.each do |employee| %>
-    <tr><% if employee.rank == 1 %>
-    <%= employee.name %>
-    <br>
-      <% end %>
+    <% if employee.rank == 1 %>
+      <%= employee.name %>
+    <% end %>
    <% end %>
-   <h4>Средней важности сотрудники: </h4>
+</div>
+<div class="ranks">
+<h4>Средней важности сотрудники: </h4>
   <% @business.employees.each do |employee| %>
-    <tr><%= if employee.rank == 2 then employee.name end %>
-    <br>
-   <% end %>
-   <h4>Низкой важности сотрудники: </h4>
-  <% @business.employees.each do |employee| %>
-    <tr><%= if employee.rank == 3 then employee.name end %>
-    <br>
-   <% end %>
-</table>
+    <%= if employee.rank == 2 then employee.name end %>
 
+   <% end %>
+</div>
+<div class="ranks clearfix">
+<h4>Низкой важности сотрудники: </h4>
+  <% @business.employees.each do |employee| %>
+    <%= if employee.rank == 3 then employee.name end %>
+
+   <% end %>
+</div>
+
+<div class="schedules">
 <br>
 <br>
 <%= link_to "Основной граффик", schedules_url %>
@@ -56,13 +66,15 @@
 <br>
 <% @schedule.sort.each do |sch| %>
 <% @employee = Employee.find_all_by_id(sch.employee_id) %>
-<%= link_to "Граффик #{sch.id} — #{@employee.first.name}", sch %>
+<% @period = Period.find(sch.period_id) %>
+<%= link_to "Граффик #{sch.id} — #{@employee.first.name} for Period #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
 <br>
 <% end %>
+</div>
 <br>
 <br>
 <br>
-<h2><%= link_to "Calculation", calculations_url %></h2>
+<div class="calc"><%= link_to "Calculation", calculations_url %></div>
 
 <br>
 <br>

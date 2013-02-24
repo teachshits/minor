@@ -11,8 +11,9 @@
 
 <% @periods.each do |period| %>
   <tr>
-    <td><%= period.p_start %></td>
-    <td><%= period.p_end %></td>
+  <% Time::DATE_FORMATS[:ru_datetime] = "%Y.%m.%d" %>
+    <td><%= period.p_start.to_s(:ru_datetime) %></td>
+    <td><%= period.p_end.to_s(:ru_datetime) %></td>
     <td><%= link_to 'Show', period %></td>
     <td><%= link_to 'Edit', edit_period_path(period) %></td>
     <td><%= link_to 'Destroy', period, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -12,16 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pos %><br />
+    <%= f.label "Title" %><br />
     <%= f.text_field :pos %>
   </div>
   <div class="field">
-    <%= f.label :pos_id %><br />
+    <%= f.label "Id" %><br />
     <%= f.number_field :pos_id %>
   </div>
   <div class="field">
-    <%= f.label :business_id %><br />
-    <%= f.number_field :business_id %>
+    < f.label :business_id %><br />
+    < f.number_field :business_id %>
+    <2% business_id: @business_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

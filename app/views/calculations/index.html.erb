@@ -1,1 +1,91 @@
-TEST TEST TEST
+<header>Week: <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></header>
+<aside>
+<% @DW = %w{Mon} %>
+<% @workhour = BusinessWorkday.first %>
+   <b> Время работы компании TODAY IS: <%= @DW[0] %></b>
+   <% Time::DATE_FORMATS[:ru_datetime] = "%k:%M:%S" %>
+   <%= @workhour.send("#{@DW.first}Start").to_s(:ru_datetime) %> до
+   <%= @workhour.send("#{@DW.first}End").to_s(:ru_datetime) %>
+	<br>
+	<% @wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start") %>
+	WORKDAY IS: <%= Time.at(@wd).utc.strftime("%H:%M") %> Hours</h1>
+	<br>
+    Позиция: <%= @positions.pos %>
+    <br>
+    Необходимо <%= @quantity %> человек
+	Всего по этой позиции<%= @emp.length %> сотрудников:
+	<br>
+	<% @emp.each do |pos| %>
+	<%= pos.name %>
+	<br>
+	<% end %>
+</aside>
+
+<main>
+	<h2>One day calculation: <%= @DW[0] %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></h2>
+	<section class="rank1">
+		<h3>Rank 1</h3>
+		<small>for @pos need @quantity</small>
+		<ul>
+			<li>@users</li>
+		</ul>
+		<ul class="avaliabilities">
+			<li>@green</li>
+			<li>@blank</li>
+			<li>red</li>
+		</ul>
+		<h5>Selected:</h5>
+		<ul>
+			<li>user</li>
+			<li>user</li>
+			<li>user</li>
+		</ul>
+		<small>@quantity</small>
+		<strong>Result: </strong>
+	</section>
+	<section class="rank2">
+		<h3>Rank 2</h3>
+		<small>for @pos need @quantity</small>
+		<ul>
+			<li>@users</li>
+		</ul>
+		<ul class="avaliabilities">
+			<li>@green</li>
+			<li>@blank</li>
+			<li>red</li>
+		</ul>cypa
+		<h5>Selected:</h5>
+		<ul>
+			<li>user</li>
+			<li>user</li>
+			<li>user</li>
+		</ul>
+		<small>@quantity</small>
+		<strong>Result: </strong>
+	</section>
+	<section class="rank3">
+		<h3>Rank 3</h3>
+		<small>for @pos need @quantity</small>
+		<ul>
+			<li>@users</li>
+		</ul>
+		<ul class="avaliabilities">
+			<li>@green</li>
+			<li>@blank</li>
+			<li>red</li>
+		</ul>
+		<h5>Selected:</h5>
+		<ul>
+			<li>user</li>
+			<li>user</li>
+			<li>user</li>
+		</ul>
+		<small>@quantity</small>
+		<strong>Result: </strong>
+	</section>
+	<section class="results">
+		<strong>Result: selected @users</strong>
+		<strong>Conflict: ?</strong>
+		<strong>@workhour(company)-@user(selected users).hour=RESULT</strong>
+	</section>
+</main>

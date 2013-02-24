@@ -4,7 +4,8 @@
   <p>Оклад $<%= f.number_field :payrate, :placeholder => "Например $8.25 = 825" %></p>
   <p>Rank: <%= f.number_field :rank, :placeholder => "1,2,3" %></p>
     <%   @pos = Position.all  %>
-<%= select_tag 'position_id', options_for_select(@pos.collect{ |u| [u.pos, u.id] }, @employee.position_id), {:include_blank => true} %>
+<%= select_tag :position_id, options_for_select(@pos.collect{ |u| [u.pos, u.id] }, @employee.position_id), {:include_blank => true} %>
+ <p>Position_id: <= f.number_field :position_id, :placeholder => "id" %></p>
   <%= f.submit "Сохранить" %>  
 <% end %>
 

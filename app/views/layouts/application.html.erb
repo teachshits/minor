@@ -9,7 +9,10 @@
 </head>
 <body>
 <header class="container">
+  <% unless session[:biz_id].nil? then %> <h1><a href="/businesses/<%=session[:biz_id] %>">Minority | Private Alpha</a></h1>
+  <% else %>
   <h1>Minority | Private Alpha</h1>
+  <% end %>
 <%= flash[:notice] %>
 </header>
 <main class="container">

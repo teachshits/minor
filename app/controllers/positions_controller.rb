@@ -41,7 +41,8 @@ class PositionsController < ApplicationController
   # POST /positions
   # POST /positions.json
   def create
-    @position = Position.new(params[:position])
+    @business_id = session[:biz_id]
+    @position = Position.new(params[:position].merge(:business_id => @business_id))
     respond_to do |format|
       if @position.save
         format.html { redirect_to business_url(session[:biz_id]), notice: 'Position was successfully created.' }
