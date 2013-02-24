@@ -1,19 +1,19 @@
 <header>Week: <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></header>
-<aside>
+<aside class="span3">
 <% @DW = %w{Mon} %>
 <% @workhour = BusinessWorkday.first %>
-   <b> Время работы компании TODAY IS: <%= @DW[0] %></b>
+    Время работы<br> TODAY IS: <b><%= @DW[0] %></b>
    <% Time::DATE_FORMATS[:ru_datetime] = "%k:%M:%S" %>
    <%= @workhour.send("#{@DW.first}Start").to_s(:ru_datetime) %> до
    <%= @workhour.send("#{@DW.first}End").to_s(:ru_datetime) %>
 	<br>
 	<% @wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start") %>
-	WORKDAY IS: <%= Time.at(@wd).utc.strftime("%H:%M") %> Hours</h1>
+	WORKDAY IS: <%= Time.at(@wd).utc.strftime("%H:%M") %> Hours
 	<br>
-    Позиция: <%= @positions.pos %>
+    Позиция: <b><%= @positions.pos %></b>
     <br>
-    Необходимо <%= @quantity %> человек
-	Всего по этой позиции<%= @emp.length %> сотрудников:
+    Необходимо <b><%= @quantity %></b> человек
+	<br>Всего по этой позиции <b><%= @emp.length %></b> сотрудников:
 	<br>
 	<% @emp.each do |pos| %>
 	<%= pos.name %>
@@ -21,13 +21,16 @@
 	<% end %>
 </aside>
 
-<main>
+<main class="span7">
 	<h2>One day calculation: <%= @DW[0] %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></h2>
 	<section class="rank1">
 		<h3>Rank 1</h3>
-		<small>for @pos need @quantity</small>
+		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
-			<li>@users</li>
+		<span>People with that rank: </span>
+		<% @emp_r1.each do |pos| %>
+			<li><%= pos.name %> | <%= pos.workhours %> h</li>
+		<% end %>	
 		</ul>
 		<ul class="avaliabilities">
 			<li>@green</li>
@@ -45,9 +48,12 @@
 	</section>
 	<section class="rank2">
 		<h3>Rank 2</h3>
-		<small>for @pos need @quantity</small>
+		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
-			<li>@users</li>
+		<span>People with that rank: </span>
+		<% @emp_r2.each do |pos| %>
+			<li><%= pos.name %> | <%= pos.workhours %> h</li>
+		<% end %>	
 		</ul>
 		<ul class="avaliabilities">
 			<li>@green</li>
@@ -65,9 +71,12 @@
 	</section>
 	<section class="rank3">
 		<h3>Rank 3</h3>
-		<small>for @pos need @quantity</small>
+		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
+		<span>People with that rank: </span>
 		<ul>
-			<li>@users</li>
+		<% @emp_r3.each do |pos| %>
+			<li><%= pos.name %> | <%= pos.workhours %> h</li>
+		<% end %>	
 		</ul>
 		<ul class="avaliabilities">
 			<li>@green</li>
