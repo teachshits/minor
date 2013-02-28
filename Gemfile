@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'macaddr'
+gem 'artii'
 gem 'rails'
 gem 'bootstrap-sass', '2.1'
 

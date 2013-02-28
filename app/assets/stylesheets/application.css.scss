@@ -106,6 +106,7 @@ box-shadow: 2px 1px 38px -12px #000;
 padding-top: 15px;
 margin-right: -2px;
 margin-top: 20px;
+padding-bottom: 37px;
 }
 .calc {
 	border-radius: 14px 14px 14px 14px;
@@ -136,4 +137,25 @@ margin-top: 20px;
 	background-image: -moz-linear-gradient(top, #cac4e6 0%, #827ea5 100%);
 	background-image: linear-gradient(top, #cac4e6 0%, #827ea5 100%);
 	text-decoration: none;
+}
+section.rank1 {
+border: red solid 1px;
+margin-bottom: 10px;
+}
+section.rank2 {
+border: yellow solid 1px;	
+margin-bottom-bottom: 10px;
+}
+section.rank3 {
+border: green solid 1px;	
+margin-bottom: 10px;
+}
+.type3 {
+ background-color: green;
+}
+.type1 {
+ background-color: red;
+}
+.type2 {
+ background-color: lightgray;
 }

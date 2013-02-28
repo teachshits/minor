@@ -1,19 +1,16 @@
 <header>Week: <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></header>
 <aside class="span3">
-<% @DW = %w{Mon} %>
-<% @workhour = BusinessWorkday.first %>
     Время работы<br> TODAY IS: <b><%= @DW[0] %></b>
    <% Time::DATE_FORMATS[:ru_datetime] = "%k:%M:%S" %>
    <%= @workhour.send("#{@DW.first}Start").to_s(:ru_datetime) %> до
    <%= @workhour.send("#{@DW.first}End").to_s(:ru_datetime) %>
 	<br>
-	<% @wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start") %>
 	WORKDAY IS: <%= Time.at(@wd).utc.strftime("%H:%M") %> Hours
 	<br>
     Позиция: <b><%= @positions.pos %></b>
     <br>
     Необходимо <b><%= @quantity %></b> человек
-	<br>Всего по этой позиции <b><%= @emp.length %></b> сотрудников:
+	<br>Всего по этой позиции существует <b><%= @emp.length %></b> человекa:
 	<br>
 	<% @emp.each do |pos| %>
 	<%= pos.name %>
@@ -23,37 +20,135 @@
 
 <main class="span7">
 	<h2>One day calculation: <%= @DW[0] %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %></h2>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<section class="rank1">
-		<h3>Rank 1</h3>
+		<h3>Rank 1<%= true %></h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
 		<span>People with that rank: </span>
-		<% @emp_r1.each do |pos| %>
-			<li><%= pos.name %> | <%= pos.workhours %> h</li>
+		<%  @red = [] %>
+		<%  @green = [] %>
+		<% @emp_r1.each do |emp| %>
+			<li><%= emp.name %> | <%= emp.workhours %> h</li>
+			<% @userhour = emp.workhours %>
+			<!-- Avaliabilities check for empty  -->
+			<% if (!emp.avaliabilities.last.to_s.empty?) then @av = emp.avaliabilities.last.avaliability_items.all else @av.clear %>
+			<% end %>
+			<!-- Avaliabilities puts all -->
+			<% @av.each do |av| %>
+		<span><%= link_to "day", edit_avaliability_item_url(av) %> <%= av.day %>:</span>
+			<li class="type<%= av.type_d %>">
+			<%= av.start_time.to_s(:ru_datetime) %> | <%= av.end_time.to_s(:ru_datetime) %> | type: <%= av.type_d %>
+			</li>
+			<!-- Avaliabilities puts in array by type -->
+		    <% if av.type_d == 1 then @red << av end %>
+		    <% if av.type_d == 2 then @green << av end %>
+		 <% end %>
+		<% #if !Emp.Schedule.Period.@DW?nil then %>
+		<% @selected << emp %>
+		<% #end %>
+		
 		<% end %>	
-		</ul>
-		<ul class="avaliabilities">
-			<li>@green</li>
-			<li>@blank</li>
-			<li>red</li>
 		</ul>
 		<h5>Selected:</h5>
 		<ul>
-			<li>user</li>
-			<li>user</li>
-			<li>user</li>
+			<li><1%= @selected %></li>
+			<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
+			<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
+			
+			
+			<% @selected.each do |selected| %>	 
+			<%= selected.name %> selected for
+			<%= @start %> to
+			<% #Avoid perebor 1 option %>
+			<% @last = @start + selected.workhours.hour %>
+			<% if !@last.nil? && @last > @end %> 
+			<%= @last = @end %>
+			<% else %>
+			<%= @last %>
+			<% end %>
+			</br>
+			<% # GREEN METHOD(@start..@last) %> 
+			<% # RED METHOD(@start..@last) %>
+			
+			<% # Avoid perebor 2 option %>
+			<% # @start = 8 %>
+			<% # @last = @start + 8 //16.15 %>
+			<% # @end - @last = 9900.0/60/60 = 2.75 %>
+			<% # @last + @test %>
+			<% if @last < @end then @start = @last end %>
+			<% end %>
+			<br>
+			<br><br><br><br><br>
+
 		</ul>
 		<small>@quantity</small>
-		<strong>Result: </strong>
+		<strong>Result: <%= @selected.length %> are selected, need <%= @quantity - @selected.length %> </strong>
 	</section>
+	
+	<% ##if @last < @end %>
 	<section class="rank2">
 		<h3>Rank 2</h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
 		<span>People with that rank: </span>
-		<% @emp_r2.each do |pos| %>
-			<li><%= pos.name %> | <%= pos.workhours %> h</li>
-		<% end %>	
+	<%  @red = [] %>
+	<%  @green = [] %>
+	<% @emp_r2.each do |emp| %>
+		<li><%= emp.name %> | <%= emp.workhours %> h</li>
+		<% @userhour = emp.workhours %>
+		<!-- Avaliabilities check for empty  -->
+		<% if (!emp.avaliabilities.last.to_s.empty?) then @av = emp.avaliabilities.last.avaliability_items.all else @av.clear %>
+		<% end %>
+		<!-- Avaliabilities puts all -->
+		<% @av.each do |av| %>
+	<span><%= link_to "day", edit_avaliability_item_url(av) %> <%= av.day %>:</span>
+		<li class="type<%= av.type_d %>">
+		<%= av.start_time.to_s(:ru_datetime) %> | <%= av.end_time.to_s(:ru_datetime) %> | type: <%= av.type_d %>
+		</li>
+		<!-- Avaliabilities puts in array by type -->
+	    <% if av.type_d == 1 then @red << av end %>
+	    <% if av.type_d == 2 then @green << av end %>
+	 <% end %>
+	<% #if !Emp.Schedule.Period.DW?nil then %>
+	<% unless @last = @end %>
+	<% @selected << emp %>
+	<% end %>
+	<% #end %>
+	
+	<% end %>	
+	</ul>
+	<h5>Selected:</h5>
+	<ul>
+	<% @selected.clear %>
+
+	<%= @selected %>
+		<li><1%= @selected %></li>
+		<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
+		<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
+		<% @selected.each do |selected| %>	 
+		<%= selected.name %> selected for
+		<%= @start %> to
+		<% #Avoid perebor 1 option %>
+		<% @last = @start + selected.workhours.hour %>
+		<% if !@last.nil? && @last > @end %> 
+		<%= @last = @end %>
+		<% else %>
+		<%= @last %>
+		<% end %>
+		</br>
+		<% if @last < @end then @start = @last end %>
+		<% end %>
 		</ul>
 		<ul class="avaliabilities">
 			<li>@green</li>
@@ -68,33 +163,75 @@
 		</ul>
 		<small>@quantity</small>
 		<strong>Result: </strong>
+
 	</section>
+	<% #if @last < @end %>
 	<section class="rank3">
 		<h3>Rank 3</h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<span>People with that rank: </span>
 		<ul>
-		<% @emp_r3.each do |pos| %>
-			<li><%= pos.name %> | <%= pos.workhours %> h</li>
-		<% end %>	
-		</ul>
-		<ul class="avaliabilities">
-			<li>@green</li>
-			<li>@blank</li>
-			<li>red</li>
-		</ul>
-		<h5>Selected:</h5>
-		<ul>
-			<li>user</li>
-			<li>user</li>
-			<li>user</li>
-		</ul>
-		<small>@quantity</small>
-		<strong>Result: </strong>
+		<%  @red = [] %>
+	<%  @green = [] %>
+	<% @emp_r3.each do |emp| %>
+		<li><%= emp.name %> | <%= emp.workhours %> h</li>
+		<% @userhour = emp.workhours %>
+		<!-- Avaliabilities check for empty  -->
+		<% if (!emp.avaliabilities.last.to_s.empty?) then @av = emp.avaliabilities.last.avaliability_items.all else @av.clear %>
+		<% end %>
+		<!-- Avaliabilities puts all -->
+		<% @av.each do |av| %>
+	<span><%= link_to "day", edit_avaliability_item_url(av) %> <%= av.day %>:</span>
+		<li class="type<%= av.type_d %>">
+		<%= av.start_time.to_s(:ru_datetime) %> | <%= av.end_time.to_s(:ru_datetime) %> | type: <%= av.type_d %>
+		</li>
+		<!-- Avaliabilities puts in array by type -->
+	    <% #if av.type_d == 1 then @red << av end %>
+	    <% #if av.type_d == 2 then @green << av end %>
+	 <% end %>
+	<% #if !Emp.Schedule.Period.DW?nil then %>
+	<% unless @last = @end %>
+	<% @selected << emp %>
+	<% end %>
+	<% #end %>
+	
+	<% end %>	
+	</ul>
+	<h5>Selected:</h5>
+	<ul>
+		<li><1%= @selected %></li>
+		<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
+		<% #### PIZDEC %>
+		<% @start = @last %>
+		
+		<% @selected.each do |selected| %>
+		<%= selected.name %> selected for
+		<%= @start %> to
+		<% #Avoid perebor 1 option %>
+		<% @last = @start + selected.workhours.hour %>
+		<% if !@last.nil? && @last > @end %> 
+		<%= @last = @end %>
+		<% else %>
+		<%= @last %>
+		<% end %>
+		</br>
+		<% if @last < @end then @start = @last end %>
+		<% end %>
 	</section>
+	<% #end #rank 3 %>
 	<section class="results">
+	    <%= if !@last = @end %>
+	    <b> CONFLICT </b>
+	    <% end %>
 		<strong>Result: selected @users</strong>
 		<strong>Conflict: ?</strong>
-		<strong>@workhour(company)-@user(selected users).hour=RESULT</strong>
+		<strong>@workhour(company)-@userhour %>.hour=RESULT</strong>
+		<strong> <%= Time.at(@wd).utc.strftime("%H:%M").to_i - Time.at(@userhour).utc.strftime("%H:%M").to_i %> </strong>
+		
+		<%= Time.at(@wd).utc.strftime("%H:%M") %>
+		<% @hl = @wd - @userhour.hour %>
+		<big>
+		<%= Time.at(@hl).utc.strftime("%H:%M") %> left
+		</big>
 	</section>
 </main>

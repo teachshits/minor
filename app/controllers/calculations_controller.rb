@@ -2,6 +2,9 @@ class CalculationsController < ApplicationController
 
 def index
 	# Calculation variables	
+	@workhour = BusinessWorkday.first
+	@DW = %w{Mon}
+	@wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start")
 	@period = Period.last
 	@positions = Position.find(14)
 	@emp = Employee.find_all_by_position_id(14)
@@ -11,6 +14,82 @@ def index
 	@emp_r1 = Employee.find_all_by_position_id_and_rank(14, 1)
 	@emp_r2 = Employee.find_all_by_position_id_and_rank(14, 2)
 	@emp_r3 = Employee.find_all_by_position_id_and_rank(14, 3)
+    @selected = []
 end
+private 
+# SELECTED?
+# GREEN?
+# RED?
+def true 
+	puts true
+end
+#r = (time1.to_i..time2.to_i) it timespaps
+# ((8..12).to_a & (10..20).to_a).present?
+# (8..12).overlaps?(10..20)
+def red(id, s, e)
+av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 1)
+av.each do |avl|
+range = avl.start_time.hour..avl.end_time.hour
+#puts range
+end
+av.each do |av|
+@range_array = []
+@range_array << (av.start_time.hour..av.end_time.hour)
+# @range_array = @range_array.in_groups_of(2)
+end
+@range_array.each do |redrange| 
+t = redrange
+t.each do |ts| # [8, 9, 10, 11, 12, 13]
+if (s..e).include?(@range_array.first)
+return true 
+#=> [8..13]
+# red(4, 8, 14) # true
+end
+
+end
+#puts { result: @result, end: t.last}
+puts @result
+# for often selection
+end
+end
+# (1..5).include?(1..5) # => true
+# (1..5).include?(2..3) # => true
+# (1..5).include?(2..6) # => false
+
+
+# red(4, 10, 20) ##old method
+# def red(id, s, e)
+# av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 1)
+# av.each do |avl|
+# range = avl.start_time.hour..avl.end_time.hour
+# puts range
+# end
+# av.each do |av|
+# @range_array = []
+# @range_array << (av.start_time.hour..av.end_time.hour)
+# end
+# @range_array.each do |redrange| 
+# t = redrange
+# t.each do |ts| # [8, 9, 10, 11, 12, 13]
+# if ts.between?(s, e) 
+# @result = 0+1
+# end
+
+# end
+# puts @result
+# # for often selection
+# puts t.last
+
+# puts @b
+# puts av
+# end
+
+# end
+
+# def green(id, s, e)
+# Find AV for id by type (green)
+# av= get(av.s..av.e)
+# s..e === av # true of false
+# end
 
 end

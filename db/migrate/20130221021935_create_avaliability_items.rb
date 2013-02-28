@@ -3,7 +3,7 @@ class CreateAvaliabilityItems < ActiveRecord::Migration
     create_table :avaliability_items do |t|
       t.integer :avaliability_id
       t.integer :day
-      t.integer :type
+      t.integer :type_d
       t.time :start_time
       t.time :end_time
 

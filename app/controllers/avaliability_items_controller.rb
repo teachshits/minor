@@ -1,6 +1,7 @@
-class AvaliabilityItemsController < AvaliabilitiesController
+class AvaliabilityItemsController < ApplicationController
   # GET /avaliabilities/avaliability_items
   # GET /avaliabilities/avaliability_items.json
+  
   def index
     @avaliability_items = AvaliabilityItem.all
 
