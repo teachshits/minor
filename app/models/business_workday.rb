@@ -1,4 +1,6 @@
 class BusinessWorkday < ActiveRecord::Base
+# TODO * Validation on model	
+# TODO Send changer
   attr_accessible :Fri, :Mon, :Sat, :Sun, :Thu, :Tue, :Wed, :business_id, :period_id
 
   belongs_to :period

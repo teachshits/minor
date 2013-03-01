@@ -1,0 +1,14 @@
+<section class="results">
+	    <% if (!@last = @end) then %>
+	    <strong><b> CONFLICT </b></strong>
+	    <% end %>
+		<strong>Result: selected <%= @array %></strong>
+		<strong>@workhour(company)-@userhour %>.hour=RESULT</strong>
+		<strong> <%= Time.at(@wd).utc.strftime("%H:%M").to_i - Time.at(@userhour).utc.strftime("%H:%M").to_i %> </strong>
+		
+		<%= Time.at(@wd).utc.strftime("%H:%M") %>
+		<% @hl = @wd - @userhour.hour %>
+		<big>
+		<%= Time.at(@hl).utc.strftime("%H:%M") %> left
+		</big>
+	</section>

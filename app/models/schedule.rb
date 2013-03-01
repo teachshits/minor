@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-    
+# TODO * Validation on model	    
 # validates :warranty_start, :presence => true, :if => :warranty_want?
 # validates :warranty_end, :presence => true, :if => :warranty_want?
 

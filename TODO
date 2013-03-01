@@ -1,28 +1,3 @@
 TODO:  
 *** Clean params tag and make it through assotiation
 ** Icloud priority tasks
-===
-He vibiralsya ranee?
-<% # GREEN METHOD(@start..@last) %> 
-====
-1. POS1: RANK 3, POS2: RANK 1 + many position for one employee
-2. Fill data in DB
-3. 1 Green 2 Blank
-
-* Clean up
-*** Fix bug with select_tag
-
-* user login devise
-* adding many user
-*** Add UI, other stuff to new pages(periods etc)
-* Validation on model
-* Clean find_all_by***
-
-***************************| 1 March |****
-*********************
-* Partial engadge
-
-____ 1 po 17
-1. Often selection
-2. quality > 1
-3. Grenn exapnder, workday expander | Smart selecting
