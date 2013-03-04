@@ -21,8 +21,8 @@ class EmployeesController < ApplicationController
     redirect_to business_url(session[:biz_id]), notice: "Employee successfully created."
   end
   def show
-      @employee = Employee.find([params[:id]])
-      @schedule = Schedule.find_all_by_employee_id([params[:id]])
+      @employee = Employee.find(params[:id])
+      @schedule = Schedule.find_by_employee_id(params[:id])
   end
 
   def update

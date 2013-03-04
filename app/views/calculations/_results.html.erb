@@ -2,9 +2,9 @@
 	    <% if (!@last = @end) then %>
 	    <strong><b> CONFLICT </b></strong>
 	    <% end %>
-		<strong>Result: selected <%= @array %></strong>
-		<strong>@workhour(company)-@userhour %>.hour=RESULT</strong>
-		<strong> <%= Time.at(@wd).utc.strftime("%H:%M").to_i - Time.at(@userhour).utc.strftime("%H:%M").to_i %> </strong>
+		<p><strong>Result: selected <%= @array %></strong></p>
+		<p><strong>Day complete: ?<%= @end %> - <%= @last %> = <%= @end-@last %></strong></p>
+		<strong><%= Time.at(@wd).utc.strftime("%H:%M").to_i - Time.at(@userhour).utc.strftime("%H:%M").to_i %> </strong>
 		
 		<%= Time.at(@wd).utc.strftime("%H:%M") %>
 		<% @hl = @wd - @userhour.hour %>

@@ -1,9 +1,21 @@
-<h2> Имя сотрудника:<%= @employee[0].name %></h2>
-<td><%= @employee %></td>
+<h2> Имя сотрудника:<%= @employee.name %></h2>
+<td><%= @employee.id %></td>
+<br>
+<td><%= @employee.email %></td>
+<br>
+<td> created_at: "<%= @employee.created_at %>" </td>
+<br>
+<td> work at: "<%= @employee.business.name %>" </td>
+<br>
+<td> workhours: "<%= @employee.workhours %>" </td>
+<br>
+<td> at position: "<%= link_to "#{@employee.position.pos}", position_url(@employee.position.id) %>" </td>
 <br>
 <td><%= @schedule %></td>
 <br>
-<td><%= link_to "Построить новый график(вручную)", new_schedule_url(:employee_id => @employee[0].id, :rate_this_week => @employee[0].payrate) %></td>
-      <td><%= link_to "Редактировать", edit_employee_url(@employee[0]) %></td>
+<br>
+<br>
+<td><%= link_to "Построить новый график(вручную)", new_schedule_url(:employee_id => @employee.id, :rate_this_week => @employee.payrate) %></td>
+      <td><%= link_to "Редактировать", edit_employee_url(@employee) %></td>
       
       

@@ -21,9 +21,9 @@
 		    <% if av.type_d == 1 then @red << av end %>
 		    <% if av.type_d == 2 then @green << av end %>
 		 <% end %>
-		<% #if !Emp.Schedule.Period.@DW?nil then %>
+		<% unless emp.schedules.nil? && emp.schedules.MonStart.nil? then %>
 		<% @selected << emp %>
-		<% #end %>
+		<% end %>
 		
 		<% end %>	
 		</ul>
@@ -34,6 +34,7 @@
 			<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
 			
 			<% @array = [] %>
+			<% @selectedarray = [] %>
 			<% @selected.each do |selected| %>	 
 			<%= selected.name %> selected for
 			<%= @start %> to
@@ -44,10 +45,13 @@
 			<% else %>
 			<%= @last %>
 			<% end %>
-			
+			REDMETHOD:<%= selected.id %> for <%= @start.hour %>, <%= @last.hour %>
+			<% unless red(selected.id, @start, @last) %>
 			<% @array << selected.name %>
 			<% @array << @start %>
 			<% @array << @last %>
+			<% @selectedarray.push @array %>
+			<% end %>
 			</br>
 			<% # GREEN METHOD(@start..@last) %> 
 			<% # RED METHOD(@start..@last) %>
@@ -61,9 +65,8 @@
 			<% end %>
 			<br>
 			<br><br><br><br><br>
-
 		</ul>
 		<small>@quantity</small>
-		<strong>Result: <%= @selected.length %> <%= @array %> are selected, need <%= @quantity - @selected.length %> </strong>
+		<strong>Result: <%= @selectedarray.length %> <%= @selectedarray %> are selected, need <%= @quantity - @selected.length %> </strong>
 	</section>
 	

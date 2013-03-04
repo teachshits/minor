@@ -97,6 +97,7 @@ footer {
 }
 main.container {
 width: auto;
+margin: 0 auto;
 background: rgba(236, 229, 255, 0.08);
 border-radius: 9px;
 padding: 10px 109px;
@@ -150,12 +151,9 @@ section.rank3 {
 border: green solid 1px;	
 margin-bottom: 10px;
 }
-.type3 {
+.type2 {
  background-color: green;
 }
 .type1 {
  background-color: red;
-}
-.type2 {
- background-color: lightgray;
 }
