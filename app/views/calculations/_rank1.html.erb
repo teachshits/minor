@@ -3,8 +3,6 @@
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
 		<span>People with that rank: </span>
-		<%  @red = [] %>
-		<%  @green = [] %>
 		<% @emp_r1.each do |emp| %>
 			<li><%= emp.name %> | <%= emp.workhours %> h</li>
 			<% @userhour = emp.workhours %>
@@ -32,9 +30,6 @@
 			<li><1%= @selected %></li>
 			<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
 			<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
-			
-			<% @array = [] %>
-			<% @selectedarray = [] %>
 			<% @selected.each do |selected| %>	 
 			<%= selected.name %> selected for
 			<%= @start %> to

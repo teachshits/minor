@@ -66,53 +66,51 @@ private
 # s..e === av # true of false
 # end
 
-end
+#end
 
-def red(id, s, e)
-unless Employee.find_by_id(id).avaliabilities.last.to_s.empty?
-av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 1)
+	def red(id, s, e)
+	unless Employee.find_by_id(id).avaliabilities.last.to_s.empty?
+	av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 1)
 
-av.each do |av|
-@range_array = []
-@range_array << (av.start_time.hour..av.end_time.hour)
-# @range_array = @range_array.in_groups_of(2)
-end
+	av.each do |av|
+	@range_array = []
+	@range_array << (av.start_time.hour..av.end_time.hour)
+	# @range_array = @range_array.in_groups_of(2)
+	end
 
-@range_array.each do |redrange|
-t = redrange
-t.each do |ts| # [8, 9, 10, 11, 12, 13]
-if (@range_array.first).include?(s..e)
-return true
-#=> [8..13]
-# red(4, 8, 14) # true
-end
-end
-end
-end
-
-
-def green(id, s, e)
-unless Employee.find_by_id(id).avaliabilities.last.to_s.empty?
-av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 2)
-end
-av.each do |av|
-@range_array = []
-@range_array << (av.start_time.hour..av.end_time.hour)
-# @range_array = @range_array.in_groups_of(2)
-end
-
-@range_array.each do |redrange|
-t = redrange
-t.each do |ts| # [8, 9, 10, 11, 12, 13]
-if (@range_array.first).include?(s..e)
-return true
-#=> [8..13]
-# red(4, 8, 14) # true
-end
-end
-end
-end
+	@range_array.each do |redrange|
+	t = redrange
+	t.each do |ts| # [8, 9, 10, 11, 12, 13]
+	if (@range_array.first).include?(s..e)
+	return true
+	#=> [8..13]
+	# red(4, 8, 14) # true
+	end
+	end
+	end
+	end
 
 
+	def green(id, s, e)
+	unless Employee.find_by_id(id).avaliabilities.last.to_s.empty?
+	av = Employee.find_by_id(id).avaliabilities.last.avaliability_items.where(type_d: 2)
+	end
+	av.each do |av|
+	@range_array = []
+	@range_array << (av.start_time.hour..av.end_time.hour)
+	# @range_array = @range_array.in_groups_of(2)
+	end
+
+	@range_array.each do |redrange|
+	t = redrange
+	t.each do |ts| # [8, 9, 10, 11, 12, 13]
+	if (@range_array.first).include?(s..e)
+	return true
+	#=> [8..13]
+	# red(4, 8, 14) # true
+	end
+	end
+	end
+	end
 end
 

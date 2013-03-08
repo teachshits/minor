@@ -20,6 +20,10 @@
 
 <main class="span7">
 	<h2>One day calculation: <%= @DW[0] %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %> <%=  %></h2>
+	<%  @red = [] %>
+	<%  @green = [] %>
+	<% @array = [] %>
+	<% @selectedarray = [] %>
 	<%= render "rank1" %>
 	<% ##if @last < @end %>
 	<%= render "rank2" %>
