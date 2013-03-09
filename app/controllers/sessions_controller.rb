@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
+    unless session[:biz_id].nil?
+      redirect_to business_url(session[:biz_id])
+    end
   end
   
   def create

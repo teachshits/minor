@@ -1,10 +1,10 @@
 <h1>Listing positions</h1>
-
+<%= link_to "Добавить новую должность", new_position_url %>
 <table>
   <tr>
     <th>Title</th>
     <th>Inner id</th>
-    <th>Business id</th>
+    <th>Business</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= position.pos %></td>
     <td><%= position.pos_id %></td>
-    <td><%= position.business_id %></td>
+    <td><%= position.business.name %></td>
     <td><%= link_to 'Show', position %></td>
     <td><%= link_to 'Edit', edit_position_path(position) %></td>
     <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,5 +23,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Position', new_position_path %>
