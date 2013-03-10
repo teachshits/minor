@@ -22,3 +22,51 @@ margin-top: 18px;
 header {
 text-align: center;
 }
+.calc {
+	border-radius: 14px 14px 14px 14px;
+	box-shadow: 2px 2px 6px rgb(35, 35, 35);
+	background-color: rgb(158, 138, 255);
+	text-shadow: 0px 0px 2px rgb(201, 195, 230);
+	color: rgb(22, 21, 59);
+	font-size: 14px;
+	background-image: url("/images/button-smooth.png");
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	padding: 7px 20px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 6px 20px;
+	background-image: -moz-linear-gradient(center top , rgb(160, 141, 255) 0%, rgb(104, 91, 181) 100%);
+	background-image: -webkit-linear-gradient(center top , rgb(160, 141, 255) 0%, rgb(104, 91, 181) 100%);
+	background-image: linear-gradient(center top , rgb(160, 141, 255) 0%, rgb(104, 91, 181) 100%);
+	box-shadow: 0px 0px 3px 0px rgb(0, 0, 0);
+	width: 89px;
+}
+.calc a {
+	color: rgb(22, 21, 59);
+}
+.calc:hover {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cac4e6), color-stop(100%, #827ea5));
+	background-image: -moz-linear-gradient(top, #cac4e6 0%, #827ea5 100%);
+	background-image: linear-gradient(top, #cac4e6 0%, #827ea5 100%);
+	text-decoration: none;
+}
+section.rank1 {
+	border: red solid 1px;
+	margin-bottom: 10px;
+}
+section.rank2 {
+	border: yellow solid 1px;	
+	margin-bottom-bottom: 10px;
+}
+section.rank3 {
+	border: green solid 1px;	
+	margin-bottom: 10px;
+}
+.type2 {
+	background-color: green;
+}
+.type1 {
+	background-color: red;
+}

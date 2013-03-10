@@ -1,20 +1,19 @@
-<h1>Listing appr_positions</h1>
+<h1>Список требуемых должностей:</h1>
 
-<table>
+<table class="table table-striped">
+<thead>
   <tr>
-    <th>Position</th>
-    <th>Mon</th>
-    <th>Tue</th>
-    <th>Wed</th>
-    <th>Thu</th>
-    <th>Fri</th>
-    <th>Sat</th>
-    <th>Sun</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Должность</th>
+    <th>ПН</th>
+    <th>ВТ</th>
+    <th>СР</th>
+    <th>ЧТ</th>
+    <th>ПТ</th>
+    <th>СБ</th>
+    <th>ВС</th>
+    <th>Период:</th>
   </tr>
-
+</thead>
 <% @appr_positions.each do |appr_position| %>
   <tr>
     <td><%= appr_position.position_id %></td>
@@ -25,6 +24,7 @@
     <td><%= appr_position.Fri %></td>
     <td><%= appr_position.Sat %></td>
     <td><%= appr_position.Sun %></td>
+    <td><%= appr_position.period_id %></td>
     <td><%= link_to 'Show', appr_position %></td>
     <td><%= link_to 'Edit', edit_appr_position_path(appr_position) %></td>
     <td><%= link_to 'Destroy', appr_position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New Appr position', new_appr_position_path %>
+<%= link_to 'Требуется должность?', new_appr_position_path %>

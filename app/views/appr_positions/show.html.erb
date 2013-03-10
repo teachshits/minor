@@ -1,45 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Position:</b>
-  <%= @appr_position.position_id %>
-</p>
-
-<p>
-  <b>Mon:</b>
-  <%= @appr_position.Mon %>
-</p>
-
-<p>
-  <b>Tue:</b>
-  <%= @appr_position.Tue %>
-</p>
-
-<p>
-  <b>Wed:</b>
-  <%= @appr_position.Wed %>
-</p>
-
-<p>
-  <b>Thu:</b>
-  <%= @appr_position.Thu %>
-</p>
-
-<p>
-  <b>Fri:</b>
-  <%= @appr_position.Fri %>
-</p>
-
-<p>
-  <b>Sat:</b>
-  <%= @appr_position.Sat %>
-</p>
-
-<p>
-  <b>Sun:</b>
-  <%= @appr_position.Sun %>
-</p>
+<p id="notice"><%= notice %></dl>
 
 
-<%= link_to 'Edit', edit_appr_position_path(@appr_position) %> |
-<%= link_to 'Back', appr_positions_path %>
+<dl class="dl-horizontal">
+  <dt>Position:</dt>
+  <dd><%= @appr_position.position_id %></dd>
+  <dt>Period:</dt>
+  <dd><%= @appr_position.period_id %></dd>
+</dl>
+
+
+<dl class="dl-horizontal">
+  <dt>ПН:</dt>
+  <dd><%= @appr_position.Mon %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>ВТ:</dt>
+  <dd><%= @appr_position.Tue %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>СР:</dt>
+  <dd><%= @appr_position.Wed %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>ЧТ:</dt>
+  <dd><%= @appr_position.Thu %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>ПТ:</dt>
+  <dd><%= @appr_position.Fri %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>СБ:</dt>
+  <dd><%= @appr_position.Sat %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>ВС:</dt>
+  <dd><%= @appr_position.Sun %></dd>
+</dl>
+
+
+<%= link_to 'Редактировать', edit_appr_position_path(@appr_position) %> |
+<%= link_to 'Вернуться', appr_positions_path %>

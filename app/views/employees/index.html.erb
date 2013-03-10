@@ -1,6 +1,7 @@
 <h1>Сотрудники</h1>
 <%= link_to "Создать сотрудника", new_employee_url %>
-<table>
+<table class="table table-striped">
+<thead>
   <tr>
     <th>ФИО</th>
     <th>Приоритет</th>
@@ -9,12 +10,12 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
 <% @employees.each do |employee| %>
   <tr>
     <td><%= employee.name %></td>
     <td><%= rank(employee.rank) %></td>
-    <td><%= employee.email %></td>
+    <td><%= mail_to "#{employee.email}" %></td>
     <td><%= link_to 'Show', employee %></td>
     <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
     <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

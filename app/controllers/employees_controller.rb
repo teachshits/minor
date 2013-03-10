@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
   before_filter :set_business
   
   def index
-    @employees = Employee.all
+    @employees = @business.employees.all
   end
 
   def new
@@ -18,7 +18,7 @@ class EmployeesController < ApplicationController
     @employee = @business.employees.new(params[:employee])
     @employee.payrate = (@employee.payrate/100)
     @employee.save
-    redirect_to business_url(session[:biz_id]), notice: "Employee successfully created."
+    redirect_to employees_url, notice: "Employee successfully created."
   end
   def show
       @employee = Employee.find(params[:id])
@@ -29,7 +29,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     @employee.update_attributes(params[:employee])
     @employee.save
-    redirect_to business_url(session[:biz_id]), notice: "Employee successfully updated."
+    redirect_to employees_url, notice: "Employee successfully updated. #{params[:employee]}"
   end
   
   def destroy

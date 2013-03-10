@@ -1,11 +1,42 @@
-<%= form_for(@employee) do |f| %>
-  <p>Имя сотрудница <%= f.text_field :name, :placeholder => "Имя и Фамилия" %></p>
-  <p>Почта <%= f.text_field :email, :placeholder => "Электропочта" %></p>
-  <p>Оклад $<%= f.number_field :payrate, :placeholder => "Например $8.25 = 825" %></p>
-  <p>Rank: <%= f.number_field :rank, :placeholder => "1,2,3" %></p>
-    <%   @pos = Position.all  %>
-<%= select_tag :position_id, options_for_select(@pos.collect{ |u| [u.pos, u.id] }, @employee.position_id), {:include_blank => true} %>
- <p>Position_id: <= f.number_field :position_id, :placeholder => "id" %></p>
+<%= form_for(@employee, :html => { :class => "form-horizontal"} ) do |f| %>
+ <div class="control-group">
+    <label class="control-label" for="inputName">ФИО</label>
+	    <div class="controls">
+	    <%= f.text_field :name, :placeholder => "Имя и Фамилия" %>
+	    </div>
+ </div>
+ <div class="control-group">
+    <label class="control-label" for="inputEmail">Почта</label>
+	    <div class="controls">
+	    <%= f.text_field :email, :placeholder => "Электропочта" %>
+	    </div>
+ </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPayrate">Оклад</label>
+	    <div class="controls">
+	    <%= f.number_field :payrate, :placeholder => "Например $8.25 = 825" %>
+	    </div>
+ </div>
+  <div class="control-group">
+    <label class="control-label" for="inputWorkhours">Рабочих часов</label>
+	    <div class="controls">
+	    <%= f.number_field :workhours, :placeholder => "Количество часов" %>
+	    </div>
+ </div>
+  <div class="control-group">
+    <label class="control-label" for="inputRank">Приоритет</label>
+	    <div class="controls">
+	    <%= select("employee", "rank", [['Важный', 1], ['Средний', 2], ['Низкий', 3]]) %>
+	    </div>
+ </div>
+   <div class="control-group">
+    <label class="control-label" for="inputPositions">Позиция</label>
+	    <div class="controls">
+	    <%   @pos = @business.positions  %>
+<%= select("employee", "position_id", @pos.collect {|p| [ p.pos, p.id ] }, { :include_blank => true }) %>
+	    </div>
+ </div> 
+
   <%= f.submit "Сохранить" %>  
 <% end %>
 

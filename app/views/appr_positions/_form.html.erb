@@ -1,4 +1,4 @@
-<%= form_for(@appr_position) do |f| %>
+<%= form_for(@appr_position, :html => { :class => "form-horizontal"} ) do |f| %>
   <% if @appr_position.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@appr_position.errors.count, "error") %> prohibited this appr_position from being saved:</h2>
@@ -10,40 +10,62 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :position_id %><br />
-    <%= f.number_field :position_id %>
-  </div>
-  <div class="field">
-    <%= f.label :Mon %><br />
-    <%= f.number_field :Mon %>
-  </div>
-  <div class="field">
-    <%= f.label :Tue %><br />
-    <%= f.number_field :Tue %>
-  </div>
-  <div class="field">
-    <%= f.label :Wed %><br />
-    <%= f.number_field :Wed %>
-  </div>
-  <div class="field">
-    <%= f.label :Thu %><br />
-    <%= f.number_field :Thu %>
-  </div>
-  <div class="field">
-    <%= f.label :Fri %><br />
-    <%= f.number_field :Fri %>
-  </div>
-  <div class="field">
-    <%= f.label :Sat %><br />
-    <%= f.number_field :Sat %>
-  </div>
-  <div class="field">
-    <%= f.label :Sun %><br />
-    <%= f.number_field :Sun %>
-  </div>
-  <div class="actions">
+ <div class="control-group weekday">
+    <label class="control-label" for="position_id">Должность</label>
+      <div class="controls">
+      <%= f.number_field :position_id %>
+      </div>
+ </div>
+<div class="control-group weekday">
+    <label class="control-label" for="dayofweek">ПН</label>
+      <div class="controls">
+      <%= f.number_field :Mon %>
+      </div>
+ </div>
+<div class="control-group weekday">
+    <label class="control-label" for="dayofweek">ВТ</label>
+      <div class="controls">
+      <%= f.number_field :Tue %>
+      </div>
+ </div>
+  <div class="control-group weekday">
+    <label class="control-label" for="dayofweek">СР</label>
+      <div class="controls">
+      <%= f.number_field :Wed %>
+      </div>
+ </div>
+  <div class="control-group weekday">
+    <label class="control-label" for="dayofweek">ЧТ</label>
+      <div class="controls">
+      <%= f.number_field :Thu %>
+      </div>
+ </div>
+  <div class="control-group weekday">
+    <label class="control-label" for="dayofweek">ПТ</label>
+      <div class="controls">
+      <%= f.number_field :Fri %>
+      </div>
+ </div>
+  <div class="control-group weekday">
+    <label class="control-label" for="dayofweek">СБ</label>
+      <div class="controls">
+      <%= f.number_field :Sat %>
+      </div>
+ </div>
+  <div class="control-group weekday">
+    <label class="control-label" for="dayofweek">ВС</label>
+      <div class="controls">
+      <%= f.number_field :Sun %>
+      </div>
+ </div>
+ <div class="control-group">
+    <label class="control-label" for="period_id">Период</label>
+      <div class="controls">
+      <%= f.number_field :period_id %>
+      </div>
+ </div>
+ 
+ <div class="actions">
     <%= f.submit %>
-  </div>
+ </div>
 <% end %>

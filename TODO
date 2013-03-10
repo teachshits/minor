@@ -1,8 +1,16 @@
 TODO:  
-# TODO *** Fix bug with select_tag
-# TODO *** Add UI, other stuff to new pages(periods etc)
 
+business_workdays
+periods_controller
+schedules
 
+Clocking
+Employee login
+GUI
+Calculation build
+Small report
+Notification
+Many position
 
 
 
