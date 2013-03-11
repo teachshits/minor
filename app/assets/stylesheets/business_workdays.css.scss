@@ -1,3 +1,27 @@
 // Place all the styles related to the Business_workdays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.business_workdays td:nth-child(2n+3) {
+	background-color: gray;
+}
+.business_workdays td:nth-child(2n+2) {
+	background-color: green;
+}
+.business_workdays td:first-child {
+	background-color: white;
+}
+.workdaytimes select {
+	width: 83px;
+}
+.wdt_block {
+	border-bottom: 1px black solid;
+	padding-top: 10px;
+}
+.wdt_block:last-child {
+	border: none;
+}
+.wdt_block span {
+	width: 114px;
+	display: inline-block;
+}

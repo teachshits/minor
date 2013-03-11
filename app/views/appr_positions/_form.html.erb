@@ -13,7 +13,9 @@
  <div class="control-group weekday">
     <label class="control-label" for="position_id">Должность</label>
       <div class="controls">
-      <%= f.number_field :position_id %>
+      <%   @pos = @business.positions  %>
+      <%= select("appr_position", "position_id", @pos.collect {|p| [ p.pos, p.id ] }) %>
+
       </div>
  </div>
 <div class="control-group weekday">

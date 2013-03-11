@@ -1,6 +1,14 @@
 <% @b = session[:biz_id] %>
 <h1><%= link_to "/", business_url(@b) %></h1>
 
+
+<% @schedule.sort.each do |sch| %>
+<% @employee = Employee.find_all_by_id(sch.employee_id) %>
+<% @period = Period.find(sch.period_id) %>
+<%= link_to "Граффик #{sch.id} — #{@employee.first.name} for #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
+<br>
+<% end %>
+
 <section class="dayweek clearfix">   
       <% %w{Mon Tue Wed Thu Fri Sat Sun}.each do |wday| %>
       <div class="<%= wday %> dw">

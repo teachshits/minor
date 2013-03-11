@@ -1,4 +1,5 @@
 class BusinessWorkdaysController < ApplicationController
+  before_filter :set_business
   # GET /business_workdays
   # GET /business_workdays.json
   def index
@@ -8,17 +9,6 @@ class BusinessWorkdaysController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @business_workdays }
-    end
-  end
-
-  # GET /business_workdays/1
-  # GET /business_workdays/1.json
-  def show
-    @business_workday = BusinessWorkday.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @business_workday }
     end
   end
 

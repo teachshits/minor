@@ -1,8 +1,14 @@
 class ApprPositionsController < ApplicationController
+  before_filter :set_business
   # GET /appr_positions
   # GET /appr_positions.json
   def index
     @appr_positions = ApprPosition.all
+    #TODO: Change that shit for multi business using
+    #@business.positions.first.appr_positions
+    #ApprPosition Load (162.1ms)  SELECT "appr_positions".* FROM "appr_positions" WHERE "appr_positions"."position_id" = 14
+    #=> [#<ApprPosition id: 1, position_id: 14, Mon: 2, Tue: 2, Wed: 2, Thu: 2, Fri: 3, Sat: 2, Sun: 1, created_at: "2013-02-22 00:05:35", updated_at: "2013-02-22 00:05:35", period_id: nil>]
+
 
     respond_to do |format|
       format.html # index.html.erb

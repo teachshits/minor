@@ -1,29 +1,28 @@
-<h1>Listing business_workdays</h1>
+<h1>Время работы компании</h1>
 
-<table>
+<table class="table-striped business_workdays">
   <tr>
-    <th>Business</th>
-    <th>Period</th>
-    <th>MonStart</th>
-    <th>MonEnd</th>
-    <th>TueStart</th>
-    <th>TueEnd</th>
-    <th>WedStart</th>
-    <th>WedEnd</th>
-    <th>ThuStart</th>
-    <th>ThuEnd</th>
-    <th>FriStart</th>
-    <th>FriEnd</th>
-    <th>SatStart</th>
-    <th>SatEnd</th>
-    <th>SunStart</th>
-    <th>SunEnd</th>
-  </tr>
+    <th>Период</th>
+    <th>ПН</th>
+    <th>ПН</th>
+    <th>ВТ</th>
+    <th>ВТ</th>
+    <th>СР</th>
+    <th>СР</th>
+    <th>ЧТ</th>
+    <th>ЧТ</th>
+    <th>ПТ</th>
+    <th>ПТ</th>
+    <th>СБ</th>
+    <th>СБ</th>
+    <th>ВС</th>
+    <th>ВС</th>
 
+  </tr>
+<p>Company: <%= @business_workdays.first.business.name %></p>
 <% @business_workdays.each do |business_workday| %>
   <tr>
-    <td><%= business_workday.business_id %></td>
-    <td><%= business_workday.period_id %></td>
+    <td><%= business_workday.period.p_start %> <%= business_workday.period.p_end %></td>
     <br>
     <td><%= business_workday.MonStart.to_s(:ru_datetime) %></td>
     <td><%= business_workday.MonEnd.to_s(:ru_datetime) %></td>
@@ -39,14 +38,16 @@
     <td><%= business_workday.SatEnd.to_s(:ru_datetime) %></td>
     <td><%= business_workday.SunStart.to_s(:ru_datetime) %></td>
     <td><%= business_workday.SunEnd.to_s(:ru_datetime) %></td>
+    <br>
     
-    <td><%= link_to 'Show', business_workday %></td>
-    <td><%= link_to 'Edit', edit_business_workday_path(business_workday) %></td>
-    <td><%= link_to 'Destroy', business_workday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  <div class="controls">
+    <td><%= link_to 'Редактировать', edit_business_workday_path(business_workday) %></td>
+    <td><%= link_to 'Удалить', business_workday, method: :delete, data: { confirm: 'Точно?' } %></td>
+  </div>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Business workday', new_business_workday_path %>
+<%= link_to 'Новый график работы компании', new_business_workday_path %>

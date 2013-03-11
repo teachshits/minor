@@ -3,12 +3,12 @@
 
 <dl class="dl-horizontal">
   <dt>Position:</dt>
-  <dd><%= @appr_position.position_id %></dd>
+  <dd><%= @appr_position.position.pos %></dd>
   <dt>Period:</dt>
   <dd><%= @appr_position.period_id %></dd>
 </dl>
 
-
+<div class="daysofweek clearfix">
 <dl class="dl-horizontal">
   <dt>ПН:</dt>
   <dd><%= @appr_position.Mon %></dd>
@@ -43,7 +43,7 @@
   <dt>ВС:</dt>
   <dd><%= @appr_position.Sun %></dd>
 </dl>
-
+</div>
 
 <%= link_to 'Редактировать', edit_appr_position_path(@appr_position) %> |
 <%= link_to 'Вернуться', appr_positions_path %>

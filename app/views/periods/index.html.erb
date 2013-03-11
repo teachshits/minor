@@ -1,9 +1,9 @@
-<h1>Listing periods</h1>
+<h1>Периоды</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>P start</th>
-    <th>P end</th>
+    <th>Начало периода</th>
+    <th>Конец периода</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,8 +12,8 @@
 <% @periods.each do |period| %>
   <tr>
   <% Time::DATE_FORMATS[:ru_datetime] = "%Y.%m.%d" %>
-    <td><%= period.p_start.to_s(:ru_datetime) %></td>
-    <td><%= period.p_end.to_s(:ru_datetime) %></td>
+    <td><h2><%= period.p_start.to_s(:ru_datetime) %></h2></td>
+    <td><h2><%= period.p_end.to_s(:ru_datetime) %></h2></td>
     <td><%= link_to 'Show', period %></td>
     <td><%= link_to 'Edit', edit_period_path(period) %></td>
     <td><%= link_to 'Destroy', period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,4 +23,4 @@
 
 <br />
 
-<%= link_to 'New Period', new_period_path %>
+<%= link_to 'Новый период', new_period_path %>
