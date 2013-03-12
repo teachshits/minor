@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 # TODO * Partial engadge
 # TODO Clean params tag and make it through assotiation
   protect_from_forgery
-  
+  include UsersessionsHelper
   helper_method :set_business
 
   def set_business

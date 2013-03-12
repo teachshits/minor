@@ -17,15 +17,19 @@ Minority::Application.routes.draw do
 
   resources :positions
 
-
+  resources :timesheets, only: [:create, :update]
   resources :schedules
   resources :calculations
   resources :employees
   resources :businesses
   resource :sessions
+  resources :usersessions, only: [:new, :create, :destroy]
   root :to => "sessions#new"
   get "/schedules/:id" => "schedules#show"
+  match '/login',  to: 'usersessions#new'
+  match '/logout', to: 'usersessions#destroy', via: :delete
 
+  match '/timesheets/:id', to: 'timesheets#update'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

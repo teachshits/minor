@@ -23,6 +23,7 @@ class EmployeesController < ApplicationController
   def show
       @employee = Employee.find(params[:id])
       @schedule = Schedule.find_by_employee_id(params[:id])
+      @timesheets = @employee.timesheets
   end
 
   def update
@@ -37,5 +38,13 @@ class EmployeesController < ApplicationController
     @employee.destroy
     redirect_to business_url(session[:biz_id]), notice: "Employee deleted."
   end
-  
+  private
+    def correct_employee
+      @employee = Employee.find(params[:id])
+      redirect_to(root_path) unless current_employee?(@employee)
+    end
+
+    def manager_employee
+      redirect_to(root_path) unless current_employee.manager?
+    end
 end

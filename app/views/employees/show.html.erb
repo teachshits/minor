@@ -13,7 +13,39 @@
 <br>
 <td><%= @schedule %></td>
 <br>
-<br>
+<% content_for :title, @employee.name %>
+
+<h1><%= @employee.name %></h1>
+<p><%= @employee.email %></p>
+
+<% if @employee.clocked_in? %>
+	<%= button_to "Clock Out",:id => "clock_out_tester", :controller => "timesheets", :method => :put, :action => "update" %>
+<% else %>
+	<%= button_to "Clock In",:id => "clock_in_tester", :controller => "timesheets", :action => "create" %>
+<% end %>
+
+
+<div>
+<% if @employee.timesheets.any? %>
+  <h3>Timesheets (<%= @employee.timesheets.count %>)</h3>
+  <ol>
+    <%= render @timesheets %>
+  </ol>
+<% end %>
+</div>
+
+<br><% if logged_in? %>
+            <li><%= link_to "Employees", employees_path %></li>
+            <li>
+              <ul>
+                <li><%= link_to "Account", current_employee %></li>
+                <li><%= link_to "Settings", edit_employee_path(current_employee) %></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Log in", login_path %></li>
+          <% end %>
 <br>
 <td><%= link_to "Построить новый график(вручную)", new_schedule_url(:employee_id => @employee.id, :rate_this_week => @employee.payrate) %></td>
       <td><%= link_to "Редактировать", edit_employee_url(@employee) %></td>

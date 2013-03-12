@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222230056) do
+ActiveRecord::Schema.define(:version => 20130312001755) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20130222230056) do
   create_table "avaliability_items", :force => true do |t|
     t.integer  "avaliability_id"
     t.integer  "day"
-    t.integer  "type"
+    t.integer  "type_d"
     t.time     "start_time"
     t.time     "end_time"
     t.datetime "created_at",      :null => false
@@ -88,10 +88,14 @@ ActiveRecord::Schema.define(:version => 20130222230056) do
     t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rank",        :null => false
+    t.integer  "rank",            :null => false
     t.integer  "workhours"
     t.integer  "position_id"
     t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.boolean  "clocked_in"
+    t.boolean  "manager"
   end
 
   create_table "periods", :force => true do |t|
@@ -132,6 +136,15 @@ ActiveRecord::Schema.define(:version => 20130222230056) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "period_id"
+  end
+
+  create_table "timesheets", :force => true do |t|
+    t.datetime "punch_in"
+    t.datetime "punch_out"
+    t.integer  "employee_id"
+    t.string   "change_log"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "weeks", :force => true do |t|
