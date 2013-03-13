@@ -24,6 +24,7 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
       @schedule = Schedule.find_by_employee_id(params[:id])
       @timesheets = @employee.timesheets
+      @hours = Employee.find(params[:id]).workhours
   end
 
   def update

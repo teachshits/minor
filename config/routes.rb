@@ -10,7 +10,10 @@ Minority::Application.routes.draw do
 
 
   resources :appr_positions
-
+  # GUI STUFF
+  resources :calendar
+  resources :shifts
+  # END GUI STUFF
 
   resources :periods
 

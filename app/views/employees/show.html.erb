@@ -23,15 +23,31 @@
 <% else %>
 	<%= button_to "Clock In",:id => "clock_in_tester", :controller => "timesheets", :action => "create" %>
 <% end %>
+<!-- CALENDAR -->
+  <p><%=@hours%></p>
+<%= link_to 'New Shift', new_shift_path%>
+<div id="calend">
+  <% #if current_user.admin? %>
+    <%= render 'adminCalendar' %>
+  <% #else %>
+    <%= render 'userCalendar' %>
+  <% #end %>
+</div>
 
 
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div>
-<% if @employee.timesheets.any? %>
-  <h3>Timesheets (<%= @employee.timesheets.count %>)</h3>
+<1% if @employee.timesheets.any? %>
+  <h3>Timesheets (<1%= @employee.timesheets.count %>)</h3>
   <ol>
-    <%= render @timesheets %>
+    <1%= render @timesheets %>
   </ol>
-<% end %>
+<1% end %>
 </div>
 
 <br><% if logged_in? %>

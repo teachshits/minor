@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312001755) do
+ActiveRecord::Schema.define(:version => 20130312224329) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -136,6 +136,16 @@ ActiveRecord::Schema.define(:version => 20130312001755) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "period_id"
+  end
+
+  create_table "shifts", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "employee_id"
   end
 
   create_table "timesheets", :force => true do |t|

@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
   def set_business
     @business = Business.find_by_id(session[:biz_id])
   end
-
+  
+  def render_404
+    #temporary 404 action
+    redirect_to timesheets_path
+  end
 end

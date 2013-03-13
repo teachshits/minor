@@ -5,9 +5,68 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+<!-- Javascript code section -->
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/browser_detect.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/css_browser_selector.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/cookies.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/string.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/textsizer.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/image_box.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/lytebox.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/ajax_include.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/domlib.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/stdlib.js"></script>
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/submenu.js"></script>
+<style type='text/css'>
+  .Unfilled
+  {
+      border-color: green;
+      background-color: green;
+      color: green;
+      width: 90px;
+  }
+  .Owned
+  {
+  border-color: maroon;
+  background-color: maroon;
+  color: maroon;
+  width: 95px;
+  }
 
+  .OwnedByOther
+  {
+      border-color: darkblue;
+      background-color: darkblue;
+      color: darkblue;
+      width: 90px;
+  }
+  
+  table tr.evenrow {background-color: white; }
+  table tr.oddrow {background-color: silver; }
+
+  </style>
+<%= javascript_include_tag "site_parameters.js" %>
+<%= javascript_include_tag "http://fhs.mcmaster.ca/lib/javascript/common.js" %>
+<%= javascript_include_tag "site.js" %>
+<script type="text/javascript">
+<!--
+function onload_function() {
+  return;
+}
+//-->
+</script>
+  <%= stylesheet_link_tag "fullcalendar.css" %>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <%= javascript_include_tag "jquery.js" %>
+  <%= javascript_include_tag "jquery.rest.js" %>
+ 
+  <%= javascript_include_tag "fullcalendar.js" %>
+  
 </head>
 <body class="container">
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/wai_aria_skiptarget_links.js"></script> 
+<script type="text/javascript" src="http://fhs.mcmaster.ca/lib/javascript/wz_tooltip.js"></script> 
 <header class="container">
   <% unless session[:biz_id].nil? then %> <h1><a href="/businesses/<%=session[:biz_id] %>">Minority | Private Alpha</a></h1>
   <div class="navbar">

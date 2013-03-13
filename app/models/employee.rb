@@ -6,6 +6,7 @@ class Employee < ActiveRecord::Base
   has_many :schedules, dependent: :destroy
   has_many :avaliabilities, dependent: :destroy
   has_many :timesheets, dependent: :destroy
+  has_many :shifts
   belongs_to :position
   #  rank validation
   # //
