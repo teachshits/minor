@@ -6,6 +6,12 @@ class AddTimesheets < ActiveRecord::Migration
         t.integer  :employee_id 
         t.string   :change_log
         end
+  create_table :employee_timesheets do |t|
+        t.datetime :punch_in 
+        t.datetime :punch_out 
+        t.integer  :employee_id 
+        t.string   :change_log
+        end
   end
 
   def down

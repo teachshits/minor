@@ -34,22 +34,16 @@
   <% #end %>
 </div>
 
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div>
-<1% if @employee.timesheets.any? %>
-  <h3>Timesheets (<1%= @employee.timesheets.count %>)</h3>
+<% if logged_in? %>
+<% if @employee.timesheets.any? %>
+  <h3>Timesheets (<%= @employee.timesheets.count %>)</h3>
   <ol>
-    <1%= render @timesheets %>
+    <%= render @timesheets %>
   </ol>
-<1% end %>
+<% end %>
 </div>
-
+<% end %>
 <br><% if logged_in? %>
             <li><%= link_to "Employees", employees_path %></li>
             <li>
