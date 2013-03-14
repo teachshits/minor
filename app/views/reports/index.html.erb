@@ -1,0 +1,21 @@
+<h1>Отчеты</h1>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Фио</th>
+    <th>От</th>
+    <th>До</th>
+    <th>Статус</th>
+    <th>Отчет</th>
+  </tr>
+</thead>
+<% @timesheets.each do |timesheet| %>
+<tr>
+<td> <%= timesheet.employee.name %> </td>
+<td> <%= timesheet.punch_in %> </td>
+<td> <%= timesheet.punch_out %> </td>
+<td> <%= timesheet.employee.clocked_in %> </td>
+<td><%= link_to "#{timesheet.employee.name}", report_path(timesheet.employee_id) %></td>
+</tr>
+<% end %> 
+</table>

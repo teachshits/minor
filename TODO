@@ -1,17 +1,3 @@
-TODO:  
-
-Small report
-Clean
-___
-free ready
-
-Calculation build
-Notification
-Many position
-Clocking Enchanced like Elapsed and Status view + Photo images
-
-
-
 app/models/avaliability.rb:
   * [  2] * Validation on model
 

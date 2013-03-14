@@ -1,0 +1,139 @@
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var currId = '<%=@employee.id%>';
+    
+    
+    $('#calendar').fullCalendar({        
+	header: {
+	    left: '',
+	    center: 'title'
+        },
+        defaultView: 'agendaWeek',
+	minTime: '6:00',
+	maxTime: '22:00',
+	allDaySlot: false,
+        height: 1000,
+	disableDragging: true,
+	disableResizing: true,
+
+        
+        loading: function(bool){
+            if (bool) 
+                $('#loading').show();
+            else 
+                $('#loading').hide();
+        },
+        
+        eventSources: [{
+            url: '/shifts',
+            textColor: 'white',
+            ignoreTimezone: true
+        }],
+
+        timeFormat: 'h:mm t{ - h:mm t} ',
+	
+	eventRender: function(event, element) {
+
+	    event.className="custom";
+		    
+
+	    if ((event.userID==null) || (event.userID==0))
+	    {
+		event.className="Unfilled";
+		element.find('.fc-event-skin').addClass(event.className);
+	    
+	    }
+	    else {
+		if (currId == event.userID) {
+		    event.className="Owned";
+		    element.find('.fc-event-skin').addClass(event.className);
+		}
+		else{
+		    event.className="OwnedByOther";
+		    element.find('.fc-event-skin').addClass(event.className);
+		}
+	    }
+	    	    console.log(event);
+
+	},
+
+        eventClick: function(event, jsEvent, view){
+	    checkShift(event);
+        }
+    });
+});
+
+function checkShift(the_shift) {
+
+    $.read(
+	"/shifts/" + the_shift.id,
+	{},
+
+	function (response) {
+            
+	    if (response.userID == '<%=@employee.id%>'){
+		console.log("U clicked this b4");
+		deAssignShift(the_shift);
+		$('#calendar').fullCalendar( 'rerenderEvents' );
+	    }	    
+	    else {
+		if ((response.userID == null) || (response.userID == 0))  {
+		    console.log('<%=@employee.id%>');
+		    assignShift(response, the_shift);
+		}
+		else{
+		    alert("Sorry the shift ain't available anymore");
+		    $('#calendar').fullCalendar( 'removeEvents');
+		    $('#calendar').fullCalendar( 'refetchEvents' );
+		    $('#calendar').fullCalendar( 'rerenderEvents' );
+		}
+	    }
+	    
+	});
+};
+
+function assignShift(shiftBack, shiftFront) {
+
+    $.update(
+	"/shifts/" + shiftBack.id,
+	{ shift: { title: '<%=@employee.first_name%> <%=@employee.last_name%>',
+                   description: '',
+		   user_id: '<%=@employee.id%>'
+		 }
+	},
+	function (response) {
+	    shiftFront.color="maroon";
+	    shiftFront.title="<%=@employee.first_name%> <%=@employee.last_name%>";
+	    $('#calendar').fullCalendar( 'rerenderEvents' );
+	    console.log('successfully assigned task to. <%=@employee.id%>');
+	}
+    );
+};
+
+function deAssignShift(the_shift) {
+    $.update(
+	"/shifts/" + the_shift.id,
+	{ shift: { title: "",
+                   description: "",
+		   user_id: null
+		 }
+	},
+	function (response) { 
+	    the_shift.color="green";
+	    the_shift.title="";
+	    $('#calendar').fullCalendar( 'rerenderEvents' );
+	    console.log('successfully deassigned task of: <%=@employee.id%>');
+	}
+    );
+};
+
+
+</script>
+
+
+<div id='calendar'></div>

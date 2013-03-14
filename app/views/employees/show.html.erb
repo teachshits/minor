@@ -17,20 +17,21 @@
 
 <h1><%= @employee.name %></h1>
 <p><%= @employee.email %></p>
+<% if logged_in? %>
 
 <% if @employee.clocked_in? %>
 	<%= button_to "Clock Out",:id => "clock_out_tester", :controller => "timesheets", :method => :put, :action => "update" %>
 <% else %>
 	<%= button_to "Clock In",:id => "clock_in_tester", :controller => "timesheets", :action => "create" %>
-<% end %>
+<% end %><% end %>
 <!-- CALENDAR -->
   <p><%=@hours%></p>
 <%= link_to 'New Shift', new_shift_path%>
 <div id="calend">
   <% #if current_user.admin? %>
-    <%= render 'adminCalendar' %>
+    1<%= render 'adminCalendar' %>
   <% #else %>
-    <%= render 'userCalendar' %>
+    2<%= render 'userCalendar' %>
   <% #end %>
 </div>
 
@@ -54,7 +55,7 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Log in", login_path %></li>
+            <li><%= link_to "Log in Employeer", login_path %></li>
           <% end %>
 <br>
 <td><%= link_to "Построить новый график(вручную)", new_schedule_url(:employee_id => @employee.id, :rate_this_week => @employee.payrate) %></td>

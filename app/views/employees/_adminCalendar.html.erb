@@ -1,0 +1,139 @@
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $('#calendar').fullCalendar({
+	editable: true,        
+	header: {
+	    left: '',
+	    center: 'title',
+	    right: 'prev,next'
+        },
+        defaultView: 'agendaWeek',
+	minTime: '6:00',
+	maxTime: '22:00',
+	allDaySlot: false,
+        height: 1000,
+	selectable: true,
+	selectHelper: true,
+	select: function(start, end, allDay) {
+		var event = {
+		    title: "",
+		    start: start,
+		    end: end,
+		    allDay: allDay
+		}
+		 $('#calendar').fullCalendar('renderEvent',event,
+				      true // make the event "stick"
+				     );createShift(event);
+	     $('#calendar').fullCalendar('unselect');
+	},
+	editable: true,
+
+
+	//disableResizing: true,
+
+        
+        loading: function(bool){
+            if (bool) 
+                $('#loading').show();
+            else 
+                $('#loading').hide();
+        },
+        
+        // a future calendar might have many sources.        
+        eventSources: [{
+            url: '/shifts',
+            color: 'maroon',
+            textColor: 'white',
+            ignoreTimezone: false
+        }],
+        
+        timeFormat: 'h:mm t{ - h:mm t} ',
+        dragOpacity: "0.5",
+        
+        //http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
+        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc){
+            updateEvent(event);
+        },
+
+        // http://arshaw.com/fullcalendar/docs/event_ui/eventResize/
+        eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+
+	    console.log(event.start + " " + event.end);
+	    
+	    console.log(formatDate(event.start) + " " + formatDate(event.end));
+
+	    updateEvent(event);
+        },
+
+        // http://arshaw.com/fullcalendar/docs/mouse/eventClick/
+        eventClick: function(event, jsEvent, view){
+        },
+
+	eventMouseover: function(calEvent, domEvent) {
+
+	    var layer =	"<div id='events-layer' class='fc-transparent' style='position:absolute; width:100%; height:100%; top:25px; text-align:right; z-index:100'> <a> <img border='0' style='padding-right:5px;' src='/images/common/delete.png' onClick='deleteEvent("+calEvent.id+");'></a></div>";
+
+
+	    $(this).append(layer);
+	},   
+	eventMouseout: function(calEvent, domEvent) {
+	    $("#events-layer").remove();
+	}
+    });
+});
+
+function deleteEvent(shiftid) {
+    console.log("benson");
+    $.destroy(
+	"/shifts/" + shiftid,{},
+	function (response) { 
+	});
+    
+    console.log("hets");
+    $('#calendar').fullCalendar( 'removeEvents');
+    $('#calendar').fullCalendar( 'refetchEvents' );
+    $('#calendar').fullCalendar( 'rerenderEvents' );
+};
+
+function updateEvent(the_event) {
+    $.update(
+	"/shifts/" + the_event.id,
+	{ shift: { title: the_event.title,
+                   starts_at: "" + formatDate(the_event.start),
+                   ends_at: "" + formatDate(the_event.end),
+                   description: the_event.description
+		 }
+	},
+	function (response) { 
+	});
+};
+
+
+function createShift(event) {
+    $.create(
+    	"/shifts/",
+    	{ shift: { title: event.title,
+                   starts_at: "" + formatDate(event.start),
+                   ends_at: "" + formatDate(event.end),
+                   description: ""
+    		 }
+    	},
+    	function (response)
+	{ 
+	    $('#calendar').fullCalendar( 'removeEvents');
+	    $('#calendar').fullCalendar( 'refetchEvents' );
+	    $('#calendar').fullCalendar( 'rerenderEvents' );
+	},
+	
+	console.log(event.title + " " + event.start +" "+ event.end)
+    );
+};
+</script>
+
+<div id='calendar'></div>

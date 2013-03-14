@@ -1,0 +1,32 @@
+<h1>Listing shifts</h1>
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Start</th>
+    <th>End</th>
+    <th></th>
+    <th></th>
+    <th></th>
+   </tr>
+<%= @final.to_json %>
+<% @shifts.each do |shift| %>
+    <tr class="<%= cycle('oddrow', 'evenrow') %>">
+      <td><%=shift.title %></td>
+      <td><%=shift.starts_at.rfc822[0..-7] %></td>
+      <td><%=shift.ends_at.rfc822[0..-7] %></td>
+      <td><%=link_to 'View', shift %></td>
+      <td><%=link_to 'Edit', edit_shift_path(shift) %></td>
+      <td>
+	<%=link_to 'Delete', 
+	   shift, :confirm => 'Are you sure?', 
+	   :method => :delete %>
+      </td>
+    </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'New Shift', new_shift_path%>
+

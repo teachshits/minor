@@ -1,0 +1,26 @@
+<br /><br />
+
+ <% #if !current_user.admin? %>
+
+  <p><%=@hours%></p>
+
+  <% else %>
+
+  <%= link_to 'New Shift', new_shift_path%>
+
+  <br />
+
+ <% #end %>
+
+
+<div id="calend">
+  <% #if current_user.admin? %>
+    <%= render 'adminCalendar' %>
+  <% #else %>
+    <%= render 'userCalendar' %>
+  <% #end %>
+</div>
+
+
+
+

@@ -4,7 +4,7 @@ class CalculationsController < ApplicationController
 # TODO Fill data in DB
 # Not select before? 
 # TODO Smart selection | Often selection
-# TODO 2. quality > 1
+# TODO 2. quantity > 1
 # TODO Grenn exapnder, workday expander | Smart selecting
 def index
 	# Calculation variables	

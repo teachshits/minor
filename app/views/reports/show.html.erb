@@ -1,0 +1,15 @@
+<h1><%= @timesheet.first.employee.name %> отчет</h1>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>С</th>
+    <th>До</th>
+  </tr>
+</thead>
+<% @timesheet.each do |timesheet| %>
+<tr>
+<td> <%= timesheet.punch_in %> </td>
+<td> <%= timesheet.punch_out %> </td>
+</tr>
+<% end %> 
+</table>

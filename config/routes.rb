@@ -1,5 +1,7 @@
 Minority::Application.routes.draw do
   
+  resources :reports
+
   resources :avaliability_items
 
 
@@ -12,7 +14,10 @@ Minority::Application.routes.draw do
   resources :appr_positions
   # GUI STUFF
   resources :calendar
-  resources :shifts
+  resources :shifts do
+
+    get 'by_id', :on => :collection
+end
   # END GUI STUFF
 
   resources :periods

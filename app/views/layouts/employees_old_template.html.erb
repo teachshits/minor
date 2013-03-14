@@ -1,0 +1,50 @@
+  <%= render :template => 'layouts/application' %>
+
+  <%= stylesheet_link_tag "fullcalendar.css" %>
+  <%= javascript_include_tag "jquery.js" %>
+  <%= javascript_include_tag "jquery.rest.js" %>
+  
+  <!-- these are needed for the calendar. -->
+  <%= javascript_include_tag "fullcalendar.js" %>
+  
+  <%#= javascript_include_tag "masterCalendar.js" %>
+
+  <%= csrf_meta_tag %>  
+  
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+
+  <style type='text/css'>
+  .Unfilled
+  {
+      border-color: green;
+      background-color: green;
+      color: green;
+      width: 90px;
+  }
+  .Owned
+  {
+  border-color: maroon;
+  background-color: maroon;
+  color: maroon;
+  width: 95px;
+  }
+
+  .OwnedByOther
+  {
+      border-color: darkblue;
+      background-color: darkblue;
+      color: darkblue;
+      width: 90px;
+  }
+  
+  table tr.evenrow {background-color: white; }
+  table tr.oddrow {background-color: silver; }
+
+  </style>
+
+
+</head>
+<body>
+
+</body>
+</html>

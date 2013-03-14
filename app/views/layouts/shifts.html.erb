@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>
+<head>
+  <title><%=@title %></title>  
+
+  <%= render :template => 'layouts/application' %>
+
+  <%= stylesheet_link_tag "fullcalendar.css" %>
+  <%= javascript_include_tag "jquery.js" %>
+  <%= javascript_include_tag "jquery.rest.js" %>
+  <%= javascript_include_tag "application" %>
+   <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+  <!-- these are needed for the calendar. -->
+  <%= javascript_include_tag "fullcalendar.js" %>
+  <%#= javascript_include_tag "masterCalendar.js" %>
+  
+  <%= csrf_meta_tag %>  
+  
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  
+  <style type='text/css'>
+    table tr.evenrow {background-color: white; }
+    table tr.oddrow {background-color: silver; }
+  </style>
+
+</head>
+<body>
+
+</body>
+</html>
