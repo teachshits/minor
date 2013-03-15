@@ -13,22 +13,7 @@ class ApplicationController < ActionController::Base
     redirect_to timesheets_path
   end
 
-  def datetime_from_date_time(d, t)
-    DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
-  end
-
-  def calc_stime(time)
-      @h = {}
-      @range.zip(time) { |a,b| @h[a] = b }
-      @h = @h.reject { |k,v| v.blank?  }
-      array = []
-      @h.each do |k,v|
-      array << datetime_from_date_time(k,v).rfc822
-      end
-      return array
-  end
-
-def cal_json(id)
+  def cal_json(id)
     {
       :id => id,
       :title => title,
@@ -41,6 +26,27 @@ def cal_json(id)
       :userID => employee_id
       #:color => color
     }
+  end
+ #@time.schedule_emp_show
+  def schedule_emp_show(schedule)
+      @arry = []
+      schedule.each do |sch|
+        @arry << sch.schedule_show
+      end 
+      @arry
+  end
+  def schedule_all
+     all = Employee.all
+     schedules = []
+     all.each do |emp|
+     schedules << emp.schedules.last unless nil?
+     end
+     schedules.compact! # nil delete
+     l = []
+     schedules.each do |sch|
+      l << sch.schedule_show
+     end  
+     l.flatten
   end
 
 end

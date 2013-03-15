@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312224329) do
+ActiveRecord::Schema.define(:version => 20130315004500) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(:version => 20130312224329) do
     t.integer  "subscription_id"
   end
 
+  create_table "employee_timesheets", :force => true do |t|
+    t.timestamp "punch_in",    :limit => 6
+    t.timestamp "punch_out",   :limit => 6
+    t.integer   "employee_id"
+    t.string    "change_log"
+    t.timestamp "created_at",  :limit => 6
+    t.timestamp "updated_at",  :limit => 6
+  end
+
   create_table "employees", :force => true do |t|
     t.string   "name"
     t.integer  "payrate"
@@ -111,6 +120,11 @@ ActiveRecord::Schema.define(:version => 20130312224329) do
     t.integer  "business_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "employees_positions", :id => false, :force => true do |t|
+    t.integer "position_id"
+    t.integer "employee_id"
   end
 
   create_table "schedules", :force => true do |t|

@@ -7,7 +7,7 @@ class Employee < ActiveRecord::Base
   has_many :avaliabilities, dependent: :destroy
   has_many :timesheets, dependent: :destroy
   has_many :shifts
-  belongs_to :position
+  has_and_belongs_to_many :positions
   #  rank validation
   # //
   validates :password, presence: true, length: {minimum:6}

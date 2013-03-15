@@ -12,26 +12,6 @@ class ShiftsController < ApplicationController
   def index
     @shifts = Shift.scoped
 
-    ## Period parsing
-    @period = Period.find(1)
-    @range = (@period.p_start..@period.p_end).to_a
-    ## Schedule finding
-    @time = Schedule.find(4)
-    @dw = %w{Mon Tue Wed Thu Fri Sat Sun}
-    @start_time = []
-    @end_time = []
-    @dw.each do |dayweek|
-       @start_time << @time.send("#{dayweek}Start")
-       @end_time << @time.send("#{dayweek}End")   
-    end
-    @start = calc_stime(@start_time) #DATE ARRAY
-    @end = calc_stime(@end_time)   #DATE ARRAY
-    @result = @start.zip(@end) # [[dw_start, dw_end], [..]]
-    @result = @result.map{|item| item << @time.employee.id; item << @time.employee.name }
-    @final = []
-    @result.each do |res|
-    @final << Hash[*("start,end,id,name".split(',').zip(res).flatten)]
-    end
 
     @initDate = Date.new(2013, 03, 13)
 
@@ -58,9 +38,6 @@ class ShiftsController < ApplicationController
       end
     
     end
-     #@arr = []
-    # @fifi = @final.each do |shift|
-     #@arr << { "id" : 2, "title" :"zalupa", "description": "", "start": "#{shift["start"]}", "end": "#{shift["end"]}" }
 
     #end
     #@fifi = '[{"id":6,"title":"","description":"","start":"Tue, 05 Mar 2013 22:56:00","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}
@@ -77,33 +54,18 @@ class ShiftsController < ApplicationController
     #{"id":5,"title":"\u0420\u043e\u043c\u0430\u043d \u0422\u0430\u0440\u0430\u0441\u0435\u043d\u043a\u043e","description":"","start":"Sun, 10 Mar 2013 07:00:00","end":"Sun, 10 Mar 2013 09:30:00","allDay":false,"recurring":false,"url":"","userID":7},
     #{"id":8,"title":"","description":"","start":"Thu, 14 Mar 2013 07:00:00","end":"Thu, 14 Mar 2013 10:30:00","allDay":false,"recurring":false,"url":"","userID":null}]'
             #logger.info @fifi
-            @a = []
-            @final.each do |final|
-            lol = []
-            lol << final["id"]
-            lol << final["start"]
-            lol << final["end"]
-            @a << lol
-            end
-            @fififi = []
-            @a.each do |res|
-               @fififi << Hash[*("id,start,end,title,description,allDay,recurring,url,userID".split(',').zip(res).flatten)]
-            end
-            @lol = []
-            @fififi.each do |elem|
-elem["title"] = "sooka"
-elem["description"] = "sooka"
-elem["allDay"] = false
-elem["recurring"] = false
-elem["url"] = ""
-elem["userID"] = 7
-@lol << elem
-end
+           ## Schedule finding
+    @time = Schedule.find(1)
+    @range = (@time.period.p_start..@time.period.p_end).to_a
+    @many = Schedule.find_all_by_employee_id()
 
-            @sooka = '[{"id":6,"title":"","description":"","start":"Sun, 3 Mar 2013 05:30:00 +0000","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}]'
+    @sooka = '[{"id":6,"title":"","description":"","start":"Sun, 3 Mar 2013 05:30:00 +0000","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}]'
     respond_to do |format|
       format.html # index.html.erb @shifts.as_json(:only => [:id, :title, :description,  :start, :end, :allDay, :recurring, :url])
-      format.js  { render :json => @lol } 
+      # schedule_emp_show(@many).flatten
+      # schedule_all
+      # @time.schedule_show
+      format.js  { render :json => @time.schedule_show } 
     end
   end
 
