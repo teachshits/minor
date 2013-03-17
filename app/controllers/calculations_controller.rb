@@ -13,7 +13,7 @@ def index
 	@wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start")
 	@period = Period.last
 	@positions = Position.find(14)
-	@emp = Employee.find_all_by_position_id(14)
+	@emp = Position.find_by_id(14).employees
 	@quantity = ApprPosition.find_by_position_id(14).Mon
 	# Rails 4
 	# @emp_r1 = Employee.where(position_id: 14).where(rank: 1)

@@ -18,7 +18,7 @@
 	    </div>
  </div>
   <div class="control-group">
-    <label class="control-label" for="inputWorkhours">Рабочих часов</label>
+    <label class="control-label" for="inputWorkhours">Желаемое время работы</label>
 	    <div class="controls">
 	    <%= f.number_field :workhours, :placeholder => "Количество часов" %>
 	    </div>
@@ -30,13 +30,27 @@
 	    </div>
  </div>
    <div class="control-group">
-    <label class="control-label" for="inputPositions">Позиция</label>
+   <small>Для изменения введите свой пароль</small>
+    <label class="control-label" for="inputRank">Пароль</label>
 	    <div class="controls">
-	    <%   @pos = @business.positions  %>
-<%= select("employee", "position_id", @pos.collect {|p| [ p.pos, p.id ] }, { :include_blank => true }) %>
+	    <%= password_field(:employee, :password, :size => 6) %>
 	    </div>
- </div> 
-
-  <%= f.submit "Сохранить" %>  
+ </div>  
+<div class="control-group span13 columns4 checkbox-group">
+      <div class="controls">
+      		<% hidden_field_tag "employee[position_ids][]", nil %>
+            <% Position.all.each do |position| %>
+				<label class="checkbox inline">
+            	<%= check_box_tag "employee[position_ids][]", position.id, @employee.position_ids.include?(position.id), id: "inlineCheckbox#{dom_id(position)}" %>
+            	<%= label_tag dom_id(position), position.pos %>
+            	</label>
+            <% end %>
+      </div>
+</div>
+<div class="control-group">
+    <div class="controls employee_submit">
+	<%= submit_tag "Сохранить", class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315004500) do
+ActiveRecord::Schema.define(:version => 20130317204232) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -99,12 +99,16 @@ ActiveRecord::Schema.define(:version => 20130315004500) do
     t.datetime "updated_at"
     t.integer  "rank",            :null => false
     t.integer  "workhours"
-    t.integer  "position_id"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "clocked_in"
     t.boolean  "manager"
+  end
+
+  create_table "employees_positions", :id => false, :force => true do |t|
+    t.integer "position_id"
+    t.integer "employee_id"
   end
 
   create_table "periods", :force => true do |t|
@@ -120,11 +124,6 @@ ActiveRecord::Schema.define(:version => 20130315004500) do
     t.integer  "business_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "employees_positions", :id => false, :force => true do |t|
-    t.integer "position_id"
-    t.integer "employee_id"
   end
 
   create_table "schedules", :force => true do |t|

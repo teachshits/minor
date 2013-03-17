@@ -57,7 +57,7 @@ class ShiftsController < ApplicationController
            ## Schedule finding
     @time = Schedule.find(1)
     @range = (@time.period.p_start..@time.period.p_end).to_a
-    @many = Schedule.find_all_by_employee_id()
+    ###############################  @many = Schedule.find_all_by_employee_id()
 
     @sooka = '[{"id":6,"title":"","description":"","start":"Sun, 3 Mar 2013 05:30:00 +0000","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}]'
     respond_to do |format|

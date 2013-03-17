@@ -7,10 +7,17 @@
 */
 @import "bootstrap";
 
+a {
+color: #59B2DF;
+text-decoration: none;
+}
+
+
 body {
 	font-family: Arial, Helvetica, Geneva, sans-serif;
 	width: 1080px;
 	margin: 0px auto;
+	background: url("cream_dust.png");
 }
 ::selection {
 color: skyblue;
@@ -99,7 +106,7 @@ footer {
 	clear: both;
 }
 main.container {
-	background: rgba(236, 229, 255, 0.08);
+	background: rgba(255, 255, 255, 0.81);
 	border-radius: 9px;
 	padding: 10px 109px;
 	border: #C4B8C4 1px solid;

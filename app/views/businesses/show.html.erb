@@ -1,29 +1,58 @@
 <% @b = session[:biz_id] %>
 <% @wd = BusinessWorkday.find_by_business_id(3).FriEnd - BusinessWorkday.find_by_business_id(3).FriStart %>
 <% @wd = @wd/60/60 %>
-<h1><%= @business.name %> <%= link_to "Edit", edit_business_url(@b) %> TODAY WORKDAY IS: <%= @wd %> Hours</h1>
-
-<table>
-
-<div class="schedules">
-<br>
-<br>
-<%= link_to "Основной граффик", schedules_url %>
-
-<h4>Граффики сотрудников: </h4>
-<br>
-<% @schedule.sort.each do |sch| %>
-<% @employee = Employee.find_all_by_id(sch.employee_id) %>
-<% @period = Period.find(sch.period_id) %>
-<%= link_to "Граффик #{sch.id} — #{@employee.first.name} for Period #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
-<br>
-<% end %>
+<div class="head"> 
+	<h1><%= @business.name %> <%= link_to "Изменить", edit_business_url(@b) %></h1>
+	<h2>Рабочий день сегодня: <%= @wd.round %> ЧАСОВ</h2>
 </div>
-<br>
-<br>
-<br>
-<div class="calc"><%= link_to "Calculation", calculations_url %></div>
+<div class="row">
+  <div class="span7">
+  	<h3><%= link_to "Отчеты", reports_url %></h3>
+  	<div class="reports">
+  		<% @business.employees.each do |emp| %>
+  			<% unless emp.timesheets.first.nil? %>
+	  		<div class="report_block">
+	  		<h6><%= link_to "#{emp.name}", emp %> <strong><%= clocked_in(emp.clocked_in) %></strong><h6>
+	  		
+	  		<% emp.timesheets.limit(5).each do |timesheet| %>
+		  		<div class="report_checkin">
+			  		Был с <%= timesheet.punch_in %> до <%= timesheet.punch_out %>
+		  		</div>
+	  		<% end %>
+	  		</div>
+  		<% end end %>
+  	</div>
+  </div>
+  <div class="span4 aside">
+  	<h3><%= link_to "Графики", schedules_url %></h3>
+  	<div class="schedules">
+	<% @schedule.sort.each do |sch| %>
+	<% @employee = Employee.find_by_id(sch.employee_id) %>
+	<% @period = Period.find(sch.period_id) %>
+	<%= link_to "#{sch.id}: #{@employee.name} на #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
+	<br>
+	<% end %>
+  </div>
+	
+  	<h3><%= link_to "Build", calculations_url %></h3>
+  </div>
+</div>
 
-<br>
-<br>
-<strong> <a href="https://github.com/EmpireInc/Minority/">Этапы проекта</a></strong>
+<div class="row columns">
+	<a href="<%= employees_url %>" title="Сотрудники"><div class="span2">
+		<h4><i class="icon-user"></i>Сотрудники</h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+	</div></a>
+	<a href="<%= positions_url %>" title="Должности"><div class="span2">
+		<h4><i class="icon-briefcase"></i>Должности</h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+	</div></a>
+	<a href="<%= appr_positions_url %>" title="График должностей"><div class="span2">
+		<h4><i class="icon-hand-up"></i>График должностей</h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+	</div></a>
+	<a href="<%= business_workdays_url %>" title="Рабочий день"><div class="span2">
+		<h4><i class="icon-home"></i>Рабочий день</h4>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+	</div></a>
+</div>

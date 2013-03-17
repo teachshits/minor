@@ -19,7 +19,8 @@ Log In
 	<%= submit_tag "log in", class: 'btn btn-primary' %>
     </div>
   </div>
-  <%= session[:biz_id] %>
+  <%= session[:biz_id] %> 
+  <li><%= link_to "Вход для сотруника", login_path %></li>
 </form>
 <% end %>
 

@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'carrierwave'
+gem 'hyperpdf'
 gem 'macaddr'
 gem 'artii'
 gem 'rails'

@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
       #:color => color
     }
   end
- #@time.schedule_emp_show
+
+  
+ # Scheduling view
   def schedule_emp_show(schedule)
       @arry = []
       schedule.each do |sch|
