@@ -56,21 +56,21 @@ html .fc,
 	vertical-align: top;
 	}
 	
-
+/* buttons edges butting together */
 
 .fc-header .fc-button {
 	margin-right: -1px;
 	}
 	
 .fc-header .fc-corner-right {
-	margin-right: 1px; 
+	margin-right: 1px; /* back to normal */
 	}
 	
 .fc-header .ui-corner-right {
-	margin-right: 0; 
+	margin-right: 0; /* back to normal */
 	}
 	
-
+/* button layering (for border precedence) */
 	
 .fc-header .fc-state-hover,
 .fc-header .ui-state-hover {
@@ -88,39 +88,42 @@ html .fc,
 	
 	
 	
-
+/* Content
+------------------------------------------------------------------------*/
 	
 .fc-content {
 	clear: both;
 	}
 	
 .fc-view {
-	width: 100%; 
+	width: 100%; /* needed for view switching (when view is absolute) */
 	overflow: hidden;
 	}
 	
 	
 
+/* Cell Styles
+------------------------------------------------------------------------*/
 
-
-.fc-widget-header,    
-.fc-widget-content {  
+.fc-widget-header,    /* <th>, usually */
+.fc-widget-content {  /* <td>, usually */
 	border: 1px solid #ccc;
 	}
 	
-.fc-state-highlight {  
+.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
 	background: #ffc;
 	}
 	
-.fc-cell-overlay { 
+.fc-cell-overlay { /* semi-transparent rectangle while dragging */
 	background: #9cf;
 	opacity: .2;
-	filter: alpha(opacity=20); 
+	filter: alpha(opacity=20); /* for IE */
 	}
 	
 
 
-
+/* Buttons
+------------------------------------------------------------------------*/
 
 .fc-button {
 	position: relative;
@@ -128,7 +131,7 @@ html .fc,
 	cursor: pointer;
 	}
 	
-.fc-state-default { 
+.fc-state-default { /* non-theme */
 	border-style: solid;
 	border-width: 1px 0;
 	}
@@ -139,7 +142,7 @@ html .fc,
 	overflow: hidden;
 	}
 	
-.fc-state-default .fc-button-inner { 
+.fc-state-default .fc-button-inner { /* non-theme */
 	border-style: solid;
 	border-width: 0 1px;
 	}
@@ -153,7 +156,7 @@ html .fc,
 	white-space: nowrap;
 	}
 	
-
+/* icon (for jquery ui) */
 	
 .fc-button-content .fc-icon-wrap {
 	position: relative;
@@ -169,7 +172,7 @@ html .fc,
 	*top: -50%;
 	}
 	
-
+/* gloss effect */
 	
 .fc-state-default .fc-button-effect {
 	position: absolute;
@@ -191,7 +194,7 @@ html .fc,
 	filter: alpha(opacity=9);
 	}
 	
-
+/* button states (determines colors)  */
 	
 .fc-state-default,
 .fc-state-default .fc-button-inner {
@@ -235,7 +238,8 @@ html .fc,
 	
 	
 
-
+/* Global Event Styles
+------------------------------------------------------------------------*/
 	 
 .fc-event {
 	border-style: solid;
@@ -258,9 +262,9 @@ a.fc-event {
 	}
 	
 .fc-event-skin {
-	border-color: #36c !important;     
-	background-color: #36c !important; 
-	color: #fff !important;            
+	border-color: #36c !important;     /* default BORDER color */
+	background-color: #36c !important; /* default BACKGROUND color */
+	color: #fff !important;            /* default TEXT color */
 	}
 	
 .fc-event-inner {
@@ -277,28 +281,29 @@ a.fc-event {
 	padding: 0 1px;
 	}
 	
-.fc .ui-resizable-handle { 
+.fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
 	display: block;
 	position: absolute;
 	z-index: 99999;
-	overflow: hidden; 
-	font-size: 300%;  
-	line-height: 50%; 
+	overflow: hidden; /* hacky spaces (IE6/7) */
+	font-size: 300%;  /* */
+	line-height: 50%; /* */
 	}
 	
 	
 	
-
+/* Horizontal Events
+------------------------------------------------------------------------*/
 
 .fc-event-hori {
 	border-width: 1px 0;
 	margin-bottom: 1px;
 	}
 	
-
+/* resizable */
 	
 .fc-event-hori .ui-resizable-e {
-	top: 0           !important; 
+	top: 0           !important; /* importants override pre jquery ui 1.7 styles */
 	right: -3px      !important;
 	width: 7px       !important;
 	height: 100%     !important;
@@ -314,12 +319,13 @@ a.fc-event {
 	}
 	
 .fc-event-hori .ui-resizable-handle {
-	_padding-bottom: 14px; 
+	_padding-bottom: 14px; /* IE6 had 0 height */
 	}
 	
 	
 	
-
+/* Fake Rounded Corners (for buttons and events)
+------------------------------------------------------------*/
 	
 .fc-corner-left {
 	margin-left: 1px;
@@ -357,7 +363,8 @@ a.fc-event {
 	
 	
 	
-
+/* Fake Rounded Corners SPECIFICALLY FOR EVENTS
+-----------------------------------------------------------------*/
 	
 .fc-corner-left .fc-event-inner {
 	border-left-width: 1px;
@@ -377,7 +384,8 @@ a.fc-event {
 	
 	
 	
-
+/* Reusable Separate-border Table
+------------------------------------------------------------*/
 
 table.fc-border-separate {
 	border-collapse: separate;
@@ -405,7 +413,8 @@ table.fc-border-separate {
 	
 	
 
-
+/* Month View, Basic Week View, Basic Day View
+------------------------------------------------------------------------*/
 
 .fc-grid th {
 	text-align: center;
@@ -418,22 +427,24 @@ table.fc-border-separate {
 	
 .fc-grid .fc-other-month .fc-day-number {
 	opacity: 0.3;
-	filter: alpha(opacity=30); 
-	
+	filter: alpha(opacity=30); /* for IE */
+	/* opacity with small font can sometimes look too faded
+	   might want to set the 'color' property instead
+	   making day-numbers bold also fixes the problem */
 	}
 	
 .fc-grid .fc-day-content {
 	clear: both;
-	padding: 2px 2px 1px; 
+	padding: 2px 2px 1px; /* distance between events and day edges */
 	}
 	
-
+/* event styles */
 	
 .fc-grid .fc-event-time {
 	font-weight: bold;
 	}
 	
-
+/* right-to-left */
 	
 .fc-rtl .fc-grid .fc-day-number {
 	float: left;
@@ -445,7 +456,8 @@ table.fc-border-separate {
 	
 	
 
-
+/* Agenda Week View, Agenda Day View
+------------------------------------------------------------------------*/
 
 .fc-agenda table {
 	border-collapse: separate;
@@ -468,7 +480,7 @@ table.fc-border-separate {
 	padding: 2px 2px 1px;
 	}
 	
-
+/* make axis border take precedence */
 	
 .fc-agenda-days .fc-agenda-axis {
 	border-right-width: 1px;
@@ -478,18 +490,18 @@ table.fc-border-separate {
 	border-left-width: 0;
 	}
 	
-
+/* all-day area */
 	
 .fc-agenda-allday th {
 	border-width: 0 1px;
 	}
 	
 .fc-agenda-allday .fc-day-content {
-	min-height: 34px; 
+	min-height: 34px; /* TODO: doesnt work well in quirksmode */
 	_height: 34px;
 	}
 	
-
+/* divider (between all-day and slots) */
 	
 .fc-agenda-divider-inner {
 	height: 2px;
@@ -500,7 +512,7 @@ table.fc-border-separate {
 	background: #eee;
 	}
 	
-
+/* slot rows */
 	
 .fc-agenda-slots th {
 	border-width: 1px 1px 0;
@@ -526,12 +538,13 @@ table.fc-border-separate {
 	}
 	
 .fc-agenda-slots tr.fc-minor th.ui-widget-header {
-	*border-top-style: solid; 
+	*border-top-style: solid; /* doesn't work with background in IE6/7 */
 	}
 	
 
 
-
+/* Vertical Events
+------------------------------------------------------------------------*/
 
 .fc-event-vert {
 	border-width: 0 1px;
@@ -550,7 +563,7 @@ table.fc-border-separate {
 	font-size: 10px;
 	}
 	
-.fc-event-vert .fc-event-bg { 
+.fc-event-vert .fc-event-bg { /* makes the event lighter w/ a semi-transparent overlay  */
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -562,12 +575,15 @@ table.fc-border-separate {
 	filter: alpha(opacity=30);
 	}
 	
-.fc .ui-draggable-dragging .fc-event-bg, 
+.fc .ui-draggable-dragging .fc-event-bg, /* TODO: something nicer like .fc-opacity */
 .fc-select-helper .fc-event-bg {
-	display: none\9; 
+	display: none\9; /* for IE6/7/8. nested opacity filters while dragging don't work */
 	}
+	
+/* resizable */
+	
 .fc-event-vert .ui-resizable-s {
-	bottom: 0        !important; 
+	bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
 	width: 100%      !important;
 	height: 8px      !important;
 	overflow: hidden !important;
@@ -578,8 +594,8 @@ table.fc-border-separate {
 	cursor: s-resize;
 	}
 	
-.fc-agenda .ui-resizable-resizing { 
+.fc-agenda .ui-resizable-resizing { /* TODO: better selector */
 	_overflow: hidden;
-}
+	}
 	
 	
