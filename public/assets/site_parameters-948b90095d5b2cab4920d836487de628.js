@@ -1,0 +1,2 @@
+/* Javascript Document for site specific parameters */
+site_title="Library Scheduler";var domain=document.domain,global_nav=!0,top_nav_ajax=!0,top_nav_id="top_navigation_bar",skipnavlink_on=!0,skipnavlink_title="top",skipnav2link_on=!0,skipnav2link_title="left",top_nav_anchor_first=!0,automatic_left_nav=!0,top_nav_url="";

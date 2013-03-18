@@ -1,0 +1,2 @@
+/* Javascript Document for site specific functions */
+function onload_site_function(){}function get_top_navigation_bar(){loadXMLDoc(top_nav_url,top_nav_id)}function formatDate(e){d=new Date(e);var t=d.getDate(),n=d.getMonth()+1,r=d.getFullYear(),i=d.getHours(),s=d.getMinutes(),o=r+"-"+n+"-"+t+" "+i+":"+s;return console.log(o),o};

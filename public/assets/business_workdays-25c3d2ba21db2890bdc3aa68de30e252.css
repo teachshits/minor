@@ -1,0 +1,1 @@
+.business_workdays td:nth-child(2n+3){background-color:gray;color:white}.business_workdays td:nth-child(2n+2){background-color:green;color:white}.business_workdays td:first-child{background-color:white}.workdaytimes select{width:83px}.wdt_block{border-bottom:1px black solid;padding-top:10px}.wdt_block:last-child{border:none}.wdt_block span{width:114px;display:inline-block}
