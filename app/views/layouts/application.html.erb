@@ -34,7 +34,8 @@
   table tr.oddrow {background-color: silver; }
 
   </style>
-
+<%= javascript_include_tag "site_parameters.js" %>
+<%= javascript_include_tag "site.js" %>
 <script type="text/javascript">
 <!--
 function onload_function() {
@@ -42,9 +43,10 @@ function onload_function() {
 }
 //-->
 </script>
-
+  <%= javascript_include_tag "jquery.rest.js" %>
    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-
+  <%= javascript_include_tag "fullcalendar.js" %>
+  <%= stylesheet_link_tag "fullcalendar.css" %>
  
 </head>
 <body class="container">
