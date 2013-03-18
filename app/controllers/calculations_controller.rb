@@ -17,9 +17,12 @@ def index
 	@quantity = ApprPosition.find_by_position_id(14).Mon
 	# Rails 4
 	# @emp_r1 = Employee.where(position_id: 14).where(rank: 1)
-	@emp_r1 = Employee.find_all_by_position_id_and_rank(14, 1)
-	@emp_r2 = Employee.find_all_by_position_id_and_rank(14, 2)
-	@emp_r3 = Employee.find_all_by_position_id_and_rank(14, 3)
+	@emp_r1 = Position.find_by_id(14).employees.where(rank: 1)
+	@emp_r2 = Position.find_by_id(14).employees.where(rank: 2)
+	@emp_r3 = Position.find_by_id(14).employees.where(rank: 3)
+	#@emp_r1 = Employee.find_all_by_position_id_and_rank(14, 1)
+	#@emp_r2 = Employee.find_all_by_position_id_and_rank(14, 2)
+	#@emp_r3 = Employee.find_all_by_position_id_and_rank(14, 3)
     @selected = []
 end
 private 
@@ -65,7 +68,6 @@ private
 # av= get(av.s..av.e)
 # s..e === av # true of false
 # end
-
 #end
 
 	def red(id, s, e)

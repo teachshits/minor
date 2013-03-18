@@ -2,12 +2,13 @@
 		<h3>Rank 1<%= true %></h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
 		<ul>
+		<% @av = [] %>
 		<span>People with that rank: </span>
 		<% @emp_r1.each do |emp| %>
 			<li><%= emp.name %> | <%= emp.workhours %> h</li>
 			<% @userhour = emp.workhours %>
 			<!-- Avaliabilities check for empty  -->
-			<% if (!emp.avaliabilities.last.to_s.empty?) then @av = emp.avaliabilities.last.avaliability_items.all else @av.clear %>
+			<% unless emp.avaliabilities.first.to_s.nil? then @av = emp.avaliabilities.first.avaliability_items.all else @av.clear %>
 			<% end %>
 			<!-- Avaliabilities puts all -->
 			<% @av.each do |av| %>
@@ -41,12 +42,12 @@
 			<%= @last %>
 			<% end %>
 			REDMETHOD:<%= selected.id %> for <%= @start.hour %>, <%= @last.hour %>
-			<% unless red(selected.id, @start, @last) %>
+			<% # TODO Refactor #unless red(selected.id, @start, @last) %>
 			<% @array << selected.name %>
 			<% @array << @start %>
 			<% @array << @last %>
 			<% @selectedarray.push @array %>
-			<% end %>
+			<% #end %>
 			</br>
 			<% # GREEN METHOD(@start..@last) %> 
 			<% # RED METHOD(@start..@last) %>
