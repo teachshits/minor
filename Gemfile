@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem "errplane"
 gem 'carrierwave'
 gem 'hyperpdf'
 gem 'macaddr'

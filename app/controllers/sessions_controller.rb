@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    cookies.delete(:biz_id)
+    business = nil
+    @current_employee = nil
+    redirect_to root_url
   end
 
 end
