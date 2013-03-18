@@ -1,3 +1,3 @@
 <li>
-  <span>IN: <%= if !timesheet.punch_in.nil? then timesheet.punch_in.in_time_zone("GMT")+6.hour end %>________OUT: <%= timesheet.punch_out.in_time_zone("GMT")+6.hour %>
+  <span>IN: <%= if !timesheet.punch_in.nil? then timesheet.punch_in.in_time_zone("GMT")+6.hour end %>________OUT: <%= if !timesheet.punch_out.nil? then timesheet.punch_out.in_time_zone("GMT")+6.hour end %>
 </li>

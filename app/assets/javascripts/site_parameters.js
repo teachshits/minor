@@ -33,20 +33,4 @@ var automatic_left_nav = true;
 
 // Sets URL that AJAX uses to get the top navigation bar file
 var top_nav_url="";
-if (global_nav == true) {
-	if (BrowserDetect.browser+BrowserDetect.version == "Explorer6") {
-		// Sets URL to IE6 version of global navigation bar
-		top_nav_url="http://"+domain+"/lib/library/mcmaster_global_navigation_ie6.lbi";
-	} else {
-		// Set URL to non-IE6 version of global navigation bar
-		top_nav_url="http://"+domain+"/lib/library/mcmaster_global_navigation_accessibility.lbi";
-	}
-} else {
-	if (BrowserDetect.browser+BrowserDetect.version == "Explorer6") {
-		// Sets URL to IE6 version of local navigation bar
-		top_nav_url="http://"+domain+"/mcmaster_website_kit/Library/site_top_navigation_ie6.lbi";
-	} else {
-		// Set URL to non-IE6 version of local navigation bar
-		top_nav_url="http://"+domain+"/mcmaster_website_kit/Library/site_top_navigation.lbi";
-	}
-}
+

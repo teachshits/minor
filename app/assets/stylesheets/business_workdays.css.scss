@@ -4,9 +4,11 @@
 
 .business_workdays td:nth-child(2n+3) {
 	background-color: gray;
+	color: white;
 }
 .business_workdays td:nth-child(2n+2) {
 	background-color: green;
+	color: white;
 }
 .business_workdays td:first-child {
 	background-color: white;

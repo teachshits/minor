@@ -1,7 +1,7 @@
 class Employee < ActiveRecord::Base
 # TODO * Validation on model	
   has_secure_password
-  attr_accessible :name, :email, :payrate, :password, :rank, :position_ids, :workhours
+  attr_accessible :name, :email, :payrate, :password, :rank, :position_ids, :workhours, :punch_in, :punch_out, :change_log
   belongs_to :business
   has_many :schedules, dependent: :destroy
   has_many :avaliabilities, dependent: :destroy
