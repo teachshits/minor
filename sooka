@@ -1,101 +1,103 @@
-2013-03-18T09:15:41+00:00 app[web.1]:     35: 
-2013-03-18T09:15:41+00:00 app[web.1]:     34:   table tr.oddrow {background-color: silver; }
-2013-03-18T09:15:41+00:00 app[web.1]:     36:   </style>
-2013-03-18T09:15:41+00:00 app[web.1]:     37: <%= javascript_include_tag "site_parameters.js" %>
-2013-03-18T09:15:41+00:00 app[web.1]: 
-2013-03-18T09:15:41+00:00 app[web.1]: 
-2013-03-18T09:15:41+00:00 app[web.1]:     39: <script type="text/javascript">
-2013-03-18T09:15:41+00:00 app[web.1]:     38: <%= javascript_include_tag "site.js" %>
-2013-03-18T09:15:41+00:00 app[web.1]:     40: <!--
-2013-03-18T09:15:41+00:00 app[web.1]:   app/views/layouts/application.html.erb:37:in `_app_views_layouts_application_html_erb__349046629345878908_39346040'
-2013-03-18T09:15:41+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=18ms status=500 bytes=728
-2013-03-18T09:15:41+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=8ms status=200 bytes=0
-2013-03-18T09:18:16+00:00 app[web.1]: Started GET "/" for 37.113.174.109 at 2013-03-18 09:18:16 +0000
-2013-03-18T09:18:16+00:00 app[web.1]: Processing by SessionsController#new as HTML
-2013-03-18T09:18:16+00:00 app[web.1]: Completed 500 Internal Server Error in 6ms
-2013-03-18T09:18:16+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (1.0ms)
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 app[web.1]: ActionView::Template::Error (site_parameters.js isn't precompiled):
-2013-03-18T09:18:16+00:00 app[web.1]:     35: 
-2013-03-18T09:18:16+00:00 app[web.1]:     34:   table tr.oddrow {background-color: silver; }
-2013-03-18T09:18:16+00:00 app[web.1]:     36:   </style>
-2013-03-18T09:18:16+00:00 app[web.1]:     38: <%= javascript_include_tag "site.js" %>
-2013-03-18T09:18:16+00:00 app[web.1]:     39: <script type="text/javascript">
-2013-03-18T09:18:16+00:00 app[web.1]:     40: <!--
-2013-03-18T09:18:16+00:00 app[web.1]:   app/views/layouts/application.html.erb:37:in `_app_views_layouts_application_html_erb__349046629345878908_39346040'
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=25ms status=500 bytes=728
-2013-03-18T09:18:16+00:00 app[web.1]:     37: <%= javascript_include_tag "site_parameters.js" %>
-2013-03-18T09:18:16+00:00 app[web.1]: Started GET "/" for 37.113.174.109 at 2013-03-18 09:18:16 +0000
-2013-03-18T09:18:16+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (0.7ms)
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 app[web.1]:     35: 
-2013-03-18T09:18:16+00:00 app[web.1]:     37: <%= javascript_include_tag "site_parameters.js" %>
-2013-03-18T09:18:16+00:00 app[web.1]:     38: <%= javascript_include_tag "site.js" %>
-2013-03-18T09:18:16+00:00 app[web.1]:     39: <script type="text/javascript">
-2013-03-18T09:18:16+00:00 app[web.1]:     40: <!--
-2013-03-18T09:18:16+00:00 app[web.1]:   app/views/layouts/application.html.erb:37:in `_app_views_layouts_application_html_erb__349046629345878908_39346040'
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 app[web.1]: ActionView::Template::Error (site_parameters.js isn't precompiled):
-2013-03-18T09:18:16+00:00 app[web.1]: Processing by SessionsController#new as */*
-2013-03-18T09:18:16+00:00 app[web.1]:     36:   </style>
-2013-03-18T09:18:16+00:00 app[web.1]: Completed 500 Internal Server Error in 2ms
-2013-03-18T09:18:16+00:00 app[web.1]:     34:   table tr.oddrow {background-color: silver; }
-2013-03-18T09:18:16+00:00 app[web.1]: 
-2013-03-18T09:18:16+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=6ms service=17ms status=500 bytes=728
-2013-03-18T09:18:17+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=5ms status=304 bytes=0
-2013-03-18T09:19:15+00:00 heroku[slugc]: Slug compilation started
-2013-03-18T09:19:43+00:00 heroku[api]: Release v29 created by iamjacke@gmail.com
-2013-03-18T09:19:43+00:00 heroku[api]: Deploy 9ed3bf5 by iamjacke@gmail.com
-2013-03-18T09:19:43+00:00 app[web.1]: Started GET "/" for 37.113.174.109 at 2013-03-18 09:19:43 +0000
-2013-03-18T09:19:43+00:00 app[web.1]: Processing by SessionsController#new as HTML
-2013-03-18T09:19:43+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (0.8ms)
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 app[web.1]:     34:   table tr.oddrow {background-color: silver; }
-2013-03-18T09:19:43+00:00 app[web.1]:     35: 
-2013-03-18T09:19:43+00:00 app[web.1]: ActionView::Template::Error (site_parameters.js isn't precompiled):
-2013-03-18T09:19:43+00:00 app[web.1]:     37: <%= javascript_include_tag "site_parameters.js" %>
-2013-03-18T09:19:43+00:00 app[web.1]:     40: <!--
-2013-03-18T09:19:43+00:00 app[web.1]:     38: <%= javascript_include_tag "site.js" %>
-2013-03-18T09:19:43+00:00 app[web.1]: Completed 500 Internal Server Error in 2ms
-2013-03-18T09:19:43+00:00 app[web.1]:     36:   </style>
-2013-03-18T09:19:43+00:00 app[web.1]:     39: <script type="text/javascript">
-2013-03-18T09:19:43+00:00 app[web.1]:   app/views/layouts/application.html.erb:37:in `_app_views_layouts_application_html_erb__349046629345878908_39346040'
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=3ms service=23ms status=500 bytes=728
-2013-03-18T09:19:43+00:00 heroku[web.1]: State changed from up to starting
-2013-03-18T09:19:43+00:00 app[web.1]:     34:   table tr.oddrow {background-color: silver; }
-2013-03-18T09:19:43+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=2ms service=35ms status=500 bytes=728
-2013-03-18T09:19:43+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (0.8ms)
-2013-03-18T09:19:43+00:00 app[web.1]: Completed 500 Internal Server Error in 3ms
-2013-03-18T09:19:43+00:00 app[web.1]: Started GET "/" for 37.113.174.109 at 2013-03-18 09:19:43 +0000
-2013-03-18T09:19:43+00:00 app[web.1]:     35: 
-2013-03-18T09:19:43+00:00 app[web.1]:     36:   </style>
-2013-03-18T09:19:43+00:00 app[web.1]:     37: <%= javascript_include_tag "site_parameters.js" %>
-2013-03-18T09:19:43+00:00 app[web.1]: Processing by SessionsController#new as */*
-2013-03-18T09:19:43+00:00 app[web.1]:     39: <script type="text/javascript">
-2013-03-18T09:19:43+00:00 app[web.1]:   app/views/layouts/application.html.erb:37:in `_app_views_layouts_application_html_erb__349046629345878908_39346040'
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 app[web.1]:     40: <!--
-2013-03-18T09:19:43+00:00 app[web.1]: 
-2013-03-18T09:19:43+00:00 app[web.1]: ActionView::Template::Error (site_parameters.js isn't precompiled):
-2013-03-18T09:19:43+00:00 app[web.1]:     38: <%= javascript_include_tag "site.js" %>
-2013-03-18T09:19:43+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=2ms service=5ms status=304 bytes=0
-2013-03-18T09:19:43+00:00 heroku[slugc]: Slug compilation finished
-2013-03-18T09:19:45+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 57125`
-2013-03-18T09:19:47+00:00 heroku[web.1]: Stopping all processes with SIGTERM
-2013-03-18T09:19:48+00:00 app[web.1]: [2013-03-18 09:19:48] ERROR SignalException: SIGTERM
-2013-03-18T09:19:48+00:00 app[web.1]: 	/usr/local/lib/ruby/1.9.1/webrick/server.rb:90:in `select'
-2013-03-18T09:19:52+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:4)
-2013-03-18T09:19:52+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:4)
-2013-03-18T09:19:56+00:00 app[web.1]: => Call with -d to detach
-2013-03-18T09:19:56+00:00 app[web.1]: => Booting WEBrick
-2013-03-18T09:19:56+00:00 app[web.1]: => Rails 3.2.12 application starting in production on http://0.0.0.0:57125
-2013-03-18T09:19:56+00:00 app[web.1]: => Ctrl-C to shutdown server
-2013-03-18T09:19:56+00:00 app[web.1]: Connecting to database specified by DATABASE_URL
-2013-03-18T09:19:56+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
-2013-03-18T09:19:56+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
-2013-03-18T09:19:58+00:00 heroku[web.1]: Process exited with status 137
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:65: unknown regexp option - l
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:56: syntax error, unexpected tIDENTIFIER, expecting ')'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:62: syntax error, unexpected '<'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:601:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:56: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+2013-03-18T09:22:13+00:00 app[web.1]:                          ^
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/etag.rb:23:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/head.rb:14:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/flash.rb:242:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:75: syntax error, unexpected '<'
+2013-03-18T09:22:13+00:00 app[web.1]:       <li class="dropdown');@output_buffer.append= ( e...
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:66: syntax error, unexpected '<'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.12/lib/active_record/query_cache.rb:64:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:64: syntax error, unexpected '<'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:59: syntax error, unexpected tIDENTIFIER, expecting ')'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.12/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems
+/actionpack-3.2.12/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:              ^
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:101: unknown regexp options - hadr
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:                                     ^
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:77: syntax error, unexpected '<'
+2013-03-18T09:22:13+00:00 app[web.1]: unmatched close parenthesis: /div> 
+2013-03-18T09:22:13+00:00 app[web.1]:             <li>');@output_buffer.append= ( link_to "Отчеты", reports_url );@output_buffer.safe_concat('</i
+2013-03-18T09:22:13+00:00 app[web.1]:             <li><a href="">Calculation</a></li>
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:96: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+2013-03-18T09:22:13+00:00 app[web.1]: @output_buffer.safe_concat('		<div class="alert alert-error">
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:61: syntax error, unexpected '<', expecting ')'
+2013-03-18T09:22:13+00:00 app[web.1]:     41: function onload_function() {
+2013-03-18T09:22:13+00:00 app[web.1]:                                            ^
+2013-03-18T09:22:13+00:00 app[web.1]:       <ul class="nav">
+2013-03-18T09:22:13+00:00 app[web.1]: </
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+2013-03-18T09:22:13+00:00 app[web.1]: ');@output_buffer.safe_concat('	</i
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:36:in `render_template'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/renderer/renderer.rb:17:in `render'
+2013-03-18T09:22:13+00:00 app[web.1]: unmatched close parenthesis: /li>
+2013-03-18T09:22:13+00:00 app[web.1]: ');	 end 
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+2013-03-18T09:22:13+00:00 app[web.1]:     42:   return;
+2013-03-18T09:22:13+00:00 app[web.1]:             <li>');@output_buffer.append= ...
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/template.rb:244:in `block in compile!'
+2013-03-18T09:22:13+00:00 heroku[router]: at=info method=GET path=/ host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=44ms status=500 bytes=728
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_controller/metal/rescue.rb:29:in `process_action'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:18:in `render'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+2013-03-18T09:22:13+00:00 app[web.1]:                             		          ^
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_view/template.rb:297:in `module_eval'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/abstract_controller/callbacks.rb:17:in `process_action'
+2013-03-18T09:22:13+00:00 app[web.1]: /app/app/views/layouts/application.html.erb:76: unknown regexp option - l
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/abstract_controller/rendering.rb:110:in `_render_template'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.
+1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `_run__4422692137171995912__call__229935378562789023__callbacks'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+2013-03-18T09:22:13+00:00 app[web.1]: @output_buffer.safe_concat('
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/lock.rb:15:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/rack/logger.rb:32:in `call_app'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.12/lib/active_support/tagged_logging.rb:22:in `tagged'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-cache-1.2/lib/rack/cache/context.rb:136:in `forward'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-cache-1.2/lib/rack/cache/context.rb:245:in `fetch'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-cache-1.2/lib/rack/cache/context.rb:185:in `lookup'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-cache-1.2/lib/rack/cache/context.rb:66:in `call!'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-cache-1.2/lib/rack/cache/context.rb:51:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/engine.rb:479:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `block in call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/application.rb:223:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/rack/logger.rb:16:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/static.rb:62:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-3.2.12/lib/rails/rack/log_tailer.rb:17:in `call'
+2013-03-18T09:22:13+00:00 app[web.1]:   /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+2013-03-18T09:22:13+00:00 app[web.1]:   /usr/local/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+2013-03-18T09:22:13+00:00 app[web.1]:   /usr/local/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+2013-03-18T09:22:13+00:00 app[web.1]: 
+2013-03-18T09:22:13+00:00 app[web.1]: 
+2013-03-18T09:22:13+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.4.5/lib/rack/handler/webrick.rb:59:in `service'
+2013-03-18T09:22:13+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=minority.herokuapp.com fwd="37.113.174.109" dyno=web.1 queue=0 wait=0ms connect=1ms service=16ms status=200 bytes=0
+2013-03-18T09:22:16+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2013-03-18T09:22:16+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2013-03-18T09:22:18+00:00 heroku[web.1]: Process exited with status 137
