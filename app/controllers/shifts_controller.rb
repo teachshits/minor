@@ -11,8 +11,6 @@ class ShiftsController < ApplicationController
   # GET /shifts.json
   def index
     @shifts = Shift.scoped
-
-
     @initDate = Date.new(2013, 03, 13)
 
     logger.info @initDate
@@ -38,19 +36,9 @@ class ShiftsController < ApplicationController
       end
     
     end
-
-
-    @time = Schedule.find(2)
-    @range = (@time.period.p_start..@time.period.p_end).to_a
-    ###############################  @many = Schedule.find_all_by_employee_id()
-
-    @sooka = '[{"id":6,"title":"","description":"","start":"Sun, 3 Mar 2013 05:30:00 +0000","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}]'
-    respond_to do |format|
+      respond_to do |format|
       format.html # index.html.erb @shifts.as_json(:only => [:id, :title, :description,  :start, :end, :allDay, :recurring, :url])
-      # schedule_emp_show(@many).flatten
-      # schedule_all
-      # @time.schedule_show
-      format.js  { render :json => @time.schedule_show } 
+      format.js  { render :json => @shifts.as_json(:only => [:id, :title, :description,  :start, :end, :allDay, :recurring, :url]) } 
     end
   end
 
@@ -102,29 +90,21 @@ class ShiftsController < ApplicationController
   end
 
   # PUT /shifts/1
-  # PUT /shifts/1.json ############## UNCOMMENT
+  # PUT /shifts/1.json
   def update
     @title = "Home"
-    @schedule = Schedule.find(params[:id])
-    @start = (params[:shift]["starts_at"]).to_datetime
-    @end = (params[:shift]["ends_at"]).to_datetime
-    dw = (params[:shift]["starts_at"]).to_datetime.strftime("%a")
-    result = @schedule.update_attributes("#{dw}Start".to_sym => @start.to_time, "#{dw}End".to_sym => @end.to_time)
-    #@schedule.update_attributes(MonStart: @start.to_time, MonEnd: @end.to_time)
-    respond_to do |format|
-      #if 
-        #@shift.update_attributes(params[:shift])
-        #format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
-        #format.json { redirect_to @shift}
-        format.json { render json: "#{result}" }
-        
+    @shift = Shift.find(params[:id])
 
+    respond_to do |format|
+      if @shift.update_attributes(params[:shift])
+        format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
+        format.json { redirect_to @shift}
         #format.js { redirect_to @shift}
-      #else
-      #  format.html { render action: "edit" }
-      #  format.json { render json: @shift.errors, status: :unprocessable_entity }
-      #  format.js {render :js => @shift.errors, :status=> :unprocessable_entity}
-      #end
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @shift.errors, status: :unprocessable_entity }
+        format.js {render :js => @shift.errors, :status=> :unprocessable_entity}
+      end
     end
   end
 

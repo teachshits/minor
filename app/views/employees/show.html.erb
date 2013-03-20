@@ -35,9 +35,9 @@
 <%= link_to 'New Shift', new_shift_path%>
 <div id="calend">
   <% #if current_user.admin? %>
-    1<%= render 'adminCalendar' %>
+    <1%= render 'adminCalendar' %>
   <% #else %>
-    2<%= render 'userCalendar' %>
+    <%= render 'userCalendar' %>
   <% #end %>
 </div>
 

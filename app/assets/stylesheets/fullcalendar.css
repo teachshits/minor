@@ -258,9 +258,9 @@ a.fc-event {
 	}
 	
 .fc-event-skin {
-	border-color: #36c !important;     
-	background-color: #36c !important; 
-	color: #fff !important;            
+	border-color: #36c;     
+	background-color: #36c; 
+	color: #fff;            
 	}
 	
 .fc-event-inner {

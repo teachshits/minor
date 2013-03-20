@@ -3,59 +3,19 @@
 
 
 <% @schedule.sort.each do |sch| %>
-<% @employee = Employee.find_all_by_id(sch.employee_id) %>
-<% @period = Period.find(sch.period_id) %>
-<%= link_to "Граффик #{sch.id} — #{@employee.first.name} for #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
+<% @employee = Employee.find(sch.employee_id) %>
+<% @period = Period.last %>
+<%= link_to "Граффик #{sch.id} — #{@employee.name} for #{@period.p_start.to_s(:ru_datetime)} to #{@period.p_end.to_s(:ru_datetime)}", sch %>
 <br>
 <% end %>
 
-<section class="dayweek clearfix">   
-      <% %w{Mon Tue Wed Thu Fri Sat Sun}.each do |wday| %>
-      <div class="<%= wday %> dw">
-          <% @schedule.sort.each do |week| %>
-          <% @employee = Employee.find([[week.employee_id]]) %>  
-          <h6><%= if week.send("#{wday}Start") != nil; @employee.first.name end %></h6>
-          <%= wday %>
-          <div class="start"><%= week.send("#{wday}Start") %></div>
-          <div class="end"><%= week.send("#{wday}End") %></div>
-          
-      <% end %>
-      </div>
-    <% end %>
+
 
 </section>
-<div style: "clear:both;">
+<% @schedule.sort.each do |week| %>
+<%= week.starts_at %>
+<%= week.ends_at %>
+<%= week.employee.name %>
+<% end %>
 
-<% @schedule.each do |sch| %>
-<% @employee = Employee.find([[sch.employee_id]]) %>    
-<tr>
-      <br>
-      <br>
-      <td>ID: <%= sch.id %></td>
-      <td>Worker: <%= sch.employee_id %>
-      
-      Name: <%= @employee.first.name %>
-      
-      <%= link_to "Редактировать", :controller => "schedules", :action => "show", :id => sch.id %>
-      </td>
-      <br>
-      <br>
-      <div style="background: gray;">
-<td><b>ПН:</b><%= sch.MonStart %></td> => <td><%= sch.MonEnd %></td><br>
-<td><b>ВТ:</b><%= sch.TueStart %></td> => <td><%= sch.TueEnd %></td><br>
-<td><b>СР:</b><%= sch.WedStart %></td> => <td><%= sch.WedEnd %></td><br>
-<td><b>ЧТ:</b><%= sch.ThuStart %></td> => <td><%= sch.ThuEnd %></td><br>
-<td><b>ПТ:</b><%= sch.FriStart %></td> => <td><%= sch.FriEnd %></td><br>
-<td><b>СБ:</b><%= sch.SatStart %></td> => <td><%= sch.SatEnd %></td><br>
-<td><b>ВС:</b><%= sch.SunStart %></td> => <td><%= sch.SunEnd %></td><br>
-  
-      
-      
-      
-      
-      
-      
-      </div>
-    </tr>
-  <% end %>
   </div>
