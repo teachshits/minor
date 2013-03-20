@@ -39,23 +39,8 @@ class ShiftsController < ApplicationController
     
     end
 
-    #end
-    #@fifi = '[{"id":6,"title":"","description":"","start":"Tue, 05 Mar 2013 22:56:00","end":"Tue, 05 Mar 2013 22:56:00","allDay":false,"recurring":false,"url":"","userID":7}
-    #,{"id":7,"title":"ffsfs fsfss","description":"","start":"Tue, 05 Mar 2013 09:59:00","end":"Tue, 05 Mar 2013 17:59:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":10,"title":"","description":"","start":"Sat, 23 Mar 2013 11:00:00","end":"Sat, 23 Mar 2013 14:00:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":11,"title":"","description":"","start":"Tue, 10 Jan 2012 07:00:00","end":"Tue, 10 Jan 2012 10:30:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":12,"title":"","description":"","start":"Tue, 10 Jan 2012 11:00:00","end":"Tue, 10 Jan 2012 22:00:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":13,"title":"","description":"","start":"Wed, 11 Jan 2012 10:30:00","end":"Wed, 11 Jan 2012 14:30:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":15,"title":"","description":"","start":"Sun, 20 Apr 2014 23:05:00","end":"Wed, 30 Apr 2014 23:05:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":4,"title":"","description":"","start":"Thu, 14 Mar 2013 07:00:00","end":"Thu, 14 Mar 2013 09:00:00","allDay":false,"recurring":false,"url":"","userID":null},
-    #{"id":2,"title":"fdfd","description":"","start":"Sat, 16 Mar 2013 00:32:00","end":"Sun, 17 Feb 2013 00:32:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":1,"title":"","description":"","start":"Fri, 08 Mar 2013 06:30:00","end":"Fri, 08 Mar 2013 09:30:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":3,"title":"","description":"","start":"Thu, 14 Mar 2013 07:00:00","end":"Thu, 14 Mar 2013 09:30:00","allDay":false,"recurring":false,"url":"","userID":null},
-    #{"id":5,"title":"\u0420\u043e\u043c\u0430\u043d \u0422\u0430\u0440\u0430\u0441\u0435\u043d\u043a\u043e","description":"","start":"Sun, 10 Mar 2013 07:00:00","end":"Sun, 10 Mar 2013 09:30:00","allDay":false,"recurring":false,"url":"","userID":7},
-    #{"id":8,"title":"","description":"","start":"Thu, 14 Mar 2013 07:00:00","end":"Thu, 14 Mar 2013 10:30:00","allDay":false,"recurring":false,"url":"","userID":null}]'
-            #logger.info @fifi
-           ## Schedule finding
-    @time = Schedule.find(1)
+
+    @time = Schedule.find(2)
     @range = (@time.period.p_start..@time.period.p_end).to_a
     ###############################  @many = Schedule.find_all_by_employee_id()
 
@@ -117,21 +102,29 @@ class ShiftsController < ApplicationController
   end
 
   # PUT /shifts/1
-  # PUT /shifts/1.json
+  # PUT /shifts/1.json ############## UNCOMMENT
   def update
     @title = "Home"
-    @shift = Shift.find(params[:id])
-
+    @schedule = Schedule.find(params[:id])
+    @start = (params[:shift]["starts_at"]).to_datetime
+    @end = (params[:shift]["ends_at"]).to_datetime
+    dw = (params[:shift]["starts_at"]).to_datetime.strftime("%a")
+    result = @schedule.update_attributes("#{dw}Start".to_sym => @start.to_time, "#{dw}End".to_sym => @end.to_time)
+    #@schedule.update_attributes(MonStart: @start.to_time, MonEnd: @end.to_time)
     respond_to do |format|
-      if @shift.update_attributes(params[:shift])
-        format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
-        format.json { redirect_to @shift}
+      #if 
+        #@shift.update_attributes(params[:shift])
+        #format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
+        #format.json { redirect_to @shift}
+        format.json { render json: "#{result}" }
+        
+
         #format.js { redirect_to @shift}
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @shift.errors, status: :unprocessable_entity }
-        format.js {render :js => @shift.errors, :status=> :unprocessable_entity}
-      end
+      #else
+      #  format.html { render action: "edit" }
+      #  format.json { render json: @shift.errors, status: :unprocessable_entity }
+      #  format.js {render :js => @shift.errors, :status=> :unprocessable_entity}
+      #end
     end
   end
 

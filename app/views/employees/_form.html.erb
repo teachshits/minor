@@ -46,6 +46,24 @@
             	</label>
             <% end %>
       </div>
+      <div class="controls">
+       <!--    <% for seat in @employee.seats %>
+      <%= fields_for :seats, seat do |seat_form| %>
+        <p>
+          Должность: <%= seat.position.pos %>
+        </p>
+        <p>
+          Приоритет: <%= seat_form.number_field :rank %>
+        </p>
+      <% end %>
+    <% end %> -->
+    <%= f.fields_for :seats do |builder| %>
+    <p>
+        <%= builder.label "#{builder.object.position.pos}" %><br />
+        <%= builder.select("rank", [['Важный', 1], ['Средний', 2], ['Низкий', 3]]) %>
+    </p>
+<% end %>
+      </div>
 </div>
 <div class="control-group">
     <div class="controls employee_submit">
@@ -53,4 +71,3 @@
     </div>
   </div>
 <% end %>
-

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317204232) do
+ActiveRecord::Schema.define(:version => 20130319204510) do
 
   create_table "appr_positions", :force => true do |t|
     t.integer  "position_id"
@@ -106,11 +106,6 @@ ActiveRecord::Schema.define(:version => 20130317204232) do
     t.boolean  "manager"
   end
 
-  create_table "employees_positions", :id => false, :force => true do |t|
-    t.integer "position_id"
-    t.integer "employee_id"
-  end
-
   create_table "periods", :force => true do |t|
     t.date     "p_start"
     t.date     "p_end"
@@ -149,6 +144,14 @@ ActiveRecord::Schema.define(:version => 20130317204232) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "period_id"
+  end
+
+  create_table "seats", :force => true do |t|
+    t.integer  "position_id"
+    t.integer  "employee_id"
+    t.integer  "rank"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "shifts", :force => true do |t|

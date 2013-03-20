@@ -40,8 +40,9 @@ end
 def datetime_from_date_time(d, t)
 DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
 end
+# @time.schedule_show
 
-def schedule_show(schedule = self, period = self.period)
+def schedule_show(schedule = self, period = self.period, sch_id = self.id)
 	  @range = (period.p_start..period.p_end).to_a
 	  dw = %w{Mon Tue Wed Thu Fri Sat Sun}
 	  start_time = []
@@ -53,7 +54,7 @@ def schedule_show(schedule = self, period = self.period)
 	  start = calc_stime(start_time) #DATE ARRAY
 	  endd = calc_stime(end_time)   #DATE ARRAY
 	  result = start.zip(endd) # [[dw_start, dw_end], [..]]
-	  result = result.map{|item| item << schedule.employee.id; item << schedule.employee.name }
+	  result = result.map{|item| item << sch_id; item << schedule.employee.name }
 	  final = []
 	  result.each do |res|
 	  final << Hash[*("start,end,id,name".split(',').zip(res).flatten)]
@@ -80,7 +81,7 @@ def schedule_show(schedule = self, period = self.period)
 	    elem["userID"] = schedule.employee.id
 	    lol << elem
 	  end
-	  lol
+	  #lol
 end      
 
     

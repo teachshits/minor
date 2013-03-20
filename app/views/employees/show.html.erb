@@ -9,7 +9,13 @@
 <br>
 <td> workhours: "<%= @employee.workhours %>" </td>
 <br>
-<td> at position: "<%= @employee.positions %>" </td>
+<td> at position: "
+<% @employee.seats.each do |seat| %> 
+  <%= seat.position.pos %> 
+  <%= rank(seat.rank) %>
+  <br>
+<% end %>"
+</td>
 <br>
 <td><%= @schedule %></td>
 <br>

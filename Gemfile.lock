@@ -92,6 +92,7 @@ GEM
       spork (>= 0.8.4)
       sys-proctable
     hike (1.2.1)
+    hirb (0.7.1)
     hyperpdf (0.1.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -117,6 +118,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-rails (0.2.2)
+      pry (>= 0.9.10)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -209,10 +212,12 @@ DEPENDENCIES
   factory_girl_rails (= 4.1.0)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
+  hirb
   hyperpdf
   jquery-rails
   macaddr
   pg
+  pry-rails
   railroady
   rails
   rspec-rails (= 2.11.0)
