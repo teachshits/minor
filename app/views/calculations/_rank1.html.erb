@@ -1,7 +1,6 @@
 <section class="rank1">
 		<h3>Rank 1</h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
-		<ul>
 		<span>People with that rank: </span>
 		<% @emp_r1.each do |emp| %>
 			<li><%= emp.name %> | <%= emp.workhours %> h</li>
@@ -10,10 +9,7 @@
 		<% end %>	
 		</ul>
 		<h5>Selected:</h5>
-		<%= @quantity %>
 		<ul>
-			<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
-			 <% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
 			<% @selected.each do |selected| %>	 
 				<%= selected.name %> selected for
 					<%= @start %> to
@@ -24,7 +20,7 @@
 				<% @array << @start %>
 				<% @array << @last %>
 				<% if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2 %>
-				<% @start = @last if @last <= @end %>
+				<% @start = @last if @last <= @end %><%# Asign Start point with last point only if we has need length % quantity %>
 				<% end %>
 			<% end %>
 		<% end %>

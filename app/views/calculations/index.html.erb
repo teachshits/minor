@@ -20,15 +20,22 @@
 
 <main class="span7">
 	<h2>One day calculation: <%= @DW[0] %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %> <%=  %></h2>
-	<% @red = [] %>
-	<% @green = [] %>
 	<% @array = [] %>
-	<% @selectedarray = [] %>
+	<% @quantity = 2 %>
+	<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
+	<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
 	<%= render "rank1" %>
-	<% ##if @last < @end %>
-	<1%= render "rank2" %>
-	<% #if @last < @end %>
-	<1%= render "rank3" %>
-	<% #end #rank 3 %>
+	
+	<% if @last < @end %>
+	<% @selected = [] %>
+	<% @start = @last if @array.in_groups_of(3).length % @quantity == 0 %><%# Doest asign start if user doesnt % to quantity %>
+	<%= render "rank2" %>
+	<% end #rank 2 %>
+	
+	<% if @last < @end || !(@array.in_groups_of(3).length % @quantity == 0) %><%# render 3 rank if user % to quantity %>
+	<% @selected = [] %>
+	<% @start = @last if @array.in_groups_of(3).length % @quantity == 0 %><%# Doest asign start if user % to quantity %>
+	<%= render "rank3" %>
+	<% end #rank 3 %>
 	<%= render "results" %>
 </main>

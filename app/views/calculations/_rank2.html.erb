@@ -1,69 +1,31 @@
 <section class="rank2">
 		<h3>Rank 2</h3>
 		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
-		<ul>
 		<span>People with that rank: </span>
-	<%  @red = [] %>
-	<%  @green = [] %>
-	<% @emp_r2.each do |emp| %>
-		<li><%= emp.name %> | <%= emp.workhours %> h</li>
-		<% @userhour = emp.workhours %>
-		<!-- Avaliabilities check for empty  -->
-		<% if (!emp.avaliabilities.last.to_s.empty?) then @av = emp.avaliabilities.last.avaliability_items.all else @av.clear %>
-		<% end %>
-		<!-- Avaliabilities puts all -->
-		<% @av.each do |av| %>
-	<span><%= link_to "day", edit_avaliability_item_url(av) %> <%= av.day %>:</span>
-		<li class="type<%= av.type_d %>">
-		<%= av.start_time.to_s(:ru_datetime) %> | <%= av.end_time.to_s(:ru_datetime) %> | type: <%= av.type_d %>
-		</li>
-		<!-- Avaliabilities puts in array by type -->
-	    <% if av.type_d == 1 then @red << av end %>
-	    <% if av.type_d == 2 then @green << av end %>
-	 <% end %>
-	<% #if !Emp.Schedule.Period.DW?nil then %>
-	<% unless @last == @end %>
-	<% @selected << emp %>
-	<% end %>
-	<% #end %>
-	
-	<% end %>	
-	</ul>
-	<h5>Selected:</h5>
-	<ul>
-		<li><1%= @selected %></li>
-		<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
-		<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
-		<% @selected.each do |selected| %>	 
-		<%= selected.name %> selected for
-		<%= @start %> to
-		<% #Avoid perebor 1 option %>
-		<% @last = @start + selected.workhours.hour %>
-		<% if !@last.nil? && @last > @end %> 
-		<%= @last = @end %>
-		<% else %>
-		<%= @last %>
-		<% end %>
-		<%# Global array for selected results %>
-		<% @array << selected.name %>
-		<% @array << @start %>
-		<% @array << @last %>
-		</br>
-		<% if @last < @end then @start = @last end %>
-		<% end %>
+		<% @emp_r2.each do |emp| %>
+			<li><%= emp.name %> | <%= emp.workhours %> h</li>
+			<% @userhour = emp.workhours %>
+		<% @selected << emp %>
+		<% end %>	
 		</ul>
-		<ul class="avaliabilities">
-			<li>@green</li>
-			<li>@blank</li>
-			<li>red</li>
-		</ul>cypa
 		<h5>Selected:</h5>
 		<ul>
-			<li>user</li>
-			<li>user</li>
-			<li>user</li>
+			<% @selected.each do |selected| %>	 
+				<%= selected.name %> selected for
+					<%= @start %> to
+					<%= @last = @start + selected.workhours.hour %>
+				<% !@last.nil? && @last > @end ? @last = @end : @last # avoid overload of end time company %> 	
+				<% unless @start == @last %>
+				<% @array << selected.name %>
+				<% @array << @start %>
+				<% @array << @last %>
+				<% if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2 %>
+				<% @start = @last if @last <= @end %><%# Asign Start point with last point only if we has need length % quantity %>
+				<% end %>
+			<% end %>
+		<% end %>
 		</ul>
 		<small>@quantity</small>
-		<strong>Result: <%= @array %> </strong>
-
+		
+		<strong>Result: <%= @array.length %> <%= @array %> are selected, need <%= @quantity - @array.length %> </strong>
 	</section>

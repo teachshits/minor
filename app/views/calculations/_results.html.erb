@@ -1,5 +1,6 @@
 <section class="results">
-	    <% unless @last = @end then %>
+	<%= @last == @end %><%= @last %> <%= @end %>
+	    <% unless (@array.in_groups_of(3).length % @quantity == 0) && @last == @end %><%# Put conflict message %>
 	    <strong><b> CONFLICT </b></strong>
 	    <% end %>
 		<p><strong>Result: selected <br><% @array.each do |selected| %>
