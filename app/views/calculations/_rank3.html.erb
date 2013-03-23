@@ -1,31 +1,42 @@
 <section class="rank3">
-		<h3>Rank 3</h3>
-		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
-		<span>People with that rank: </span>
-		<% @emp_r3.each do |emp| %>
-			<li><%= emp.name %> | <%= emp.workhours %> h</li>
-			<% @userhour = emp.workhours %>
-		<% @selected << emp %>
-		<% end %>	
-		</ul>
-		<h5>Selected:</h5>
-		<ul>
-			<% @selected.each do |selected| %>	 
-				<%= selected.name %> selected for
-					<%= @start %> to
-					<%= @last = @start + selected.workhours.hour %>
-				<% !@last.nil? && @last > @end ? @last = @end : @last # avoid overload of end time company %> 	
-				<% unless @start == @last %>
-				<% @array << selected.name %>
-				<% @array << @start %>
-				<% @array << @last %>
-				<% if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2 %>
-				<% @start = @last if @last <= @end %><%# Asign Start point with last point only if we has need length % quantity %>
-				<% end %>
+	<h3>Rank 3</h3>
+	<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
+	<span>People with that rank: </span>
+	<% @emp_r3.each do |emp| %>
+		<li><%= emp.name %> | <%= emp.workhours %> h</li>
+		<% @userhour = emp.workhours %>
+	<% @selected << emp %>
+	<% end %>	
+	</ul><% @killing = @last %>
+	<h5>Selected:</h5><%= @saving %> savingbegin
+	<ul><%= @last %>last
+		<% @selected.each do |selected| %>
+			
+		<!-- <b style="color: red;">1if <%= @start %> <%= @killing %></b><br>
+		<% if !@saving.nil? || @start == @killing %> 
+			<% @start = @saving unless @saving.nil? %>
+			<%  @saving = nil %> 
+			<% else %>
+			<% @start = @killing %>
+		<% end %>
+		<b style="color: blue;">2if <%= @start %> <%= @killing %></b><br> -->
+		
+		
+			<%= selected.name %> selected for
+				<%= @start %> to
+				<%= @last = @start + selected.workhours.hour %>
+			<% !@last.nil? && @last > @end ? @last = @end : @last # avoid overload of end time company %> 	
+			<% unless @start == @last %>
+			<% @array << selected.name %>
+			<% @array << @start %>
+			<% @array << @last %>
+			<% if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2 %>
+			<% @start = @last if @last <= @end %><%# Asign Start point with last point only if we has need length % quantity %>
 			<% end %>
 		<% end %>
-		</ul>
-		<small>@quantity</small>
-		
-		<strong>Result: <%= @array.length %> <%= @array %> are selected, need <%= @quantity - @array.length %> </strong>
-	</section>
+	<% end %>
+	</ul>
+	<small>@quantity</small>
+	
+	<strong>Result: <%= @array.length %> <%= @array %> are selected, need <%= @quantity - @array.length %> </strong>
+</section>

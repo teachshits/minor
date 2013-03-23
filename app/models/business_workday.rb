@@ -7,6 +7,9 @@ class BusinessWorkday < ActiveRecord::Base
   belongs_to :business
 end
 
+def datetime_from_date_time(d, t)
+		DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
+end
 ## SEND CHANGER
 # class BusinessWorkday #добавляем в этотм класс метод в котором преобразование происходят
 # def wday_start

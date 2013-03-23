@@ -1,12 +1,13 @@
+<%     Time::DATE_FORMATS[:ru_datetime] = "%Y.%m.%d v %k:%M:%S" %>
 <section class="results">
-	<%= @last == @end %><%= @last %> <%= @end %>
 	    <% unless (@array.in_groups_of(3).length % @quantity == 0) && @last == @end %><%# Put conflict message %>
 	    <strong><b> CONFLICT </b></strong>
 	    <% end %>
-		<p><strong>Result: selected <br><% @array.each do |selected| %>
-		
-		<%= selected %>
-		<br>
+		<p><strong>Result: selected <br>
+		<% @array.each do |selected| %>
+			<%= selected if selected.class == String %>
+			<%= selected.to_s(:ru_datetime) if selected.class == DateTime %>
+			<br>
 		<% end %>
 		</strong></p>
 		<p><strong>Day complete: ?<%= @end %> - <%= @last %> = <%= @end-@last %></strong></p>
@@ -17,4 +18,4 @@
 		<big>
 		<%= Time.at(@hl).utc.strftime("%H:%M") %> left
 		</big>
-	</section>
+</section>

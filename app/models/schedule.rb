@@ -42,47 +42,47 @@ DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
 end
 # @time.schedule_show
 
-def schedule_show(schedule = self, period = self.period, sch_id = self.id)
-	  @range = (period.p_start..period.p_end).to_a
-	  dw = %w{Mon Tue Wed Thu Fri Sat Sun}
-	  start_time = []
-	  end_time = []
-	  dw.each do |dayweek|
-	    start_time << schedule.send("#{dayweek}Start")
-	    end_time << schedule.send("#{dayweek}End")   
-	  end
-	  start = calc_stime(start_time) #DATE ARRAY
-	  endd = calc_stime(end_time)   #DATE ARRAY
-	  result = start.zip(endd) # [[dw_start, dw_end], [..]]
-	  result = result.map{|item| item << sch_id; item << schedule.employee.name }
-	  final = []
-	  result.each do |res|
-	  final << Hash[*("start,end,id,name".split(',').zip(res).flatten)]
-	  end
-	  a = []
-	  final.each do |final|
-	      lol = []
-	      lol << final["id"]
-	      lol << final["start"]
-	      lol << final["end"]
-	      a << lol
-	  end
-	  fififi = []
-	  a.each do |res|
-	     fififi << Hash[*("id,start,end,title,description,allDay,recurring,url,userID".split(',').zip(res).flatten)]
-	  end
-	  lol = []
-	  fififi.each do |elem|
-	    elem["title"] = "#{schedule.employee.name}"
-	    elem["description"] = "#{schedule.employee.name}"
-	    elem["allDay"] = false
-	    elem["recurring"] = false
-	    elem["url"] = ""
-	    elem["userID"] = schedule.employee.id
-	    lol << elem
-	  end
-	  #lol
-end      
+# def schedule_show(schedule = self, period = self.period, sch_id = self.id)
+# 	  @range = (period.p_start..period.p_end).to_a
+# 	  dw = %w{Mon Tue Wed Thu Fri Sat Sun}
+# 	  start_time = []
+# 	  end_time = []
+# 	  dw.each do |dayweek|
+# 	    start_time << schedule.send("#{dayweek}Start")
+# 	    end_time << schedule.send("#{dayweek}End")   
+# 	  end
+# 	  start = calc_stime(start_time) #DATE ARRAY
+# 	  endd = calc_stime(end_time)   #DATE ARRAY
+# 	  result = start.zip(endd) # [[dw_start, dw_end], [..]]
+# 	  result = result.map{|item| item << sch_id; item << schedule.employee.name }
+# 	  final = []
+# 	  result.each do |res|
+# 	  final << Hash[*("start,end,id,name".split(',').zip(res).flatten)]
+# 	  end
+# 	  a = []
+# 	  final.each do |final|
+# 	      lol = []
+# 	      lol << final["id"]
+# 	      lol << final["start"]
+# 	      lol << final["end"]
+# 	      a << lol
+# 	  end
+# 	  fififi = []
+# 	  a.each do |res|
+# 	     fififi << Hash[*("id,start,end,title,description,allDay,recurring,url,userID".split(',').zip(res).flatten)]
+# 	  end
+# 	  lol = []
+# 	  fififi.each do |elem|
+# 	    elem["title"] = "#{schedule.employee.name}"
+# 	    elem["description"] = "#{schedule.employee.name}"
+# 	    elem["allDay"] = false
+# 	    elem["recurring"] = false
+# 	    elem["url"] = ""
+# 	    elem["userID"] = schedule.employee.id
+# 	    lol << elem
+# 	  end
+# 	  #lol
+# end      
 
     
 end

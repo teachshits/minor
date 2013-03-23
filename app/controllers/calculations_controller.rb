@@ -1,16 +1,14 @@
 class CalculationsController < ApplicationController
-# TODO add named_scopes
-# OPTIMIZE improve the code 
-# TODO Fill data in DB
-# Not select before? 
-# TODO Smart selection | Often selection
-# TODO 2. quantity > 1
-# TODO Grenn exapnder, workday expander | Smart selecting
+# TODO: add named_scopes
+# OPTIMIZE: improve the code 
+# TODO: Fill data in DB
+# TODO: Not select before? 
+# TODO: Grenn exapnder, workday expander | Smart selecting Smart selection | Often selection
 def index
 	# Calculation variables	
 	@workhour = BusinessWorkday.first
-	@DW = %w{Mon}
-	@wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start")
+	@dw = (params[:dw])
+	@wd = @workhour.send("#{@dw}End") - @workhour.send("#{@dw}Start") ## CLEAR THAT SHIT
 	@period = Period.last
 	@period_d = @period.p_start..@period.p_end
 	@positions = Position.find(params[:position])
@@ -22,6 +20,7 @@ def index
     @selected = []
 end
 private 
+
 #r = (time1.to_i..time2.to_i) it timespaps
 # ((8..12).to_a & (10..20).to_a).present?
 # (8..12).overlaps?(10..20)
