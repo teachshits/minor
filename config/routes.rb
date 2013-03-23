@@ -1,34 +1,22 @@
 Minority::Application.routes.draw do
-  
-  resources :reports
-
-  resources :avaliability_items
-
-
-  resources :avaliabilities
-
 
   resources :business_workdays
-
-
-  resources :appr_positions
-  # GUI STUFF
-  resources :calendar
-  resources :shifts do
-
-    get 'by_id', :on => :collection
-end
-  # END GUI STUFF
-
-  resources :periods
-
-
   resources :positions
-
+  resources :appr_positions
+  resources :employees
+  resources :reports
+  resources :shifts do
+    get 'by_id', :on => :collection
+  end
   resources :timesheets, only: [:create, :update]
   resources :schedules
+  resources :periods
+
+  resources :avaliability_items
+  resources :avaliabilities
+
   resources :calculations
-  resources :employees
+  
   resources :businesses
   resource :sessions
   resources :usersessions, only: [:new, :create, :destroy]
@@ -38,6 +26,7 @@ end
   match '/logout', to: 'usersessions#destroy', via: :delete
   match '/exit', to: 'sessions#destroy', via: :delete
   match '/timesheets/:id', to: 'timesheets#update'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

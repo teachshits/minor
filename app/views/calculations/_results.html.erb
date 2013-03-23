@@ -1,8 +1,13 @@
 <section class="results">
-	    <% if (!@last = @end) then %>
+	    <% unless @last = @end then %>
 	    <strong><b> CONFLICT </b></strong>
 	    <% end %>
-		<p><strong>Result: selected <%= @array %></strong></p>
+		<p><strong>Result: selected <br><% @array.each do |selected| %>
+		
+		<%= selected %>
+		<br>
+		<% end %>
+		</strong></p>
 		<p><strong>Day complete: ?<%= @end %> - <%= @last %> = <%= @end-@last %></strong></p>
 		<strong><%= Time.at(@wd).utc.strftime("%H:%M").to_i - Time.at(@userhour).utc.strftime("%H:%M").to_i %> </strong>
 		

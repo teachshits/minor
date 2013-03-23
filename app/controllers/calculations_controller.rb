@@ -12,17 +12,13 @@ def index
 	@DW = %w{Mon}
 	@wd = @workhour.send("#{@DW.first}End") - @workhour.send("#{@DW.first}Start")
 	@period = Period.last
-	@positions = Position.find(14)
-	@emp = Position.find_by_id(14).employees
-	@quantity = ApprPosition.find_by_position_id(14).Mon
-	# Rails 4
-	# @emp_r1 = Employee.where(position_id: 14).where(rank: 1)
-	@emp_r1 = Position.find_by_id(14).employees.where(rank: 1)
-	@emp_r2 = Position.find_by_id(14).employees.where(rank: 2)
-	@emp_r3 = Position.find_by_id(14).employees.where(rank: 3)
-	#@emp_r1 = Employee.find_all_by_position_id_and_rank(14, 1)
-	#@emp_r2 = Employee.find_all_by_position_id_and_rank(14, 2)
-	#@emp_r3 = Employee.find_all_by_position_id_and_rank(14, 3)
+	@period_d = @period.p_start..@period.p_end
+	@positions = Position.find(params[:position])
+	@emp = Position.find(params[:position]).employees
+	@quantity = ApprPosition.find_by_position_id(params[:position]).Mon
+	@emp_r1 = Position.find(params[:position]).employees.where(rank: 1)
+	@emp_r2 = Position.find(params[:position]).employees.where(rank: 2)
+	@emp_r3 = Position.find(params[:position]).employees.where(rank: 3)
     @selected = []
 end
 private 

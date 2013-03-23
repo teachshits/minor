@@ -22,7 +22,7 @@
 	    <% if av.type_d == 2 then @green << av end %>
 	 <% end %>
 	<% #if !Emp.Schedule.Period.DW?nil then %>
-	<% unless @last = @end %>
+	<% unless @last == @end %>
 	<% @selected << emp %>
 	<% end %>
 	<% #end %>
@@ -31,9 +31,6 @@
 	</ul>
 	<h5>Selected:</h5>
 	<ul>
-	<% @selected.clear %>
-
-	<%= @selected %>
 		<li><1%= @selected %></li>
 		<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
 		<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
