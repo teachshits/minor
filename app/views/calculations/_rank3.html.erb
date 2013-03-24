@@ -12,16 +12,19 @@
 	<ul><%= @last %>last
 		<% @selected.each do |selected| %>
 			
-		<!-- <b style="color: red;">1if <%= @start %> <%= @killing %></b><br>
+		<b style="color: red;">1if <%= @start %> <%= @killing %></b><br>
 		<% if !@saving.nil? || @start == @killing %> 
 			<% @start = @saving unless @saving.nil? %>
 			<%  @saving = nil %> 
 			<% else %>
-			<% @start = @killing %>
+			<% if !(@start == @last) then @start = @killing end %>#####WORK
 		<% end %>
-		<b style="color: blue;">2if <%= @start %> <%= @killing %></b><br> -->
+		<b style="color: blue;">2if <%= @start %> <%= @killing %></b><br>
 		
-		
+		<%# if @array.length % @quantity %>
+		<%# @start = @array.each do |d| %>
+		<%# d.[2] == END POINT OF DAY %>
+		<%# end %>
 			<%= selected.name %> selected for
 				<%= @start %> to
 				<%= @last = @start + selected.workhours.hour %>

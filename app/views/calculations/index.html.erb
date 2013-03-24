@@ -21,12 +21,10 @@
 <main class="span7">
 	<h2>One day calculation: <%= @dw %> | <%= @period.p_start.to_s(:ru_datetime) %> to <%= @period.p_end.to_s(:ru_datetime) %> <%=  %></h2>
 	
-	<% @array = [] %>
-	<%= @start = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}Start"))) %>
-	<% @end = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}End"))) %>
+	
 	<%= render "rank1" %>
 	
-	<% if @last < @end %>
+	<% if @last < @end || @start < @end %>
 	<% @selected = [] %>
 	<% @start = @last if @array.in_groups_of(3).length % @quantity == 0 %><%# Doest asign start if user doesnt % to quantity %>
 	<%= render "rank2" %>

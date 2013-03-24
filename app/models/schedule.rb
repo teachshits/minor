@@ -40,6 +40,101 @@ end
 def datetime_from_date_time(d, t)
 DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
 end
+# rank1(@emp_r1).in_groups_of(3)
+def rank1(quantity=2, emp_r1) 
+	selected = []
+	array = []
+	workhour = []
+	@savings = []
+	@start = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}Start")))
+	@endd = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}End")))
+	emp_r1.each do |emp|
+		userhour = emp.workhours
+		selected << emp
+	end
+	#if !(@savings.nil?) then @start = @savings.first; @savings.shift;  end
+	selected.each do |selected|
+		if workhour.nil? then workhour = selected.workhours.hour end
+		if workhour != selected.workhours.hour then @savings << @last; workhour = selected.workhours.hour; end # save normal time for employer
+		@last = @start + selected.workhours.hour
+
+		!@last.nil? && @last > @endd ? @last = @endd : @last # avoid overload of end time company
+			unless @start == @last # Put to array only if start point not equal last
+			array << selected.name
+			array << @start
+			array << @last
+
+				if array.in_groups_of(3).length == quantity || array.in_groups_of(3).length == quantity*2
+				#old selectors @start = @last if @last <= @endd
+					if !(@savings.nil?) then @start = @savings.first; @savings.shift; else # Dont asign start p if saving exist
+					@start = array.last if @start <= @endd
+					end
+				end
+			end
+			p @last
+	end
+	p array
+end
+def rank2(quantity=2, emp_r2) 
+	selected = []
+	array = []
+	workhour = []
+	emp_r2.each do |emp|
+		userhour = emp.workhours
+		selected << emp
+	end
+	selected.each do |selected|
+		if workhour.nil? then workhour = selected.workhours.hour end
+		if workhour != selected.workhours.hour then @savings << @last; workhour = selected.workhours.hour; end # save normal time for employer
+		@last = @start + selected.workhours.hour
+
+		!@last.nil? && @last > @endd ? @last = @endd : @last # avoid overload of end time company
+			unless @start == @last # Put to array only if start point not equal last
+			array << selected.name
+			array << @start
+			array << @last
+				if array.in_groups_of(3).length == quantity || array.in_groups_of(3).length == quantity*2
+				#old selectors @start = @last if @last <= @endd
+					#!#  if !(@savings.nil?) then @start = @savings.first; @savings.shift; else # Dont asign start p if saving exist
+					@start = array.last if @start <= @endd
+					end
+				end
+			end
+	end
+	array
+end
+def rank3(quantity=2, emp_r3) 
+	selected = []
+	array = []
+	workhour = []
+	emp_r3.each do |emp|
+		userhour = emp.workhours
+		selected << emp
+	end
+	if !(@savings.nil?) then @start = @savings.first; @savings.shift;  end
+	selected.each do |selected|
+		if workhour.nil? then workhour = selected.workhours.hour end
+		if workhour != selected.workhours.hour then @savings << @last; workhour = selected.workhours.hour; end # save normal time for employer
+		@last = @start + selected.workhours.hour
+
+		!@last.nil? && @last > @endd ? @last = @endd : @last # avoid overload of end time company
+			unless @start == @last # Put to array only if start point not equal last
+			array << selected.name
+			array << @start
+			array << @last
+				if array.in_groups_of(3).length == quantity || array.in_groups_of(3).length == quantity*2
+				#old selectors @start = @last if @last <= @endd
+					if !(@savings.nil?) then @start = @savings.first; @savings.shift; else # Dont asign start p if saving exist
+					@start = array.last if @start <= @endd
+					end
+				end
+			end
+	end
+	array
+end
+
+
+
 # @time.schedule_show
 
 # def schedule_show(schedule = self, period = self.period, sch_id = self.id)

@@ -8,22 +8,7 @@
 	<% @selected << emp %>
 	<% end %>	
 	</ul>
-	<h5>Selected:</h5>
-	<ul>
-		<% @selected.each do |selected| %>	 
-			<%= selected.name %> selected for
-				<%= @start %> to
-				<%= @last = @start + selected.workhours.hour %>
-			<% !@last.nil? && @last > @end ? @last = @end : @last # avoid overload of end time company %> 	
-			<% unless @start == @last %>
-			<% @array << selected.name %>
-			<% @array << @start %>
-			<% @array << @last %>
-			<% if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2 %>
-			<% @start = @last if @last <= @end %><%# Asign Start point with last point only if we has need length % quantity %>
-			<% end %>
-		<% end %>
-	<% end %>
+	<% @array = rank1 %>
 	</ul>
 	<small>@quantity</small>
 	
