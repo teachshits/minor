@@ -45,13 +45,14 @@ over = -> { datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@d
 
 # rank(@emp_r1).in_groups_of(3)
 def rank(emps1) 
-	@bad2 = []
+	@bad2 = [] 
+	@bad3 = []
 	@array = []
 	@start = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}Start"))) # Mon, 18 Mar 2013 08:15:00 +0000
 	@over = datetime_from_date_time(@period.p_start,Time.at(@workhour.send("#{@dw}End"))) # Mon, 18 Mar 2013 23:00:00 +0000
 		emps1.each do |emp|
-			bad2 if @quantity >1 && @quantity <3
-			bad3 if @quantity >3
+			bad2 if @quantity == 2 && 
+			bad3 if @quantity >=3 && !(@bad3.nil?)
 			@last = last(emp.workhours.hour, @start, @over)
 			enter(emp.name, @start, @last, @quantity)
 		end
@@ -67,8 +68,8 @@ def last(wh, start, over)
 end
 def enter(name, start, last, quantity)
   unless start == last # Put to array only if start point not equal last
-				@bad2 << @array.last if !(@array.last.nil?) && last != @array.last && @array.last != @endd && @bad.last != last && @quantity >1 && @quantity <3
-				@bad3 << @array.last if !(@array.last.nil?) && last != @array.last && @array.last != @endd && @bad.last != last && @quantity >3
+				@bad2 << @array.last if !(@array.last.nil?) && last != @array.last && last != @over && @bad.last != last && @quantity == 2
+				@bad3 << @array.last if !(@array.last.nil?) && @array.last != @over && @quantity >=3
 				@array << name
 				@array << start
 				@array << last
@@ -85,11 +86,14 @@ def bad2 # If workhour various check diffirency and owerwrite start
 	end
 end
 def bad3 # If workhour various check diffirency and owerwrite start 
-	unless @bad3.nil?
-		@bad3 << @start
-		@start = @bad3.first
-		@bad3.shift
-	end
+	#if @array.in_groups_of(3).length == @quantity || @array.in_groups_of(3).length == @quantity*2
+		unless @bad3.nil?
+		if @array.in_groups_of(3).length > @quantity && @array.in_groups_of(3).length < @quantity*2
+			@start = @bad3.first
+			@bad3.shift
+		end
+		end 
+	#end
 end
 
 end

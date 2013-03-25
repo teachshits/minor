@@ -24,13 +24,13 @@
 	
 	<%= render "rank1" %>
 	
-	<% if @last < @end || @start < @end %>
+	<% if @last < @endd || @start < @endd %>
 	<% @selected = [] %>
 	<% @start = @last if @array.in_groups_of(3).length % @quantity == 0 %><%# Doest asign start if user doesnt % to quantity %>
 	<%= render "rank2" %>
 	<% end #rank 2 %>
 	
-	<% if @last < @end || !(@array.in_groups_of(3).length % @quantity == 0) %><%# render 3 rank if user % to quantity %>
+	<% if @last < @endd || !(@array.in_groups_of(3).length % @quantity == 0) %><%# render 3 rank if user % to quantity %>
 	<% @selected = [] %>
 	<% @start = @last if @array.in_groups_of(3).length % @quantity == 0 %><%# Doest asign start if user % to quantity %>
 	<%= render "rank3" %>
