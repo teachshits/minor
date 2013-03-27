@@ -1,0 +1,73 @@
+<section class="rank1">
+		<h3>Rank 1<%= true %></h3>
+		<small>for <%= @positions.pos %> need <%= @quantity %> people</small>
+		<ul>
+		<% @av = [] %>
+		<span>People with that rank: </span>
+		<% @emp_r1.each do |emp| %>
+			<li><%= emp.name %> | <%= emp.workhours %> h</li>
+			<% @userhour = emp.workhours %>
+			<!-- Avaliabilities check for empty  -->
+			<%# unless emp.avaliabilities.first.to_s.nil? then @av = emp.avaliabilities.first.avaliability_items.all else @av.clear %>
+			<% #end %>
+			<!-- Avaliabilities puts all -->
+			<% @av.each do |av| %>
+		<span><%= link_to "day", edit_avaliability_item_url(av) %> <%= av.day %>:</span>
+			<li class="type<%= av.type_d %>">
+			<%= av.start_time.to_s(:ru_datetime) %> | <%= av.end_time.to_s(:ru_datetime) %> | type: <%= av.type_d %>
+			</li>
+			<!-- Avaliabilities puts in array by type -->
+		    <% if av.type_d == 1 then @red << av end %>
+		    <% if av.type_d == 2 then @green << av end %>
+		 <% end %>
+		<% unless emp.schedules.nil? && emp.schedules.MonStart.nil? then %>
+		<% @selected << emp %>
+		<% end %>
+		
+		<% end %>	
+		</ul>
+		<h5>Selected:</h5>
+		<ul>
+			<li><1%= @selected %></li>
+			<% @end = Time.at(@workhour.send("#{@DW.first}End")) %>
+			<%= @start = Time.at(@workhour.send("#{@DW.first}Start")) %>
+			<% @selected.each do |selected| %>	 
+			<%= selected.name %> selected for
+			<%= @start %> to
+			<% #Avoid perebor 1 option %>
+			<% @last = @start + selected.workhours.hour %>
+			<% if !@last.nil? && @last > @end %> 
+			<%= @last = @end %>
+			<% else %>
+			<%= @last %>
+			<% end %>
+			REDMETHOD:<%= selected.id %> for <%= @start.hour %>, <%= @last.hour %>
+			<% # TODO Refactor #unless red(selected.id, @start, @last) %>
+			<% @array << selected.name %>
+			<% @array << @start %>
+			<% @array << @last %>
+			<% @selectedarray.push @array %>
+			
+			<% @start = @last %>
+			
+			<% #end %>
+			</br>
+			<% # GREEN METHOD(@start..@last) %> 
+			<% # RED METHOD(@start..@last) %>
+			
+			<!-- # Avoid perebor 2 option
+			# @start = 8 
+			# @last = @start + 8 //16.15
+			# @end - @last = 9900.0/60/60 = 2.75
+			# @last + @test %> -->
+			<% if @last < @end then @start = @last end %>
+			CONDITION:<%= @start %> <%= @last %> <%= @last < @end %>
+			<% end %>
+			<br>
+			<br><br><br><br><br>
+		</ul>
+		<small>@quantity</small>
+		
+		<strong>Result: <%= @selectedarray.length %> <%= @selectedarray %> are selected, need <%= @quantity - @selected.length %> </strong>
+	</section>
+	

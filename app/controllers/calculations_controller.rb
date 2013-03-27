@@ -6,6 +6,7 @@ class CalculationsController < ApplicationController
 # TODO: Grenn exapnder, workday expander | Smart selecting Smart selection | Often selection
 def index
 	# Calculation variables	
+	#  params = {dw: "Mon", pos: 14}
 	@workhour = BusinessWorkday.first
 	@dw = (params[:dw])
 	@wd = @workhour.send("#{@dw}End") - @workhour.send("#{@dw}Start") ## CLEAR THAT SHIT
